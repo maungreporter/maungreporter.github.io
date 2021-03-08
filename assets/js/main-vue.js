@@ -8,6 +8,5 @@ var martyrVM = new Vue({
     el:'#martyr',
     data:{
         martyrList: martyrList,
-        hello:'hello'
     }
 })
