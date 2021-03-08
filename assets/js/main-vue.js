@@ -1,7 +1,7 @@
 console.log("martyrList" + martyrList);
 Vue.component('martyr-list', {
     props: ['todo'],
-    template: '<li>{{ todo.1 }}</li>'
+    template: '<li>{{ todo[1] }}</li>'
   })
 
 var martyrVM = new Vue({
