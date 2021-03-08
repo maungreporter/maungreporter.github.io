@@ -1,0 +1,31 @@
+:root {
+    --my-bg-first: #a11f21;
+    --my-bg-first-gd: #c73f41;
+  }
+
+  body{
+      height: 100vh;
+  }
+  .my-bg-first{
+    background: linear-gradient(90deg, var(--my-bg-first) 0%, var(--my-bg-first-gd) 100%);
+  }
+
+
+  nav{
+    background: linear-gradient(90deg, var(--my-bg-first) 0%, var(--my-bg-first-gd) 100%);
+  }
+
+  .main-content{
+      background-image: url(../img/scout.png);
+      background-repeat: no-repeat;
+      height: 200vh;
+      
+  }
+
+  .main-content .row{
+    padding-left: 50%;
+  }
+
+  .main-content .row h1{
+      color: var(--my-bg-first);
+  }
