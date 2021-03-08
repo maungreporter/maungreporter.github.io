@@ -1,4 +1,5 @@
 
+var martyrList = []
         function makeApiCall() {
           var params = {
             // The ID of the spreadsheet to retrieve data from.
@@ -23,6 +24,7 @@
             // TODO: Change code below to process the `response` object:
             console.log(response.result.values);
             console.log(response.result.values[2]);
+            martyrList= response.result.values;
           }, function(reason) {
             console.error('error: ' + reason.result.error.message);
           });
