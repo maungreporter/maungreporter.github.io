@@ -22,9 +22,10 @@ var martyrList = []
           var request = gapi.client.sheets.spreadsheets.values.get(params);
           request.then(function(response) {
             // TODO: Change code below to process the `response` object:
-            console.log(response.result.values);
+            
             console.log(response.result.values[2]);
             martyrList= response.result.values;
+            console.log("api martyrlist" + martyrList);
           }, function(reason) {
             console.error('error: ' + reason.result.error.message);
           });
