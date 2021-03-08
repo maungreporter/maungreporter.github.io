@@ -1,6 +1,7 @@
 
 var martyrList = []
         function makeApiCall() {
+            console.log("Make API Call");
           var params = {
             // The ID of the spreadsheet to retrieve data from.
             spreadsheetId: '1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g',  // TODO: Update placeholder value.
