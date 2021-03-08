@@ -27,6 +27,7 @@ var martyrList = []
             console.log(response.result.values[2]);
             martyrList= response.result.values;
             console.log("api martyrlist" + martyrList);
+            martyrVM.martyrList = martyrList;
           }, function(reason) {
             console.error('error: ' + reason.result.error.message);
           });
