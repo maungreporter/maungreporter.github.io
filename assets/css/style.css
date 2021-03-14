@@ -16,16 +16,73 @@
   }
 
   .main-content{
-      background-image: url(../img/scout.png);
+      /* background-image: url(../img/scout.png);
       background-repeat: no-repeat;
-      height: 200vh;
+      height: 200vh; */
       
   }
 
   .main-content .row{
-    padding-left: 50%;
+    /* padding-left: 50%; */
   }
 
   .main-content .row h1{
       color: var(--my-bg-first);
+  }
+
+  .martyr{
+    width: 100%;
+    border: 0px 1px 1px 1px solid gray;
+  }
+
+  .martyrList {
+
+    overflow-x: auto; 
+    overflow-y: auto; 
+    height: 60vh;
+    width: 100%;
+
+  }
+  .martyrList tr td{
+
+    
+  }
+  .martyrList tr td:first-child{
+    text-align: center;
+  }
+  .martyrList1 tr td, .martyrList tr td {
+    padding: 8px;
+    vertical-align: middle;
+    
+  }
+  .martyrList1 tr:first-child td{
+    font-weight: bold;
+    background: gray;
+    margin: 0px 5px;
+    /* border-right: 1px solid white; */
+    text-align: center;
+  }
+   .martyrList tr td:first-child{
+    font-size: 0.7em;
+  }
+  /*
+  .martyrList tr:first-child td:last-child{
+    border: none;
+  } */
+
+  .martyrList tr:nth-child(even){
+    background: lightgrey;
+  }
+  #martyr strong{
+    color: var(--my-bg-first);
+  }
+  #martyr small{
+    float: right;
+    font-size: 0.5em;
+    color: var(--my-bg-first);
+    
+  }
+  #martyr small a {
+    font-weight: bold;
+    
   }
