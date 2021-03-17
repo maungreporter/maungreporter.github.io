@@ -61,7 +61,7 @@ Vue.component('martyr-list', {
 var count1 = 0;
 Vue.component('martyr-lists', {
     props: ['todo'],
-    template: `<thead v-if="this.cc1 >1"><tr>${no}${mName}${date}${age}${sex}${cod}${pod}${rod}${address}${contact}</tr></thead>
+    template: `<thead><tr>${no}${mName}${date}${age}${sex}${cod}${pod}${rod}${address}${contact}</tr></thead>
     `,
     data:function(){
         return{

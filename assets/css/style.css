@@ -35,6 +35,14 @@
     border: 0px 1px 1px 1px solid gray;
   }
 
+  .martyrList1 {
+
+    overflow-x: auto; 
+    overflow-y: auto; 
+    width: 100%;
+
+  }
+
   .martyrList {
 
     overflow-x: auto; 
@@ -43,8 +51,8 @@
     width: 100%;
 
   }
-  .martyrList tr td{
-
+  .martyrList1 tr{
+width: 100%;
     
   }
   .martyrList tr td:first-child{
