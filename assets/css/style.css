@@ -6,6 +6,11 @@
   body{
       height: 100vh;
   }
+
+  a{
+    text-decoration: none !important;
+    color: black !important;
+  }
   .my-bg-first{
     background: linear-gradient(90deg, var(--my-bg-first) 0%, var(--my-bg-first-gd) 100%);
   }
@@ -99,7 +104,9 @@ width: 100%;
     
   }
   #martyr small a {
-    font-weight: bold;
+    text-decoration: underline !important;
+    font-weight: bold !important;
+    color: blue !important;
     
   }
 
@@ -118,4 +125,8 @@ width: 100%;
 
   .pod,.address{
     height: 3em;
+  }
+
+  small{
+    color: white;
   }

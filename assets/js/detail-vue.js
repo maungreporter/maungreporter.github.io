@@ -124,7 +124,7 @@ var count1 = 0;
 Vue.component('martyr-list', {
     props: ['todo'],
     template: `<div class="col-6 col-md-2 mt-2">
-    <div class="card">
+    <div class="card bg-dark">
     <div class="card-body text-center">
     ${img}
     ${mName}${age}<br>
