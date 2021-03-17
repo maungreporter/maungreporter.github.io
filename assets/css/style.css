@@ -55,6 +55,16 @@
 width: 100%;
     
   }
+  .martyrList tr:first-child{
+    background: gray;
+    position: fixed;
+    text-align: center;
+
+
+  }
+  .martyrList td{
+   
+  }
   .martyrList tr td:first-child{
     text-align: center;
   }

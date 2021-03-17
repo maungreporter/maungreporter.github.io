@@ -28,8 +28,8 @@ var count = 0;
 var no = `<td style="width: 2%;" v-if="this.cc1 > 1">{{this.cc1-1}}</td><td style="width: 2%;" v-else="this.cc == 1" ></td>`;
 var mName = `<td style="width: 10%;">{{todo[0]}}</td>`;
 var date = `<td style="width: 10%;">{{todo[1]}}</td>`;
-var age = `<td style="width: 4%;">{{todo[2]}}</td>`;
-var sex = `<td style="width: 4%;">{{todo[3]}}</td>`;
+var age = `<td style="width: 4%;text-align:center;">{{todo[2]}}</td>`;
+var sex = `<td style="width: 4%; text-align:center;">{{todo[3]}}</td>`;
 var cod = `<td style="width: 10%;">{{todo[4]}}</td>`;
 var state = `<td style="width: 10%;">{{todo[5]}}</td>`;
 var pod = `<td style="width: 16%;">{{todo[6]}}</td>`;
@@ -61,7 +61,7 @@ Vue.component('martyr-list', {
 var count1 = 0;
 Vue.component('martyr-lists', {
     props: ['todo'],
-    template: `<thead><tr>${no}${mName}${date}${age}${sex}${cod}${pod}${rod}${address}${contact}</tr></thead>
+    template: `<tr>${no}${mName}${date}${age}${sex}${cod}${pod}${rod}${address}${contact}</tr>
     `,
     data:function(){
         return{
