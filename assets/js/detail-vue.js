@@ -115,7 +115,7 @@ var sex = `<small v-if="todo[3]=='M'">(ကျား)</small><small v-else-if="to
 var cod = `<td style="width: 10%;">{{todo[4]}}</td>`;
 var state = `<td style="width: 10%;">{{todo[5]}}</td>`;
 var pod = `<small class="pod mt-1 mb-2">{{todo[6]}}</small>`;
-var address = `<small class="address">{{todo[7]}}</small>`;
+var address = `<small class="address mb-2">{{todo[7]}}</small>`;
 var rod = `<td style="width: 18%;">{{todo[8]}}</td>`;
 var contact = `<td style="width: 10%;">{{todo[9]}}</td>`;
 // var profile = `<td style="width: 10%;">{{todo[10]}}</td>`;
