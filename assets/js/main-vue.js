@@ -29,7 +29,7 @@ var no = `<td style="width: 2%;" v-if="this.cc1 > 1">{{this.cc1-1}}</td><td styl
 var mName = `<td style="width: 10%;">{{todo[0]}}</td>`;
 var date = `<td style="width: 10%;">{{todo[1]}}</td>`;
 var age = `<td style="width: 4%;text-align:center;">{{todo[2]}}</td>`;
-var sex = `<td style="width: 4%; text-align:center;">{{todo[3]}}</td>`;
+var sex = `<td style="width: 4%; text-align:center;" v-if="todo[3]=='M'">ကျား</td><td style="width: 4%; text-align:center;" v-else-if="todo[3]=='F'">မ</td><td style="width: 4%; text-align:center;" v-else>{{todo[3]}}</td>`;
 var cod = `<td style="width: 10%;">{{todo[4]}}</td>`;
 var state = `<td style="width: 10%;">{{todo[5]}}</td>`;
 var pod = `<td style="width: 16%;">{{todo[6]}}</td>`;
