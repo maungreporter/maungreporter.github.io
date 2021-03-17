@@ -1,4 +1,5 @@
 var martyrList ;
+var cityList;
 
 (async function(){
 
@@ -6,9 +7,31 @@ var martyrList ;
     .then(res=>res.json())
     .then(response =>{
         martyrList = response.values;
-        
-        console.log("martyrList" + martyrList);
+        var yangon = []
+       martyrList.forEach(item => {
+        if(item[5]=="ရန်ကုန်"){
+            yangon.push(item);
+        }
+       });
+       
         martyrVM.martyrList = martyrList;
+    }).catch(err => {
+
+    });
+
+    await fetch('https://sheets.googleapis.com/v4/spreadsheets/1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g/values/Dashboard!A2:W30?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw')
+    .then(res=>res.json())
+    .then(response =>{
+        var result = response.values;
+        var tmpList = []
+        var tcount = 0
+        result.forEach(item => {
+            tmpList.push({"city":item[0],"totalDeath":item[22]});
+            tcount += parseInt(item[22]);
+        });
+       cityList = tmpList;
+        martyrVM.cityList = cityList;
+        martyrVM.vmCount = tcount;
     }).catch(err => {
 
     });
@@ -38,28 +61,8 @@ var rod = `<td style="width: 18%;">{{todo[8]}}</td>`;
 var contact = `<td style="width: 10%;">{{todo[9]}}</td>`;
 // var profile = `<td style="width: 10%;">{{todo[10]}}</td>`;
 
-
-
-
-Vue.component('martyr-list', {
-    props: ['todo'],
-    template: `<thead v-if="this.cc ==1"><tr>${no}${mName}${date}${age}${sex}${cod}${pod}${rod}${address}${contact}</tr></thead>`,
-    data:function(){
-        return{
-            cc : 0
-        }
-    },
-    mounted:
-        function(){
-            console.log(count);
-            count += 1;
-            // martyrVM.vmCount = count-1
-            this.cc = count
-        
-    }
-})
 var count1 = 0;
-Vue.component('martyr-lists', {
+Vue.component('martyr-list', {
     props: ['todo'],
     template: `<tr>${no}${mName}${date}${age}${sex}${cod}${pod}${rod}${address}${contact}</tr>
     `,
@@ -78,10 +81,19 @@ Vue.component('martyr-lists', {
     }
 })
 
+var showCity = `<h5 class="card-title">{{todo.city}}</h5>`
+var showTotDeath = `<h6>{{todo.totalDeath}}</h6>`
+var showList = `<a href=""><small>အသေးစိတ် အချက်အလက်ကြည့်ရန် နှိပ်ပါ</small></a>`
+Vue.component('city-list',{
+    props:['todo'],
+    template:`<div class="col-12 col-md-2"><div class="card"><div class="card-body">${showCity}${showTotDeath}${showList}</div></div></div>`
+})
+
 var martyrVM = new Vue({
     el:'#martyr',
     data:{
         martyrList: martyrList,
+        cityList:cityList,
         vmCount: 0
     }
 })
