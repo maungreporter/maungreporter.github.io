@@ -123,7 +123,7 @@ var contact = `<td style="width: 10%;">{{todo[9]}}</td>`;
 var count1 = 0;
 Vue.component('martyr-list', {
     props: ['todo'],
-    template: `<div class="col-12 col-md-2 mt-2">
+    template: `<div class="col-6 col-md-2 mt-2">
     <div class="card">
     <div class="card-body text-center">
     ${img}
