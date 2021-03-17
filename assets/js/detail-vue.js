@@ -60,6 +60,7 @@ var cityArray = {"Yangon":"ရန်ကုန်",
                 "Gyobingauk":"ကြို့ပင်ကောက်",
                 "Pyigyimandaing":"ပြည်ကြီးမဏ္ဍိုင်",
                 "Muse":"မူဆယ်",
+                "Taunggyi":"တောင်ကြီး",
                 };
 
 (async function(){
