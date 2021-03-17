@@ -3,22 +3,6 @@ var cityList;
 
 
 (async function(){
-    
-    await fetch('https://sheets.googleapis.com/v4/spreadsheets/1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g/values/[MM]Detail Cases?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw')
-    .then(res=>res.json())
-    .then(response =>{
-        martyrList = response.values;
-        var yangon = []
-       martyrList.forEach(item => {
-        if(item[5]=="ရန်ကုန်"){
-            yangon.push(item);
-        }
-       });
-       
-        martyrVM.martyrList = martyrList;
-    }).catch(err => {
-
-    });
 
     await fetch('https://sheets.googleapis.com/v4/spreadsheets/1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g/values/Dashboard!A2:AJ30?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw')
     .then(res=>res.json())
