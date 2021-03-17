@@ -102,3 +102,20 @@ width: 100%;
     font-weight: bold;
     
   }
+
+  .label{
+    color: var(--my-bg-first-gd);
+    font-size: 0.8em;
+  }
+  .m-name{
+    color: var(--my-bg-first);
+    height: 2em;
+  }
+  .date,.pod,.address {
+    font-size: 0.6em;
+    display: block;
+  }
+
+  .pod,.address{
+    height: 3em;
+  }

@@ -1,8 +1,9 @@
 var martyrList ;
 var cityList;
 
-(async function(){
 
+(async function(){
+    
     await fetch('https://sheets.googleapis.com/v4/spreadsheets/1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g/values/[MM]Detail Cases?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw')
     .then(res=>res.json())
     .then(response =>{
@@ -19,15 +20,15 @@ var cityList;
 
     });
 
-    await fetch('https://sheets.googleapis.com/v4/spreadsheets/1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g/values/Dashboard!A2:W30?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw')
+    await fetch('https://sheets.googleapis.com/v4/spreadsheets/1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g/values/Dashboard!A2:AJ30?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw')
     .then(res=>res.json())
     .then(response =>{
         var result = response.values;
         var tmpList = []
         var tcount = 0
         result.forEach(item => {
-            tmpList.push({"city":item[0],"totalDeath":item[22]});
-            tcount += parseInt(item[22]);
+            tmpList.push({"city":item[0],"totalDeath":item[item.length-1]});
+            tcount += parseInt(item[item.length-1]);
         });
        cityList = tmpList;
         martyrVM.cityList = cityList;
@@ -36,7 +37,7 @@ var cityList;
 
     });
     
-    
+   
    
 
 })();
@@ -83,10 +84,13 @@ Vue.component('martyr-list', {
 
 var showCity = `<h5 class="card-title">{{todo.city}}</h5>`
 var showTotDeath = `<h6>Total Detah : {{todo.totalDeath}}</h6>`
-var showList = `<a href=""><small>အသေးစိတ် အချက်အလက်ကြည့်ရန် နှိပ်ပါ</small></a>`
+var showList = `<a :href="'/detail-info/?city='+todo.city+'&totDeath='+todo.totalDeath"><small>အသေးစိတ် အချက်အလက်ကြည့်ရန် နှိပ်ပါ</small></a>`
 Vue.component('city-list',{
     props:['todo'],
-    template:`<div class="col-12 col-md-2 mt-2"><div class="card"><div class="card-body">${showCity}${showTotDeath}${showList}</div></div></div>`
+    template:`<div class="col-12 col-md-2 mt-2">
+    <div class="card"><div class="card-body">
+    ${showCity}${showTotDeath}${showList}
+    </div></div></div>`
 })
 
 var martyrVM = new Vue({
@@ -97,4 +101,6 @@ var martyrVM = new Vue({
         vmCount: 0
     }
 })
+
+
 
