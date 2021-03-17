@@ -82,11 +82,11 @@ Vue.component('martyr-list', {
 })
 
 var showCity = `<h5 class="card-title">{{todo.city}}</h5>`
-var showTotDeath = `<h6>{{todo.totalDeath}}</h6>`
+var showTotDeath = `<h6>Total Detah : {{todo.totalDeath}}</h6>`
 var showList = `<a href=""><small>အသေးစိတ် အချက်အလက်ကြည့်ရန် နှိပ်ပါ</small></a>`
 Vue.component('city-list',{
     props:['todo'],
-    template:`<div class="col-12 col-md-2"><div class="card"><div class="card-body">${showCity}${showTotDeath}${showList}</div></div></div>`
+    template:`<div class="col-12 col-md-2 mt-2"><div class="card"><div class="card-body">${showCity}${showTotDeath}${showList}</div></div></div>`
 })
 
 var martyrVM = new Vue({
