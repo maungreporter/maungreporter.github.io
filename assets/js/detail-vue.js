@@ -3,34 +3,6 @@ var cityName;
 var totDeath;
 var martyrList;
 
-
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
-// 
 var cityArray = {"Yangon":"ရန်ကုန်",
                 "Mandalay":"မန္တလေး",
                 "Monywa":"မုံရွာ",
@@ -108,7 +80,7 @@ var cityArray = {"Yangon":"ရန်ကုန်",
 
 var count = 0;
 
-var img = `<img src="/assets/img/person.svg" class="w-50 border mb-2">`
+var img = `<img style="height:120px; width:120px !important;" v-bind:src="'https://martyr.s3.amazonaws.com/'+this.cname+'/'+nameModify(todo[0])+'.jpg'" class="w-50 border mb-2">`
 var mName = `<h6 class="card-title m-name"><strong>{{todo[0]}}</strong></h6>`;
 var date = `<small class="date mt-1">{{todo[1]}}</small>`;
 var age = `<small>အသက်({{todo[2]}})နှစ်</small>`;
@@ -137,7 +109,8 @@ Vue.component('martyr-list', {
     </div></div></div>`,
     data:function(){
         return{
-            cc1 : 0
+            cc1 : 0,
+            cname:cityName,
         }
     },
     mounted:
@@ -145,7 +118,14 @@ Vue.component('martyr-list', {
             console.log(count1);
             count1 += 1;
             this.cc1 = count1
+            this.c
         
+    },
+    methods:{
+        nameModify: function(name){
+            var tmp = name.replace("ဦ","ဦ");
+            return tmp.replace("ဦ","ဦ");
+        }
     }
 })
 
