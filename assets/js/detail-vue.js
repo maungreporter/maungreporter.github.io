@@ -25,6 +25,7 @@ var cityArray = {"Yangon":"ရန်ကုန်",
                 "Htilin":"ထီးလင်း",
                 "Pyapon":"ဖျာပုံ",
                 "Chauk":"ချောက်",
+                "Chaung Oo":"ချောင်းဦး",
                 "Hpakan":"ဖားကန့်",
                 "Aungban":"အောင်ပန်း",
                 "Thabeikkyin":"သပိတ်ကျင်း",
@@ -33,6 +34,7 @@ var cityArray = {"Yangon":"ရန်ကုန်",
                 "Pyigyimandaing":"ပြည်ကြီးမဏ္ဍိုင်",
                 "Muse":"မူဆယ်",
                 "Taunggyi":"တောင်ကြီး",
+                "Loikaw":"လွိုင်ကော်"
                 };
 
 (async function(){
@@ -106,7 +108,8 @@ Vue.component('martyr-list', {
     <small class="label">ကျဆုံးသည့်နေရက်</small>${date}
     <small class="label">ကျဆုံးသည့်နေရာ</small>${pod}
     <small class="label">နေရပ်လိပ်စာ</small>${address}
-    </div></div></div>`,
+    </div></div>
+    </div>`,
     data:function(){
         return{
             cc1 : 0,
