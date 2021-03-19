@@ -67,7 +67,7 @@ Vue.component('martyr-list', {
 })
 
 var showCity = `<h5 class="card-title">{{todo.city}}</h5>`
-var showTotDeath = `<h6>Total Detah : {{todo.totalDeath}}</h6>`
+var showTotDeath = `<h6>Total Death : {{todo.totalDeath}}</h6>`
 var showList = `<small>အသေးစိတ် အချက်အလက်ကြည့်ရန် နှိပ်ပါ</small>`
 Vue.component('city-list',{
     props:['todo'],
