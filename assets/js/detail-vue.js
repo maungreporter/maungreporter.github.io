@@ -34,7 +34,8 @@ var cityArray = {"Yangon":"ရန်ကုန်",
                 "Pyigyimandaing":"ပြည်ကြီးမဏ္ဍိုင်",
                 "Muse":"မူဆယ်",
                 "Taunggyi":"တောင်ကြီး",
-                "Loikaw":"လွိုင်ကော်"
+                "Loikaw":"လွိုင်ကော်",
+                "Mogok":"မိုးကုတ်"
                 };
 
 (async function(){

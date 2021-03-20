@@ -4,7 +4,7 @@ var cityList;
 
 (async function(){
 
-    await fetch('https://sheets.googleapis.com/v4/spreadsheets/1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g/values/Dashboard!A2:AK32?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw')
+    await fetch('https://sheets.googleapis.com/v4/spreadsheets/1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g/values/Dashboard!A2:AK33?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw')
     .then(res=>res.json())
     .then(response =>{
         var result = response.values;
