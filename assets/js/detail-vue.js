@@ -44,7 +44,6 @@ var cityArray = {"Yangon":"ရန်ကုန်",
     const urlParams = new URLSearchParams(queryString);
     cityName = urlParams.get('city');
     totDeath = urlParams.get('totDeath');
-    console.log(cityName);
     
 
 
@@ -119,7 +118,6 @@ Vue.component('martyr-list', {
     },
     mounted:
         function(){
-            console.log(count1);
             count1 += 1;
             this.cc1 = count1
             this.c

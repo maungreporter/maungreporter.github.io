@@ -130,3 +130,38 @@ width: 100%;
   small{
     color: white;
   }
+
+  .bg-green {
+    background: lightgreen !important;
+  }
+  .bg-yellow {
+    background: yellow !important;
+  }
+  .bg-orange {
+    background: orange !important;
+  }
+  .bg-red {
+    background: lightcoral !important;
+  }
+
+  .txt-green{
+    color: lightgreen !important;
+  }
+  .txt-yellow{
+    color: yellow !important;
+  }
+  .txt-orange{
+    color: orange !important;
+  }
+  .txt-red{
+    color: lightcoral !important;
+  }
+
+  .sq-block {
+    width: 10px;
+    height: 10px;
+  }
+
+  .level {
+    text-align: right;
+  }
