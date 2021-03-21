@@ -1,6 +1,6 @@
 var martyrList ;
 var cityList;
-var appLight = "container-fluid main-content p-0";
+var appLight = "container-fluid main-content p-0 mb-5";
 var appDark = "container-fluid main-content p-0 dark";
 
 
