@@ -1,8 +1,15 @@
 var martyrList ;
 var cityList;
+var appLight = "container-fluid main-content p-0";
+var appDark = "container-fluid main-content p-0 dark";
 
 
 (async function(){
+
+    // var today = new Date();
+    // var now = today.getHours()
+    // console.log(now)
+    
 
     await fetch('https://sheets.googleapis.com/v4/spreadsheets/1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g/values/Dashboard?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw')
     .then(res=>res.json())
@@ -62,7 +69,10 @@ var cityList;
 
     });
     
-   
+    // if(now<6 || now >= 19 ){
+    //     martyrVM.appClass = appDark
+    //     martyrVM.mode = "Night Mode is ON."
+    // }
    
 
 })();
@@ -98,12 +108,16 @@ Vue.component('city-list',{
 var martyrVM = new Vue({
     el:'#martyr',
     data:{
+        appClass: appLight,
         martyrList: martyrList,
         cityList:cityList,
         vmCount: 0,
-        vmTodayCount:0
+        vmTodayCount:0,
+        mode:""
     }
 })
+
+
 
 
 

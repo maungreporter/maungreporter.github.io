@@ -12,7 +12,7 @@
 <body>
 
     <nav class="navbar navbar-expand-sm sticky-top navbar-dark d-md-block p-0">
-        <div class="container-fluid">
+        <div id="nav" class="container-fluid">
             <a href="/" class="navbar-brand">
                 <img src="assets/img/menu-1.png"  alt="" style="height: 75px;">
                 <strong>နွေဦးတော်လှန်ရေး</strong>
@@ -41,13 +41,14 @@
 
 
 
-    <div class="container-fluid main-content mt-3 p-0">
+    <div id="martyr" :class="appClass">
+        
         <div class="row m-0">
             <div class="col-md-12 text-center mt-3">
                 <h1 class="line mb-3">နွေဦးတော်လှန်ရေးတွင် ကျဆုံးသွားသော သူရဲကောင်း အာဇာနည်များ</h1>
             </div>
 
-            <div id="martyr">
+            <div id="">
                     <h5 class="m-3">
                         စုစုပေါင်း ကျဆုံးသူဦးရေ - <strong>{{vmCount + vmTodayCount}}</strong> ဦး 
                         <small class="my-3 my-md-0"> 

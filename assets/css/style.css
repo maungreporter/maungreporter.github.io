@@ -165,3 +165,12 @@ width: 100%;
   .level {
     text-align: right;
   }
+
+  .dark {
+    background: black;
+    color: white;
+  }
+
+  .mode {
+    position: absolute;
+  }
