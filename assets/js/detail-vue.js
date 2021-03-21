@@ -57,12 +57,16 @@ var cityArray = {"Yangon":"ရန်ကုန်",
             if(item[5]==cityArray[cityName]){
                 tmpList.push(item);
                 tmpList.sort(function(a,b){
-                    var tmpDateA = a[1].split("/")
-                    var dateA = tmpDateA[2]+tmpDateA[1]+tmpDateA[0]
-                    var tmpDateB = b[1].split("/")
-                    var dateB = tmpDateB[2]+tmpDateB[1]+tmpDateB[0]
+
+                    var tmpDateA = new Date(a[1])
+                    var tmpDateB = new Date(b[1])
+
+                    // var tmpDateA = a[1].split("/")
+                    // var dateA = tmpDateA[2]+tmpDateA[0]+tmpDateA[0]
+                    // var tmpDateB = b[1].split("/")
+                    // var dateB = tmpDateB[2]+tmpDateB[1]+tmpDateB[0]
                     
-                    return parseInt(dateB)-parseInt(dateA)
+                    return parseInt(tmpDateB.getTime())-parseInt(tmpDateA.getTime())
                     // console.log(parseInt(a[1].replace(/\//g,'')))
                     // return (parseInt(a[1].replace(/\//g,''))-parseInt(b[1].replace(/\//g,'')))
                 })
@@ -71,11 +75,14 @@ var cityArray = {"Yangon":"ရန်ကုန်",
             if(item[4]==cityArray[cityName]){
                 tmpList.push(item);
                 tmpList.sort(function(a,b){
-                    var tmpDateA = a[1].split("/")
-                    var dateA = tmpDateA[2]+tmpDateA[1]+tmpDateA[0]
-                    var tmpDateB = b[1].split("/")
-                    var dateB = tmpDateB[2]+tmpDateB[1]+tmpDateB[0]
-                    return parseInt(dateB)-parseInt(dateA)
+                    var tmpDateA = new Date(a[1])
+                    var tmpDateB = new Date(b[1])
+                    return parseInt(tmpDateB.getTime())-parseInt(tmpDateA.getTime())
+                    // var tmpDateA = a[1].split("/")
+                    // var dateA = tmpDateA[2]+tmpDateA[1]+tmpDateA[0]
+                    // var tmpDateB = b[1].split("/")
+                    // var dateB = tmpDateB[2]+tmpDateB[1]+tmpDateB[0]
+                    // return parseInt(dateB)-parseInt(dateA)
                 })
             }
         }
@@ -101,7 +108,7 @@ var count = 0;
 
 var img = `<img style="height:120px; width:120px !important;" v-bind:src="'https://martyr.s3.amazonaws.com/'+this.cname+'/'+dateModify(todo[1])+'/'+nameModify(todo[0])+'-'+todo[2]+'.jpg'" class="w-50 border mb-2">`
 var mName = `<h6 class="card-title m-name"><strong>{{todo[0]}}</strong></h6>`;
-var date = `<small class="date mt-1">{{todo[1]}}</small>`;
+var date = `<small class="date mt-1">{{dateModifyWithSlash(todo[1],"/")}}</small>`;
 var age = `<small>အသက်({{todo[2]}})နှစ်</small>`;
 var sex = `<small v-if="todo[3]=='M'">(ကျား)</small><small v-else-if="todo[3]=='F'">(မ)</small><small v-else>{{todo[3]}}</small>`;
 var cod = `<td style="width: 10%;">{{todo[4]}}</td>`;
@@ -146,8 +153,18 @@ Vue.component('martyr-list', {
             return tmp.replace("ဦ","ဦ");
         },
         dateModify: function(date){
-            var tmp = date.replace(/\//g,'')
-            return tmp
+            var tmp = new Date(date)
+            var d = ("0"+tmp.getDate()).slice(-2)
+            var m = ("0"+(tmp.getMonth()+1)).slice(-2)
+            var y = tmp.getFullYear()
+            return d+""+m+""+y
+        },
+        dateModifyWithSlash: function(date,divider){
+            var tmp = new Date(date)
+            var d = ("0"+tmp.getDate()).slice(-2)
+            var m = ("0"+(tmp.getMonth()+1)).slice(-2)
+            var y = tmp.getFullYear()
+            return d+" "+divider+" "+m+" "+divider+" "+y
         }
     }
 })
