@@ -2,6 +2,7 @@
 var cityName;
 var totDeath;
 var martyrList;
+var dateList;
 
 var cityArray = {"Yangon":"ရန်ကုန်",
                 "Mandalay":"မန္တလေး",
@@ -53,44 +54,50 @@ var cityArray = {"Yangon":"ရန်ကုန်",
     .then(response =>{
         martyrList = response.values;
         var tmpList = []
-       martyrList.forEach(item => {
-        if(cityName == "Yangon"){
-            if(item[5]==cityArray[cityName]){
-                tmpList.push(item);
-                tmpList.sort(function(a,b){
+        martyrList.forEach(item => {
+           
+            if(cityName == "Bago" && item[0]=="ကိုမျိုးမင်းထွန်း"){
 
-                    var tmpDateA = new Date(a[1])
-                    var tmpDateB = new Date(b[1])
+            }else if(cityName == "Yangon"){
+            
+                if(item[5]==cityArray[cityName]){
+                    tmpList.push(item);
+                    tmpList.sort(function(a,b){
 
-                    // var tmpDateA = a[1].split("/")
-                    // var dateA = tmpDateA[2]+tmpDateA[0]+tmpDateA[0]
-                    // var tmpDateB = b[1].split("/")
-                    // var dateB = tmpDateB[2]+tmpDateB[1]+tmpDateB[0]
-                    
-                    return parseInt(tmpDateB.getTime())-parseInt(tmpDateA.getTime())
-                    // console.log(parseInt(a[1].replace(/\//g,'')))
-                    // return (parseInt(a[1].replace(/\//g,''))-parseInt(b[1].replace(/\//g,'')))
-                })
+                        var tmpDateA = new Date(a[1])
+                        var tmpDateB = new Date(b[1])
+
+                        // var tmpDateA = a[1].split("/")
+                        // var dateA = tmpDateA[2]+tmpDateA[0]+tmpDateA[0]
+                        // var tmpDateB = b[1].split("/")
+                        // var dateB = tmpDateB[2]+tmpDateB[1]+tmpDateB[0]
+                        
+                        return parseInt(tmpDateB.getTime())-parseInt(tmpDateA.getTime())
+                        // console.log(parseInt(a[1].replace(/\//g,'')))
+                        // return (parseInt(a[1].replace(/\//g,''))-parseInt(b[1].replace(/\//g,'')))
+                    })
+                }
+            }else{
+                
+                if(item[4]==cityArray[cityName]){
+                    tmpList.push(item);
+                    tmpList.sort(function(a,b){
+                        var tmpDateA = new Date(a[1])
+                        var tmpDateB = new Date(b[1])
+                        return parseInt(tmpDateB.getTime())-parseInt(tmpDateA.getTime())
+                        // var tmpDateA = a[1].split("/")
+                        // var dateA = tmpDateA[2]+tmpDateA[1]+tmpDateA[0]
+                        // var tmpDateB = b[1].split("/")
+                        // var dateB = tmpDateB[2]+tmpDateB[1]+tmpDateB[0]
+                        // return parseInt(dateB)-parseInt(dateA)
+                    })
+                }
             }
-        }else{
-            if(item[4]==cityArray[cityName]){
-                tmpList.push(item);
-                tmpList.sort(function(a,b){
-                    var tmpDateA = new Date(a[1])
-                    var tmpDateB = new Date(b[1])
-                    return parseInt(tmpDateB.getTime())-parseInt(tmpDateA.getTime())
-                    // var tmpDateA = a[1].split("/")
-                    // var dateA = tmpDateA[2]+tmpDateA[1]+tmpDateA[0]
-                    // var tmpDateB = b[1].split("/")
-                    // var dateB = tmpDateB[2]+tmpDateB[1]+tmpDateB[0]
-                    // return parseInt(dateB)-parseInt(dateA)
-                })
-            }
-        }
        
-       });
+        });
        
         detailVM.martyrList = tmpList;
+        // tmpDateList = tmpDateList.filter((x,i,a)=>a.indexOf(x) == i)
     }).catch(err => {
 
     });
@@ -102,7 +109,10 @@ var cityArray = {"Yangon":"ရန်ကုန်",
 
 
 
-
+// Vue.component('date-option',{
+//     props:['todo'],
+//     template:`<option :value="todo">{{todo}}</option>`
+// })
 
 
 var count = 0;
