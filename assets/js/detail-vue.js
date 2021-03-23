@@ -1,4 +1,4 @@
-
+var awsBaseUrl = `https://martyr.s3.amazonaws.com/`
 var cityName;
 var totDeath;
 var martyrList;
@@ -107,17 +107,9 @@ var cityArray = {"Yangon":"ရန်ကုန်",
    
 })();
 
-
-
-// Vue.component('date-option',{
-//     props:['todo'],
-//     template:`<option :value="todo">{{todo}}</option>`
-// })
-
-
 var count = 0;
 
-var img = `<img style="height:120px; width:120px !important;" v-bind:src="'https://martyr.s3.amazonaws.com/'+this.cname+'/'+dateModify(todo[1])+'/'+nameModify(todo[0])+'-'+todo[2]+'.jpg'" class="w-50 border mb-2">`
+var img = `<img style="height:120px; width:120px !important;" v-bind:src="getImage(this.cname,todo[1],todo[0],todo[2])" @error="getDefaultImg" class="w-50 border mb-2">`
 var mName = `<h6 class="card-title m-name"><strong>{{todo[0]}}</strong></h6>`;
 var date = `<small class="date mt-1">{{dateModifyWithSlash(todo[1],"/")}}</small>`;
 var age = `<small>အသက်({{todo[2]}})နှစ်</small>`;
@@ -176,7 +168,14 @@ Vue.component('martyr-list', {
             var m = ("0"+(tmp.getMonth()+1)).slice(-2)
             var y = tmp.getFullYear()
             return d+" "+divider+" "+m+" "+divider+" "+y
+        },
+        getImage: function(city,date,name,age){
+           return `${awsBaseUrl}${city}/${this.dateModify(date)}/${this.nameModify(name)}-${age}.jpg`
+        },
+        getDefaultImg: function(event){
+            event.target.src = `/assets/img/person.svg`
         }
+
     }
 })
 
@@ -188,4 +187,3 @@ var detailVM = new Vue({
         martyrList: martyrList,
     }
 })
-
