@@ -78,13 +78,13 @@ var appDark = "container-fluid main-content p-0 dark";
 })();
 
 
-var showCity = `<h5 class="card-title">{{todo.city}}<small></small> </h5>`
+var showCity = `<h5 class="card-title">{{todo.city}}<small v-if="todayDeath>0">●</small> </h5>`
 var showTotDeath = `<h6>Total Death : {{todo.totalDeath+todo.todayDeath}}</h6>`
 var showList = `<small>အသေးစိတ် အချက်အလက်ကြည့်ရန် နှိပ်ပါ</small>`
 Vue.component('city-list',{
     props:['todo'],
     template:`<div class="col-12 col-md-2 mt-2">
-    <a :href="'/detail-info/?city='+todo.city+'&totDeath='+todo.totalDeath">
+    <a :href="'/detail-info/?city='+todo.city+'&totDeath='+(todo.totalDeath+todo.todayDeath)">
     <div :class="getCardClass(todo.totalDeath+todo.todayDeath)"><div class="card-body">
     ${showCity}${showTotDeath}${showList}
     </div></div></a></div>`,
