@@ -78,7 +78,7 @@ var appDark = "container-fluid main-content p-0 dark";
 })();
 
 
-var showCity = `<h5 class="card-title">{{todo.city}}<small v-if="todayDeath>0">●</small> </h5>`
+var showCity = `<h5 class="card-title">{{todo.city}}</h5>`
 var showTotDeath = `<h6>Total Death : {{todo.totalDeath+todo.todayDeath}}</h6>`
 var showList = `<small>အသေးစိတ် အချက်အလက်ကြည့်ရန် နှိပ်ပါ</small>`
 Vue.component('city-list',{

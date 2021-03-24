@@ -79,7 +79,7 @@ var cityArray = {"Yangon":"ရန်ကုန်",
                 }
             }else{
                 
-                if(item[4]==cityArray[cityName]){
+                if(item[4].replace(/ဦ/g,'ဦ')==cityArray[cityName]){
                     tmpList.push(item);
                     tmpList.sort(function(a,b){
                         var tmpDateA = new Date(a[1])
@@ -152,8 +152,8 @@ Vue.component('martyr-list', {
     },
     methods:{
         nameModify: function(name){
-            var tmp = name.replace("ဦ","ဦ");
-            return tmp.replace("ဦ","ဦ");
+            // var tmp = name.replace("ဦ","ဦ");
+            return name.replace(/ဦ/g,'ဦ');
         },
         dateModify: function(date){
             var tmp = new Date(date)
