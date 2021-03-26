@@ -55,7 +55,7 @@ var appDark = "container-fluid main-content p-0 dark";
                     return (b.totalDeath+b.todayDeath) - (a.totalDeath+a.todayDeath)
                 })
                 tcount += tmpTot
-                if(item[item.length-3]!=""){
+                if(item[itemLength-3]!=""){
                     todayCount += parseInt(item[itemLength-3])
                 }
                 
