@@ -42,7 +42,8 @@ var cityArray = {"Yangon":"ရန်ကုန်",
                 "Mohnyin":"မိုးညှင်း",
                 "Tamu":"တမူး",
                 "Khin U":"ခင်ဦး",
-                "Phyu":"ဖြူး"
+                "Phyu":"ဖြူး",
+                "Kyauktaga":"ကျောက်တံခါး"
                 };
 
 (async function(){
