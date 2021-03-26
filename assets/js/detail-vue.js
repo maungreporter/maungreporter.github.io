@@ -39,7 +39,10 @@ var cityArray = {"Yangon":"ရန်ကုန်",
                 "Mogok":"မိုးကုတ်",
                 "Singu":"စဉ့်ကူး",
                 "Kyaukpadaung":"ကျောက်ပန်းတောင်း",
-                "Mohnyin":"မိုးညှင်း"
+                "Mohnyin":"မိုးညှင်း",
+                "Tamu":"တမူး",
+                "Khin U":"ခင်ဦး",
+                "Phyu":"ဖြူး"
                 };
 
 (async function(){
