@@ -62,14 +62,14 @@ const queryString = window.location.search;
 var count = 0;
 
 var img = `<img style="height:120px; width:120px !important;" v-bind:src="getImage(this.cname,todo[1],todo[0],todo[2])" @error="getDefaultImg" class="w-50 border mb-2">`
-var mName = `<h6 class="card-title m-name"><strong>{{todo[0]}}</strong></h6>`;
+var mName = `<h6 class="card-title m-name mm"><strong>{{todo[0]}}</strong></h6>`;
 var date = `<small class="date mt-1">{{dateModifyWithSlash(todo[1],"/")}}</small>`;
-var age = `<small>အသက်({{todo[2]}})နှစ်</small>`;
-var sex = `<small v-if="todo[3]=='M'">(ကျား)</small><small v-else-if="todo[3]=='F'">(မ)</small><small v-else>{{todo[3]}}</small>`;
+var age = `<small class="mm">အသက်({{todo[2]}})နှစ်</small>`;
+var sex = `<small class="mm" v-if="todo[3]=='M'">(ကျား)</small><small class="mm" v-else-if="todo[3]=='F'">(မ)</small><small class="mm" v-else>(-)</small>`;
 var cod = `<td style="width: 10%;">{{todo[4]}}</td>`;
 var state = `<td style="width: 10%;">{{todo[5]}}</td>`;
-var pod = `<small class="pod mt-1 mb-2">{{todo[6]}}</small>`;
-var address = `<small class="address mb-2">{{todo[7]}}</small>`;
+var pod = `<small class="pod mt-1 mb-2 mm">{{todo[6]}}</small>`;
+var address = `<small class="address mb-2 mm">{{todo[7]}}</small>`;
 var rod = `<td style="width: 18%;">{{todo[8]}}</td>`;
 var contact = `<td style="width: 10%;">{{todo[9]}}</td>`;
 // var profile = `<td style="width: 10%;">{{todo[10]}}</td>`;
@@ -84,9 +84,9 @@ Vue.component('martyr-list', {
     ${mName}${age}<br>
     ${sex}
     <hr class="m-2">
-    <small class="label">ကျဆုံးသည့်နေရက်</small>${date}
+    <small class="label mm">ကျဆုံးသည့်နေရက်</small>${date}
     <small class="label">ကျဆုံးသည့်နေရာ</small>${pod}
-    <small class="label">နေရပ်လိပ်စာ</small>${address}
+    <small class="label mm">နေရပ်လိပ်စာ</small>${address}
     </div></div>
     </div>`,
     data:function(){
