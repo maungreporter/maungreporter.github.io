@@ -50,7 +50,7 @@ var appDark = "container-fluid main-content p-0 dark";
                     todayDeathCity = parseInt(item[itemLength-3])
                 }
     
-                tmpList.push({"city":item[0],"totalDeath":tmpTot, "todayDeath": todayDeathCity});
+                tmpList.push({"city":cityArray[item[0]],"cityEng":item[0],"totalDeath":tmpTot, "todayDeath": todayDeathCity});
                 tmpList.sort(function(a,b){
                     return (b.totalDeath+b.todayDeath) - (a.totalDeath+a.todayDeath)
                 })
@@ -88,7 +88,7 @@ var showList = `<small>အသေးစိတ် အချက်အလက်က�
 Vue.component('city-list',{
     props:['todo'],
     template:`<div class="col-12 col-md-2 mt-2">
-    <a :href="'/detail-info/?city='+todo.city+'&totDeath='+(todo.totalDeath+todo.todayDeath)">
+    <a :href="'/detail-info/?city='+todo.cityEng+'&totDeath='+(todo.totalDeath+todo.todayDeath)">
     <div :class="getCardClass(todo.totalDeath+todo.todayDeath)"><div class="card-body">
     ${showCity}${showTotDeath}${showList}
     </div></div></a></div>`,

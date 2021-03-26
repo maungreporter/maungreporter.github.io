@@ -1,59 +1,17 @@
 var awsBaseUrl = `https://martyr.s3.amazonaws.com/`
 var cityName;
+var cityNameMm;
 var totDeath;
 var martyrList;
 var dateList;
 
-var cityArray = {"Yangon":"ရန်ကုန်",
-                "Mandalay":"မန္တလေး",
-                "Monywa":"မုံရွာ",
-                "Myaing":"မြိုင်",
-                "Dawei":"ထားဝယ်",
-                "Bago":"ပဲခူး",
-                "Myingyan":"မြင်းခြံ",
-                "Pathein":"ပုသိမ်",
-                "Mawlamyaing":"မော်လမြိုင်",
-                "Pwint Phyu":"ပွင့်ဖြူ",
-                "Myitkyina":"မြစ်ကြီးနား",
-                "Pyay":"ပြည်",
-                "Aunglan":"အောင်လံ",
-                "Pakokku":"ပခုက္ကူ",
-                "Naypyidaw":"နေပြည်တော်",
-                "Myeik":"မြိတ်",
-                "Taungdwingyi":"တောင်တွင်းကြီး",
-                "Salin":"စလင်း",
-                "Kalay":"ကလေး",
-                "Htilin":"ထီးလင်း",
-                "Pyapon":"ဖျာပုံ",
-                "Chauk":"ချောက်",
-                "Chaung Oo":"ချောင်းဦး",
-                "Hpakan":"ဖားကန့်",
-                "Aungban":"အောင်ပန်း",
-                "Thabeikkyin":"သပိတ်ကျင်း",
-                "Kawlin":"ကောလင်း",
-                "Gyobingauk":"ကြို့ပင်ကောက်",
-                "Pyigyimandaing":"ပြည်ကြီးမဏ္ဍိုင်",
-                "Muse":"မူဆယ်",
-                "Taunggyi":"တောင်ကြီး",
-                "Loikaw":"လွိုင်ကော်",
-                "Mogok":"မိုးကုတ်",
-                "Singu":"စဉ့်ကူး",
-                "Kyaukpadaung":"ကျောက်ပန်းတောင်း",
-                "Mohnyin":"မိုးညှင်း",
-                "Tamu":"တမူး",
-                "Khin U":"ခင်ဦး",
-                "Phyu":"ဖြူး",
-                "Kyauktaga":"ကျောက်တံခါး"
-                };
-
-(async function(){
-
-    const queryString = window.location.search;
+const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     cityName = urlParams.get('city');
     totDeath = urlParams.get('totDeath');
-    
+    cityNameMm = cityArray[cityName];
 
+(async function(){
 
     await fetch('https://sheets.googleapis.com/v4/spreadsheets/1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g/values/[MM]Detail Cases!A2:AB1094?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw')
     .then(res=>res.json())
@@ -72,18 +30,9 @@ var cityArray = {"Yangon":"ရန်ကုန်",
                 if(item[5]==cityArray[cityName]){
                     tmpList.push(item);
                     tmpList.sort(function(a,b){
-
                         var tmpDateA = new Date(a[1])
                         var tmpDateB = new Date(b[1])
-
-                        // var tmpDateA = a[1].split("/")
-                        // var dateA = tmpDateA[2]+tmpDateA[0]+tmpDateA[0]
-                        // var tmpDateB = b[1].split("/")
-                        // var dateB = tmpDateB[2]+tmpDateB[1]+tmpDateB[0]
-                        
                         return parseInt(tmpDateB.getTime())-parseInt(tmpDateA.getTime())
-                        // console.log(parseInt(a[1].replace(/\//g,'')))
-                        // return (parseInt(a[1].replace(/\//g,''))-parseInt(b[1].replace(/\//g,'')))
                     })
                 }
             }else{
@@ -95,11 +44,6 @@ var cityArray = {"Yangon":"ရန်ကုန်",
                         var tmpDateA = new Date(a[1])
                         var tmpDateB = new Date(b[1])
                         return parseInt(tmpDateB.getTime())-parseInt(tmpDateA.getTime())
-                        // var tmpDateA = a[1].split("/")
-                        // var dateA = tmpDateA[2]+tmpDateA[1]+tmpDateA[0]
-                        // var tmpDateB = b[1].split("/")
-                        // var dateB = tmpDateB[2]+tmpDateB[1]+tmpDateB[0]
-                        // return parseInt(dateB)-parseInt(dateA)
                     })
                 }
             }
@@ -107,12 +51,10 @@ var cityArray = {"Yangon":"ရန်ကုန်",
         });
        
         detailVM.martyrList = tmpList;
-        // tmpDateList = tmpDateList.filter((x,i,a)=>a.indexOf(x) == i)
     }).catch(err => {
 
     });
     
-    detailVM.cityName = cityName
     detailVM.totalDeath = totDeath
    
 })();
@@ -192,7 +134,7 @@ Vue.component('martyr-list', {
 var detailVM = new Vue({
     el:'#detail',
     data:{
-        cityName:cityName,
+        cityName:cityNameMm,
         totalDeath:totDeath,
         martyrList: martyrList,
     }
