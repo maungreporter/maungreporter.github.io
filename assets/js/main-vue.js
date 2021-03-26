@@ -20,9 +20,12 @@ var appDark = "container-fluid main-content p-0 dark";
         var todayCount = 0
         var mainIndex = 0
         var tmpTot = 0
+        var itemLength = 
         result.every(item => {
             
             if(mainIndex == 0){
+                console.log("itemlenght"+item.length)
+                itemLength = item.length
                 mainIndex++
                 return true
 
@@ -33,7 +36,7 @@ var appDark = "container-fluid main-content p-0 dark";
             else{
                 var index = 0
                 item.forEach(e => {
-                    if(index > 0 && index < item.length-3){
+                    if(index > 0 && index < itemLength-3){
                         if(e != ""){
                             tmpTot += parseInt(e)
                         } 
@@ -42,8 +45,9 @@ var appDark = "container-fluid main-content p-0 dark";
                 })
 
                 var todayDeathCity = 0;
-                if(item[item.length-3]!=""){
-                    todayDeathCity = parseInt(item[item.length-3])
+                if(item[itemLength-3]!=""){
+
+                    todayDeathCity = parseInt(item[itemLength-3])
                 }
     
                 tmpList.push({"city":item[0],"totalDeath":tmpTot, "todayDeath": todayDeathCity});
@@ -52,7 +56,7 @@ var appDark = "container-fluid main-content p-0 dark";
                 })
                 tcount += tmpTot
                 if(item[item.length-3]!=""){
-                    todayCount += parseInt(item[item.length-3])
+                    todayCount += parseInt(item[itemLength-3])
                 }
                 
                 tmpTot = 0
