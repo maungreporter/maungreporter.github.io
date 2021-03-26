@@ -41,7 +41,7 @@ var cityArray = {"Yangon":"ရန်ကုန်",
                 "Kyaukpadaung":"ကျောက်ပန်းတောင်း",
                 "Mohnyin":"မိုးညှင်း",
                 "Tamu":"တမူး",
-                "Khin U":"ခင်ဦး",
+                "Khin U":"ခင်ဦး",
                 "Phyu":"ဖြူး",
                 "Kyauktaga":"ကျောက်တံခါး"
                 };
@@ -61,6 +61,9 @@ var cityArray = {"Yangon":"ရန်ကုန်",
         martyrList = response.values;
         var tmpList = []
         martyrList.forEach(item => {
+            console.log("City Eng " + cityName)
+            console.log("City Name " + item[4])
+            console.log("City Name in Array " + cityArray[cityName])
            
             if(cityName == "Bago" && item[0]=="ကိုမျိုးမင်းထွန်း"){
 
@@ -86,6 +89,7 @@ var cityArray = {"Yangon":"ရန်ကုန်",
             }else{
                 
                 if(item[4].replace(/ဦ/g,'ဦ')==cityArray[cityName]){
+                    console.log("city " + item[4])
                     tmpList.push(item);
                     tmpList.sort(function(a,b){
                         var tmpDateA = new Date(a[1])
