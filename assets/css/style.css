@@ -42,6 +42,14 @@
       color: var(--my-bg-first);
   }
 
+  .donato{
+    position: absolute;
+    top: 60px;
+    left: 80px;
+    font-size: 0.5em;
+    background: gray;
+    padding: 2px 7px;
+  }
   .today-death{
     margin: 0px auto !important;
     width: 50%;
