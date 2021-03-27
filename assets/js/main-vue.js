@@ -3,8 +3,17 @@ var cityList;
 var appLight = "container-fluid main-content p-0 mb-5";
 var appDark = "container-fluid main-content p-0 dark";
 
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear().toString().substr(-2);
+
+var today = dd + '/' + mm + '/' + yyyy;
+
+
 
 (async function(){
+    console.log(today)
 
     // var today = new Date();
     // var now = today.getHours()
@@ -20,12 +29,15 @@ var appDark = "container-fluid main-content p-0 dark";
         var todayCount = 0
         var mainIndex = 0
         var tmpTot = 0
-        var itemLength = 
+        var itemLength;
+        var lastdate;
         result.every(item => {
-            
             if(mainIndex == 0){
                 // console.log("itemlenght"+item.length)
+                
                 itemLength = item.length
+                lastdate = item[itemLength-3]
+                console.log("last date" + lastdate)
                 mainIndex++
                 return true
 
@@ -69,6 +81,10 @@ var appDark = "container-fluid main-content p-0 dark";
         martyrVM.cityList = cityList;
         martyrVM.vmCount = tcount;
         martyrVM.vmTodayCount = todayCount
+        if(today==lastdate){
+            martyrVM.vmTodayTotalCount=todayCount
+        }
+        
     }).catch(err => {
 
     });
@@ -117,6 +133,7 @@ var martyrVM = new Vue({
         cityList:cityList,
         vmCount: 0,
         vmTodayCount:0,
+        vmTodayTotalCount:0,
         mode:""
     }
 })
