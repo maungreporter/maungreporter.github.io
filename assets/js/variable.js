@@ -52,6 +52,7 @@ var cityArray = {"Yangon":"ရန်ကုန်",
                 "Pyin Oo Lwin":"ပြင်ဦးလွင်",
                 "Sagaing":"စစ်ကိုင်း",
                 "Nyaung-U":"ညောင်ဦး",
-                "Yin Mar Bin":"ယင်းမာပင်"
+                "Yin Mar Bin":"ယင်းမာပင်",
+                "Sintgaing":"စဉ့်ကိုင်"
 
                 };
