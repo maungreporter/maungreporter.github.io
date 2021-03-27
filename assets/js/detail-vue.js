@@ -19,9 +19,9 @@ const queryString = window.location.search;
         martyrList = response.values;
         var tmpList = []
         martyrList.forEach(item => {
-            console.log("City Eng " + cityName)
-            console.log("City Name " + item[4])
-            console.log("City Name in Array " + cityArray[cityName])
+            // console.log("City Eng " + cityName)
+            // console.log("City Name " + item[4])
+            // console.log("City Name in Array " + cityArray[cityName])
            
             if(cityName == "Bago" && item[0]=="ကိုမျိုးမင်းထွန်း"){
 
@@ -38,7 +38,7 @@ const queryString = window.location.search;
             }else{
                 
                 if(item[4].replace(/ဦ/g,'ဦ')==cityArray[cityName]){
-                    console.log("city " + item[4])
+                    // console.log("city " + item[4])
                     tmpList.push(item);
                     tmpList.sort(function(a,b){
                         var tmpDateA = new Date(a[1])
@@ -77,7 +77,7 @@ var contact = `<td style="width: 10%;">{{todo[9]}}</td>`;
 var count1 = 0;
 Vue.component('martyr-list', {
     props: ['todo'],
-    template: `<div class="col-6 col-md-2 mt-2">
+    template: `<div class="col-6 col-sm-4 col-lg-2 mt-2">
     <div class="card bg-dark">
     <div class="card-body text-center">
     ${img}

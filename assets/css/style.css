@@ -196,3 +196,9 @@ width: 100%;
       width: 100%;
     }
   }
+
+  @media only screen and (min-width: 768px) {
+    .more{
+      font-size: 0.6em !important;
+    }
+  }

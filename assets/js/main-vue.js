@@ -24,7 +24,7 @@ var appDark = "container-fluid main-content p-0 dark";
         result.every(item => {
             
             if(mainIndex == 0){
-                console.log("itemlenght"+item.length)
+                // console.log("itemlenght"+item.length)
                 itemLength = item.length
                 mainIndex++
                 return true
@@ -84,10 +84,10 @@ var appDark = "container-fluid main-content p-0 dark";
 
 var showCity = `<h5 class="card-title mm">{{todo.city}}</h5>`
 var showTotDeath = `<h6 class="mm">ကျဆုံးသူ ({{todo.totalDeath+todo.todayDeath}}) ဦး</h6>`
-var showList = `<small class="mm">အသေးစိတ် အချက်အလက်ကြည့်ရန် နှိပ်ပါ</small>`
+var showList = `<small class="mm more">အသေးစိတ် အချက်အလက်ကြည့်ရန် နှိပ်ပါ</small>`
 Vue.component('city-list',{
     props:['todo'],
-    template:`<div class="col-12 col-md-2 mt-2">
+    template:`<div class="col-12 col-md-4 col-lg-2 mt-2">
     <a :href="'/detail-info/?city='+todo.cityEng+'&totDeath='+(todo.totalDeath+todo.todayDeath)">
     <div :class="getCardClass(todo.totalDeath+todo.todayDeath)"><div class="card-body">
     ${showCity}${showTotDeath}${showList}
