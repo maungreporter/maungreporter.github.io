@@ -37,5 +37,20 @@ var cityArray = {"Yangon":"ရန်ကုန်",
                 "Tamu":"တမူး",
                 "Khin U":"ခင်ဦး",
                 "Phyu":"ဖြူး",
-                "Kyauktaga":"ကျောက်တံခါး"
+                "Kyauktaga":"ကျောက်တံခါး",
+                "Shwebo":"ရွှေဘို",
+                "Meiktila":"မိတ္ထီလာ",
+                "Wundwin":"၀မ်းတွင်း",
+                "Monyo":"မိုးညို",
+                "Hpa Do":"ဖဒို",
+                "Daik-U":"ဒိုက်ဦး",
+                "Kyaikhto":"ကျိုက်ထို",
+                "Lashio":"လားရှိုး",
+                "Hopin":"ဟိုပင်",
+                "Penwegon":"ပဲနွယ်ကုန်း",
+                "Dala":"ဒလ",
+                "Pyin Oo Lwin":"ပြင်ဦးလွင်",
+                "Sagaing":"စစ်ကိုင်း",
+                "Nyaung-U":"ညောင်ဦး"
+
                 };

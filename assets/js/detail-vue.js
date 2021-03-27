@@ -1,5 +1,5 @@
 var awsBaseUrl = `https://martyr.s3.amazonaws.com/`
-var cityName;
+var cityArraycityName;
 var cityNameMm;
 var totDeath;
 var martyrList;
@@ -36,9 +36,10 @@ const queryString = window.location.search;
                     })
                 }
             }else{
-                
-                if(item[4].replace(/ဦ/g,'ဦ')==cityArray[cityName]){
-                    // console.log("city " + item[4])
+                console.log("city " + item[4])
+                console.log("City Array " + cityArray[cityName] )
+                if(item[4].replace(/ဦ/g,'ဦ')==cityArray[cityName]||item[4] == cityArray[cityName]){
+                   
                     tmpList.push(item);
                     tmpList.sort(function(a,b){
                         var tmpDateA = new Date(a[1])
