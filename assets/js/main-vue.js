@@ -10,6 +10,13 @@ var yyyy = today.getFullYear().toString().substr(-2);
 
 var today = dd + '/' + mm + '/' + yyyy;
 
+var d = new Date();
+d.setDate(d.getDate() - 1);
+var ydd = String(d.getDate()).padStart(2, '0');
+var ymm = String(d.getMonth() + 1).padStart(2, '0');
+var yyyyy = d.getFullYear().toString().substr(-2);
+var yesterday = ydd + '/' + ymm + '/' + yyyyy;
+
 
 
 (async function(){
@@ -88,6 +95,9 @@ var today = dd + '/' + mm + '/' + yyyy;
         if(today==lastdate){
             martyrVM.vmTodayTotalCount=todayCount
         }
+        if(yesterday==lastdate){
+            martyrVM.vmYesterdayTotalCount=todayCount
+        }
         
     }).catch(err => {
 
@@ -138,6 +148,7 @@ var martyrVM = new Vue({
         vmCount: 0,
         vmTodayCount:0,
         vmTodayTotalCount:0,
+        vmYesterdayTotalCount:0,
         mode:""
     }
 })
