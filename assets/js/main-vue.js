@@ -108,8 +108,8 @@ var showList = `<small class="mm more">အသေးစိတ် အချက်�
 Vue.component('city-list',{
     props:['todo'],
     template:`<div class="col-12 col-md-4 col-lg-2 mt-2">
-    <a :href="'/detail-info/?city='+todo.cityEng+'&totDeath='+(todo.totalDeath+todo.todayDeath)">
-    <div :class="getCardClass(todo.totalDeath+todo.todayDeath)"><div class="card-body">
+    <a :href="'/detail-info/?city='+todo.cityEng+'&totDeath='+(todo.totalDeath)">
+    <div :class="getCardClass(todo.totalDeath)"><div class="card-body">
     ${showCity}${showTotDeath}${showList}
     </div></div></a></div>`,
     methods:{
