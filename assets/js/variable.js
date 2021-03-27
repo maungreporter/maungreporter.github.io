@@ -53,6 +53,8 @@ var cityArray = {"Yangon":"ရန်ကုန်",
                 "Sagaing":"စစ်ကိုင်း",
                 "Nyaung-U":"ညောင်ဦး",
                 "Yin Mar Bin":"ယင်းမာပင်",
-                "Sintgaing":"စဉ့်ကိုင်"
+                "Sintgaing":"စဉ့်ကိုင်",
+                "Kawthaung":"ကော့သောင်း",
+                "Thanlyin":"သန်လျင်"
 
                 };
