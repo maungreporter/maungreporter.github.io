@@ -57,12 +57,16 @@ var today = dd + '/' + mm + '/' + yyyy;
                 })
 
                 var todayDeathCity = 0;
+                var tmpTodayDeathCity = 0;
                 if(item[itemLength-3]!=""){
 
-                    todayDeathCity = parseInt(item[itemLength-3])
+                    tmpTodayDeathCity = parseInt(item[itemLength-3])
+                    if(today == lastdate){
+                        todayDeathCity = parseInt(item[itemLength-3])
+                    }
                 }
     
-                tmpList.push({"city":cityArray[item[0]],"cityEng":item[0],"totalDeath":(tmpTot+todayDeathCity), "todayDeath": todayDeathCity});
+                tmpList.push({"city":cityArray[item[0]],"cityEng":item[0],"totalDeath":(tmpTot+tmpTodayDeathCity), "todayDeath": todayDeathCity});
                 tmpList.sort(function(a,b){
                     return (b.totalDeath) - (a.totalDeath)
                 })
@@ -98,7 +102,7 @@ var today = dd + '/' + mm + '/' + yyyy;
 })();
 
 
-var showCity = `<h5 class="card-title mm">{{todo.city}}</h5>`
+var showCity = `<h5 class="card-title mm">{{todo.city}} <small v-if="todo.todayDeath>0" class="text-danger">ယနေ့ - {{todo.todayDeath}} ဦး</small></h5>`
 var showTotDeath = `<h6 class="mm">ကျဆုံးသူ ({{todo.totalDeath}}) ဦး</h6>`
 var showList = `<small class="mm more">အသေးစိတ် အချက်အလက်ကြည့်ရန် နှိပ်ပါ</small>`
 Vue.component('city-list',{
