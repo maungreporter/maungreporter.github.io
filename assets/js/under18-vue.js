@@ -1,15 +1,11 @@
 var awsBaseUrl = `https://martyr.s3.amazonaws.com/`
 var cityArraycityName;
 var cityNameMm;
-var totDeath;
+var totDeath = 0;
 var martyrList;
 var dateList;
 
-const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    cityName = urlParams.get('city');
-    totDeath = urlParams.get('totDeath');
-    cityNameMm = cityArray[cityName];
+
 
 (async function(){
 
@@ -19,50 +15,31 @@ const queryString = window.location.search;
         martyrList = response.values;
         var tmpList = []
         martyrList.forEach(item => {
-            // console.log("City Eng " + cityName)
-            // console.log("City Name " + item[4])
-            // console.log("City Name in Array " + cityArray[cityName])
-           
-            if(cityName == "Bago" && item[0]=="ကိုမျိုးမင်းထွန်း"){
-
-            }else if(cityName == "Yangon"){
-            
-                if(item[5]==cityArray[cityName]){
-                    tmpList.push(item);
-                    tmpList.sort(function(a,b){
-                        var tmpDateA = new Date(a[1])
-                        var tmpDateB = new Date(b[1])
-                        return parseInt(tmpDateB.getTime())-parseInt(tmpDateA.getTime())
-                    })
-                }
-            }else{
-                console.log("city " + item[4])
-                console.log("City Array " + cityArray[cityName] )
-                if(item[4].replace(/ဦ/g,'ဦ')==cityArray[cityName]||item[4] == cityArray[cityName]){
-                   
-                    tmpList.push(item);
-                    tmpList.sort(function(a,b){
-                        var tmpDateA = new Date(a[1])
-                        var tmpDateB = new Date(b[1])
-                        return parseInt(tmpDateB.getTime())-parseInt(tmpDateA.getTime())
-                    })
-                }
+            if(item[2]!="" && parseInt(item[2]) < 18){
+                totDeath ++
+                tmpList.push(item);
+                tmpList.sort(function(a,b){
+                    var tmpAgeA = parseInt(a[2])
+                    var tmpAgeB = parseInt(b[2])
+                    return tmpAgeA-tmpAgeB
+                })
             }
+            
        
         });
        
-        detailVM.martyrList = tmpList;
+        underEighteenVM.martyrList = tmpList;
     }).catch(err => {
 
     });
     
-    detailVM.totalDeath = totDeath
+    underEighteenVM.totalDeath = totDeath
    
 })();
 
 var count = 0;
 
-var img = `<img style="height:120px; width:120px !important;" v-bind:src="getImage(this.cname,todo[1],todo[0],todo[2])" @error="getDefaultImg" class="w-50 border mb-2">`
+var img = `<img style="height:120px; width:120px !important;" v-bind:src="getImage(todo[5],todo[4],todo[1],todo[0],todo[2])" @error="getDefaultImg" class="w-50 border mb-2">`
 var mName = `<h6 class="card-title m-name mm"><strong>{{todo[0]}}</strong></h6>`;
 var date = `<small class="date mt-1">{{dateModifyWithSlash(todo[1],"/")}}</small>`;
 var age = `<small class="mm">အသက်({{todo[2]}})နှစ်</small>`;
@@ -90,22 +67,8 @@ Vue.component('martyr-list', {
     <small class="label mm">နေရပ်လိပ်စာ</small>${address}
     </div></div>
     </div>`,
-    data:function(){
-        return{
-            cc1 : 0,
-            cname:cityName,
-        }
-    },
-    mounted:
-        function(){
-            count1 += 1;
-            this.cc1 = count1
-            this.c
-        
-    },
     methods:{
         nameModify: function(name){
-            // var tmp = name.replace("ဦ","ဦ");
             return name.replace(/ဦ/g,'ဦ');
         },
         dateModify: function(date){
@@ -122,8 +85,15 @@ Vue.component('martyr-list', {
             var y = tmp.getFullYear()
             return d+" "+divider+" "+m+" "+divider+" "+y
         },
-        getImage: function(city,date,name,age){
-           return `${awsBaseUrl}${city}/${this.dateModify(date)}/${this.nameModify(name)}-${age}.jpg?2021032802`
+        getKeyByValue: function(object,value){
+            return Object.keys(object).find(key => object[key] === value);
+        },
+        getImage: function(division,city,date,name,age){
+            var tmpCityName = this.getKeyByValue(cityArray,city)
+            if(division == "ရန်ကုန်"){
+                tmpCityName = this.getKeyByValue(cityArray,division)
+            }
+           return `${awsBaseUrl}${tmpCityName}/${this.dateModify(date)}/${this.nameModify(name)}-${age}.jpg?2021032802`
         },
         getDefaultImg: function(event){
             event.target.src = `/assets/img/person.svg`
@@ -132,10 +102,10 @@ Vue.component('martyr-list', {
     }
 })
 
-var detailVM = new Vue({
-    el:'#detail',
+var underEighteenVM = new Vue({
+    el:'#underEighteen',
     data:{
-        cityName:cityNameMm,
+        title:`အသက်(၁၈)နှစ်အောက် ကျဆုံးသူများ`,
         totalDeath:totDeath,
         martyrList: martyrList,
     }

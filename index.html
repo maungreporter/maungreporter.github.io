@@ -8,13 +8,15 @@
     <title>Spring Revolution Myanmar - Generation Z</title>
     <meta name="keywords" itemprop="keywords" content="Spring Revolution Myanmar">
     <meta name="description" itemprop="description" content="နွေဦးတော်လှန်ရေးတွင် ကျဆုံးသွားသော သူရဲကောင်း အာဇာနည်များ">
-    <link rel="stylesheet" href="assets/css/style.css?2021032801">
+    <link rel="stylesheet" href="assets/css/style.css?2021032802">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 <body>
 
+    <!-- HEADER NAV START  -->
     <nav class="navbar navbar-expand-sm sticky-top navbar-dark d-md-block p-0">
         <div id="nav" class="container-fluid">
+            <!-- Logo  -->
             <a href="/" class="navbar-brand">
                 <img src="assets/img/menu-1.png"  alt="" style="height: 75px;">
                 <strong class="mm">နွေဦးတော်လှန်ရေး</strong>
@@ -23,18 +25,29 @@
                 </a>
                 
             </a>
-            <ul class="navbar-nav">
+            <!-- NAV  -->
+            <ul class="navbar-nav d-none d-sm-flex">
+                <!-- HOME  -->
                 <li class="nav-item">
                     <a href="/" class="nav-link active">
-                        <i class="fas fa-home"></i> 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                        </svg>
+                        <strong class="d-none d-md-inline-block">HOME</strong>
                     </a>
                 </li>
-                
-                
-
+                <!-- ၁၈နှစ်အောက် ကျဆုံးသူများ -->
+                <li class="nav-item">
+                    <a href="/under18/" class="nav-link active">
+                        <img src="/assets/img/under18-black.png" alt="">
+                        <strong class="d-none d-md-inline-block">၁၈နှစ်အောက် ကျဆုံးသူများ</strong>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
+    <!-- HEADER NAV START  -->
 
     
 
@@ -93,11 +106,42 @@
     </div>
 
 
+    <!-- FOOTER NAV  START -->
+    <div class="footer d-sm-none bg-light border-top row m-0 pt-2 pb-0">
+        <!-- HOME -->
+        <div class="col-3 text-center">
+            <a href="/" class="text-decoration-none active">
+                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                    <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                </svg><br>
+                <small class="text-xsmall">Home</small>
+            </a>
+        </div>
+        <!-- ၁၈နှစ်အောက် ကျဆုံးသူများ -->
+        <div class="col-6 p-0 text-center">
+                <a href="/under18/" class="text-decoration-none">
+                    
+                    <img src="/assets/img/under18-black.png" alt="">
+                    <br>
+                    <small class="text-xsmall text-dark">၁၈နှစ်အောက် ကျဆုံးသူများ</small>
+                </a>
+        </div>
+        <!--Add New Nav Here! -->
+        <div class="col-3">
+                <a href="/" class="text-decoration-none">
+                    <i class="fas fa-file-contract"></i><br>
+                    <small class="text-xsmall"></small>
+                </a>
+        </div>
+    </div>
+    <!-- FOOTER NAV END -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     
     <script src="assets/js/variable.js?2021032708"></script>
-    <script src="assets/js/main-vue.js?2021032801"></script>
+    <script src="assets/js/main-vue.js?2021032802"></script>
     
 </body>
 </html>
