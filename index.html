@@ -8,13 +8,13 @@
     <title>Spring Revolution Myanmar - Generation Z</title>
     <meta name="keywords" itemprop="keywords" content="Spring Revolution Myanmar">
     <meta name="description" itemprop="description" content="နွေဦးတော်လှန်ရေးတွင် ကျဆုံးသွားသော သူရဲကောင်း အာဇာနည်များ">
-    <link rel="stylesheet" href="assets/css/style.css?2021032802">
+    <link rel="stylesheet" href="assets/css/style.css?2021032803">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 <body>
 
     <!-- HEADER NAV START  -->
-    <nav class="navbar navbar-expand-sm sticky-top navbar-dark d-md-block p-0">
+    <nav class="navbar navbar-expand-sm navbar-dark d-md-block p-0">
         <div id="nav" class="container-fluid">
             <!-- Logo  -->
             <a href="/" class="navbar-brand">
@@ -40,7 +40,9 @@
                 <!-- ၁၈နှစ်အောက် ကျဆုံးသူများ -->
                 <li class="nav-item">
                     <a href="/under18/" class="nav-link active">
-                        <img src="/assets/img/under18-black.png" alt="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                        </svg>
                         <strong class="d-none d-md-inline-block">၁၈နှစ်အောက် ကျဆုံးသူများ</strong>
                     </a>
                 </li>
@@ -75,7 +77,7 @@
                 
             </div>
 
-            <div id="" class="mt-3 pt-4">
+            <div id="" class="mt-3 pt-4 pb-5 mb-4 mb-sm-0">
                     <h5 v-if="vmTodayTotalCount>0" class="mm text-center alert-danger p-4 today-death">ယနေ့ ကျဆုံးသူ - <strong>{{vmTodayTotalCount}}</strong> ဦး</h5>
                     <h5 v-if="vmYesterdayTotalCount>0" class="mm text-center alert-danger p-4 today-death">မနေ့က ကျဆုံးသူ - <strong>{{vmYesterdayTotalCount}}</strong> ဦး</h5>
                     <h5 class="m-3 mm">
@@ -107,7 +109,7 @@
 
 
     <!-- FOOTER NAV  START -->
-    <div class="footer d-sm-none bg-light border-top row m-0 pt-2 pb-0">
+    <div class="footer d-sm-none border-top row m-0 pt-2 pb-0">
         <!-- HOME -->
         <div class="col-3 text-center">
             <a href="/" class="text-decoration-none active">
@@ -121,8 +123,13 @@
         <!-- ၁၈နှစ်အောက် ကျဆုံးသူများ -->
         <div class="col-6 p-0 text-center">
                 <a href="/under18/" class="text-decoration-none">
+<!--                     
+                    <img src="/assets/img/under18-black.png" alt=""> -->
                     
-                    <img src="/assets/img/under18-black.png" alt="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                      
                     <br>
                     <small class="text-xsmall text-dark">၁၈နှစ်အောက် ကျဆုံးသူများ</small>
                 </a>
@@ -141,7 +148,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     
     <script src="assets/js/variable.js?2021032708"></script>
-    <script src="assets/js/main-vue.js?2021032802"></script>
+    <script src="assets/js/main-vue.js?2021032803"></script>
     
 </body>
 </html>
