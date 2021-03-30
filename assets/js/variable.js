@@ -57,6 +57,10 @@ var cityArray = {"Yangon":"ရန်ကုန်",
                 "Kawthaung":"ကော့သောင်း",
                 "Thanlyin":"သန်လျင်",
                 "Bhamo":"ဗန်းမော်",
-                "Mutaw":"မူတြော်ခရိုင်"
-
+                "Mutaw":"မူတြော်ခရိုင်",
+                "Kywe Pwe":"ကျွဲပွဲ",
+                "Shwegyin":"ရွှေကျင်",
+                "Magwe":"မကွေး",
+                "Paung":"ပေါင်",
+                "Madaya":"မတ္တရာ"
                 };
