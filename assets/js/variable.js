@@ -62,5 +62,6 @@ var cityArray = {"Yangon":"ရန်ကုန်",
                 "Shwegyin":"ရွှေကျင်",
                 "Magwe":"မကွေး",
                 "Paung":"ပေါင်",
-                "Madaya":"မတ္တရာ"
+                "Madaya":"မတ္တရာ",
+                "Gangaw":"ဂန့်ဂေါ"
                 };
