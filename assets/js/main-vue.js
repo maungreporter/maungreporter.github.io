@@ -1,7 +1,7 @@
 var martyrList ;
 var cityList;
-var appLight = "container-fluid main-content p-0 mb-5";
-var appDark = "container-fluid main-content p-0 dark";
+var appLight = "container main-content p-0 mb-5";
+var appDark = "container main-content p-0 dark";
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');

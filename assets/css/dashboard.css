@@ -1,0 +1,19 @@
+.graph {
+  height: 300px;
+  overflow: scroll;
+}
+.graph div h6{
+  font-size: 0.7em;
+}
+
+.db-text{
+  color: var(--my-bg-first);
+
+}
+
+@media only screen and (max-width: 576px) {
+
+    .db-text{
+      font-size: 0.8em;
+    }
+}

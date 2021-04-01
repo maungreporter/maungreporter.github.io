@@ -36,8 +36,9 @@
     /* padding-left: 50%; */
   }
 
-  .main-content .row h1{
+  .line{
       color: var(--my-bg-first);
+      line-height: 1.5em;
   }
 
   .donato{
@@ -212,14 +213,18 @@ width: 100%;
     z-index: 1;
   }
 
+  .clear-float{
+    float: unset !important;
+  }
 
+ 
 
   @media only screen and (max-width: 576px) {
     .sp-banner img {
       width: 100%;
     }
     #underEighteen .line{
-      font-size: 2em;;
+      font-size: 1.4em;;
     }
     .today-death{
       width: 100% !important;
@@ -239,6 +244,12 @@ width: 100%;
     }
     .footer a img {
       width: 39px;
+    }
+    .line{
+      font-size: 1.5em;
+    }
+    .dashboard .line {
+      font-size: 1.3em;
     }
   }
 
