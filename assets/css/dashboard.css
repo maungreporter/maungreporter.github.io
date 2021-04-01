@@ -11,9 +11,22 @@
 
 }
 
+
+.dashboard small{
+  float: unset;
+  text-align: right;
+}
+
+.dashboard div:nth-child(2){
+  clear: right;
+}
+
 @media only screen and (max-width: 576px) {
 
     .db-text{
       font-size: 0.8em;
+    }
+    .dashboard small {
+      text-align: right;
     }
 }
