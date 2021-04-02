@@ -32,10 +32,6 @@
       
   }
 
-  .main-content .row{
-    /* padding-left: 50%; */
-  }
-
   .line{
       color: var(--my-bg-first);
       line-height: 1.5em;
@@ -254,7 +250,7 @@ width: 100%;
     .city-graph h2 small{
       display: inline-block;
       margin-top: 10px;
-      float: unset !important;
+      float: none !important;
     }
   }
 
