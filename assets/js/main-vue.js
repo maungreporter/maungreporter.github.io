@@ -117,7 +117,7 @@ var showTotDeath = `<h6 class="mm">ကျဆုံးသူ ({{todo.totalDeath}}
 var showList = `<small class="mm more">အသေးစိတ် အချက်အလက်ကြည့်ရန် နှိပ်ပါ</small>`
 Vue.component('city-list',{
     props:['todo'],
-    template:`<div class="col-12 col-md-4 col-lg-2 mt-2">
+    template:`<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xxl-2 mt-2">
     <a :href="'/detail-info/?city='+todo.cityEng+'&totDeath='+(todo.totalDeath)">
     <div :class="getCardClass(todo.totalDeath)"><div class="card-body">
     ${showCity}${showTotDeath}${showList}
