@@ -251,6 +251,11 @@ width: 100%;
     .dashboard .line {
       font-size: 1.3em;
     }
+    .city-graph h2 small{
+      display: inline-block;
+      margin-top: 10px;
+      float: unset !important;
+    }
   }
 
   @media only screen and (min-width: 768px) {

@@ -98,8 +98,9 @@ var totalDays = differenceInTime / (1000 * 3600 * 24);
         }
         martyrVM.dateData = dateData
         martyrVM.cityData = cityData
+        martyrVM.totalCity = cityData.length
         martyrVM.total = total
-        if(todayDD == lastDate){
+        if(todayDDv == lastDate){
             martyrVM.todayCount = todayCount
         }
         
@@ -198,6 +199,7 @@ var martyrVM = new Vue({
     data:{
         dateData: [],
         cityData: [],
+        totalCity: 0,
         total:0,
         totalDays:totalDays,
         underEighteen: 0,
