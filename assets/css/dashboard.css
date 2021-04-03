@@ -12,11 +12,10 @@
 }
 
 
-.dashboard small{
-  float: unset !important;
-  text-align: right;
-}
 
+.dashboard h6 small{
+  float: right !important;
+}
 .dashboard div:nth-child(2){
   clear: right;
 }
@@ -26,10 +25,11 @@ tspan, #map_zoom{
 #map{
   width: 100% !important;
   text-align: center;
+
 }
 #map_inner svg{
   /* width: 600px !important; */
-  
+  /* pointer-events: none; */
 }
 
 @media only screen and (max-width: 576px) {
@@ -37,7 +37,11 @@ tspan, #map_zoom{
     .db-text{
       font-size: 0.8em;
     }
-    .dashboard small {
+    .dashboard small{
+      float: unset !important;
       text-align: right;
+    }
+    #map{
+      pointer-events: none;
     }
 }
