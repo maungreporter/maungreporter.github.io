@@ -13,12 +13,23 @@
 
 
 .dashboard small{
-  float: unset;
+  float: unset !important;
   text-align: right;
 }
 
 .dashboard div:nth-child(2){
   clear: right;
+}
+tspan, #map_zoom{
+  display: none;
+}
+#map{
+  width: 100% !important;
+  text-align: center;
+}
+#map_inner svg{
+  /* width: 600px !important; */
+  
 }
 
 @media only screen and (max-width: 576px) {

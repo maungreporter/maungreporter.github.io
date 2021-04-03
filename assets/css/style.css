@@ -18,6 +18,10 @@
     text-decoration: none !important;
     color: black !important;
   }
+
+  .my-txt-first{
+    color: var(--my-bg-first);
+  }
   .my-bg-first{
     background: linear-gradient(90deg, var(--my-bg-first) 0%, var(--my-bg-first-gd) 100%);
   }
