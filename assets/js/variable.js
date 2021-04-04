@@ -64,7 +64,8 @@ var cityArray = {"Yangon":"ရန်ကုန်",
                 "Paung":"ပေါင်",
                 "Madaya":"မတ္တရာ",
                 "Gangaw":"ဂန့်ဂေါ",
-                "Thaton":"သထုံ"
+                "Thaton":"သထုံ",
+                "Myit Chay":"မြစ်ခြေ"
                 };
 
 
@@ -136,5 +137,6 @@ var latlng = {
                 "Madaya":{"lat":"22.2070","lng":"96.1209"},
                 "Gangaw":{"lat":"22.1757","lng":"94.1347"},
                 "Thaton":{"lat":"16.9271","lng":"97.3679"},
+                "Myit Chay":{"lat":"21.2446","lng":"94.8572"}
             };
             
