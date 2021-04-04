@@ -22,7 +22,7 @@ const queryString = window.location.search;
            
             if(cityName == "Bago" && item[0]=="ကိုမျိုးမင်းထွန်း"){
 
-            }else if(cityName == "Yangon"){
+            }else if(cityName == "Yangon" || cityName == "Naypyidaw"){
             
                 if(item[5]==cityArray[cityName]){
                     tmpList.push(item);
