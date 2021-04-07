@@ -67,7 +67,8 @@ var cityArray = {"Yangon":"ရန်ကုန်",
                 "Thaton":"သထုံ",
                 "Myit Chay":"မြစ်ခြေ",
                 "Pinlebu":"ပင်လည်ဘူး",
-                "Nyaung Shwe":"ညောင်ရွှေ"
+                "Nyaung Shwe":"ညောင်ရွှေ",
+                "Mogaung":"မိုးကောင်း"
                 };
 
 
@@ -141,6 +142,7 @@ var latlng = {
                 "Thaton":{"lat":"16.9271","lng":"97.3679"},
                 "Myit Chay":{"lat":"21.2446","lng":"94.8572"},
                 "Pinlebu":{"lat":"24.0781","lng":"95.3717"},
-                "Nyaung Shwe":{"lat":"20.6594","lng":"96.9343"}
+                "Nyaung Shwe":{"lat":"20.6594","lng":"96.9343"},
+                "Mogaung":{"lat":"25.3044","lng":"96.9370"}
             };
             
