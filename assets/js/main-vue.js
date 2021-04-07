@@ -40,8 +40,6 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
         var lastdate;
         result.every(item => {
             if(mainIndex == 0){
-                // console.log("itemlenght"+item.length)
-                
                 itemLength = item.length
                 lastdate = item[itemLength-3]
                 console.log("last date" + lastdate)
@@ -54,9 +52,13 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
             }
             else{
                 var index = 0
+                console.log(item[0])
                 item.forEach(e => {
+                    
+                    
                     if(index > 0 && index < itemLength-3){
                         if(e != ""){
+                            console.log(e)
                             tmpTot += parseInt(e)
                         } 
                     }
@@ -65,22 +67,24 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
 
                 var todayDeathCity = 0;
                 var tmpTodayDeathCity = 0;
-                if(item[itemLength-3]!=""){
-
-                    tmpTodayDeathCity = parseInt(item[itemLength-3])
-                    if(today == lastdate){
-                        todayDeathCity = parseInt(item[itemLength-3])
+                //console.log("City "+ item[0] + " / " + item.length + " / " + itemLength) 
+                if(item.length == itemLength){
+                    if(item[itemLength-3]!=""){
+                        todayCount += parseInt(item[itemLength-3])
+                        tmpTodayDeathCity = parseInt(item[itemLength-3])
+                        if(today == lastdate){
+                            todayDeathCity = parseInt(item[itemLength-3])
+                        }
                     }
                 }
+                
     
                 tmpList.push({"city":cityArray[item[0]],"cityEng":item[0],"totalDeath":(tmpTot+tmpTodayDeathCity), "todayDeath": todayDeathCity});
                 tmpList.sort(function(a,b){
                     return (b.totalDeath) - (a.totalDeath)
                 })
                 tcount += tmpTot
-                if(item[itemLength-3]!=""){
-                    todayCount += parseInt(item[itemLength-3])
-                }
+                
                 
                 tmpTot = 0
             }
