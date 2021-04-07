@@ -86,7 +86,7 @@ var totalDays = differenceInTime / (1000 * 3600 * 24);
                     return b.count-a.count
                 })
                 var tempSize = 20
-                if((tmpCount*0.4)>10){
+                if((tmpCount*0.4)>20){
                     tempSize = tmpCount*0.4
                 }
                 mapLocaList.push({lat:getLat(item[0]),lng:getLng(item[0]),name:cityArray[item[0]],description:`ကျဆုံးသူ(${tmpCount})ဦး`,size:tempSize,url:`/detail-info/?city=${item[0]}&totDeath=${tmpCount}`})
