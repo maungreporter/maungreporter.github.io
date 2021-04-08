@@ -49,13 +49,16 @@
     background: gray;
     padding: 2px 7px;
   }
-  .today-death{
+  .today-death,.yesterday-death{
     margin: 0px auto !important;
     width: 50%;
   }
   .today-death strong{
     font-size: 1.5em;
     vertical-align: middle;
+  }
+  .yesterday-death{
+    width: 25%;
   }
   .martyr{
     width: 100%;
@@ -265,6 +268,9 @@ width: 100%;
       display: inline-block;
       margin-top: 10px;
       float: none !important;
+    }
+    .yesterday-death{
+      width: 100%;
     }
   }
 
