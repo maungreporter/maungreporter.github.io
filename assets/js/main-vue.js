@@ -1,5 +1,6 @@
 var martyrList ;
-var cityList;
+var mmList = [];
+var engList = []
 var appLight = "container main-content p-0 mb-5";
 var appDark = "container main-content p-0 dark";
 
@@ -32,6 +33,7 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
     .then(response =>{
         var result = response.values;
         var tmpList = []
+       
         var tcount = 0
         var todayCount = 0
         var mainIndex = 0
@@ -83,6 +85,10 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
                 tmpList.sort(function(a,b){
                     return (b.totalDeath) - (a.totalDeath)
                 })
+                engList.push({"city":item[0],"cityEng":item[0],"totalDeath":(tmpTot+tmpTodayDeathCity), "todayDeath": todayDeathCity});
+                engList.sort(function(a,b){
+                    return (b.totalDeath) - (a.totalDeath)
+                })
                 tcount += tmpTot
                 
                 
@@ -92,8 +98,8 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
             return true
             
         });
-       cityList = tmpList;
-        martyrVM.cityList = cityList;
+       mmList = tmpList;
+        martyrVM.cityList = mmList;
         martyrVM.vmCount = tcount;
         martyrVM.vmTodayCount = todayCount
         if(today==lastdate){
@@ -148,7 +154,7 @@ var martyrVM = new Vue({
     data:{
         appClass: appLight,
         martyrList: martyrList,
-        cityList:cityList,
+        cityList:mmList,
         vmCount: 0,
         vmTodayCount:0,
         vmTodayTotalCount:0,
@@ -157,7 +163,26 @@ var martyrVM = new Vue({
     }
 })
 
+var navVM = new Vue({
+    el:'#nav',
+    data:{
+        mmLanClass : "p-1 rounded",
+        enLanClass : "p-1 rounded"
+    },
+    methods:{
+        changeLang: function(lang){
+            console.log(lang)
+            if(lang == "en"){
+                martyrVM.cityList = engList
+            }
+            if(lang == "mm"){
+                martyrVM.cityList = mmList
+            }
 
+           
+        }
+    }
+})
 
 
 

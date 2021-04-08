@@ -8,7 +8,7 @@
     <title>Spring Revolution Myanmar - Generation Z</title>
     <meta name="keywords" itemprop="keywords" content="Spring Revolution Myanmar">
     <meta name="description" itemprop="description" content="နွေဦးတော်လှန်ရေးတွင် ကျဆုံးသွားသော သူရဲကောင်း အာဇာနည်များ">
-    <link rel="stylesheet" href="assets/css/style.css?2021040402">
+    <link rel="stylesheet" href="assets/css/style.css?2021040801">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
 </head>
@@ -59,14 +59,14 @@
                         <strong class="d-none d-md-inline-block">Dashboard</strong>
                     </a>
                 </li>
-                <!-- <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Langauge</a> 
-                    <ul class="dropdown-menu">
-                        <li>Myanmar</li>
-                        <li>Japan</li>
-                        <li>English</li>
+                    <ul class="dropdown-menu py-2 px-3">
+                        <li v-on:click="changeLang('mm')" :class= mmLanClass>Myanmar</li>
+                        <li v-on:click="changeLang('en')" :class= enLanClass>English</li>
+                        <!-- <li v-on:click="changeLang('jp')">Japan</li> -->
                     </ul>
-                </li> -->
+                </li>
                 
             </ul>
             
@@ -101,8 +101,8 @@
             </div>
 
             <div id="" class="mt-3 pt-4 pb-5 mb-4 mb-sm-0">
-                    <h5 v-if="vmTodayTotalCount>0" class="mm text-center alert-danger p-4 today-death">ယနေ့ ကျဆုံးသူ - <strong>{{vmTodayTotalCount}}</strong> ဦး</h5>
-                    <h5 v-if="vmYesterdayTotalCount>0" class="mm text-center alert-danger p-4 today-death">မနေ့က ကျဆုံးသူ - <strong>{{vmYesterdayTotalCount}}</strong> ဦး</h5>
+                    <h5  class="mm text-center alert-danger p-4 today-death rounded">ယနေ့ ကျဆုံးသူ - <strong>{{vmTodayTotalCount}}</strong> ဦး</h5>
+                    <h5  class="mm w-25 text-center mt-1 alert-warning p-2 today-death rounded">မနေ့က ကျဆုံးသူ - <strong>{{vmYesterdayTotalCount}}</strong> ဦး</h5>
                     <h5 class="m-3 mm">
                         စုစုပေါင်း ကျဆုံးသူဦးရေ - <strong>{{vmCount + vmTodayCount}}</strong> ဦး 
                         <small class="my-3 my-md-3 my-lg-0"> 
@@ -167,7 +167,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     
     <script src="assets/js/variable.js?2021040801"></script>
-    <script src="assets/js/main-vue.js?2021040703"></script>
+    <script src="assets/js/main-vue.js?2021040801"></script>
     
 </body>
 </html>
