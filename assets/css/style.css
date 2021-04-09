@@ -231,6 +231,7 @@ width: 100%;
   .nav-item a strong, .nav-item a svg, .navbar-brand strong{
     color: lightgrey;
   }
+  
   .navbar-nav > li:last-child{
     display: inline-block;
     border: 1px solid lightgrey;
@@ -282,6 +283,9 @@ width: 100%;
  
 
   @media only screen and (max-width: 576px) {
+    .navbar-brand strong{
+      font-size: 0.8em !important;
+    }
     .sp-banner img {
       width: 100%;
     }
@@ -299,7 +303,7 @@ width: 100%;
       background: lightgray;
     }
     .footer small{
-      font-size: 0.8em;
+      font-size: 0.7em;
     }
     .footer .active, .footer .active small {
       color: var(--my-bg-first) !important;
@@ -341,4 +345,5 @@ width: 100%;
     .navbar-nav li:last-child{
       text-align: center !important;
     }
+    
   }
