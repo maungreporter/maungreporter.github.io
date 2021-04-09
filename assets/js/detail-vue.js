@@ -1,6 +1,5 @@
 var awsBaseUrl = `https://martyr.s3.amazonaws.com/`
 var cityArraycityName;
-var cityNameMm;
 var totDeath;
 var martyrList;
 var dateList;
@@ -9,7 +8,11 @@ const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     cityName = urlParams.get('city');
     totDeath = urlParams.get('totDeath');
-    cityNameMm = cityArray[cityName];
+var mmCity = getCityName(cityName,"mm");
+var enCity = cityName
+var jpCity = getCityName(cityName,"jp");
+var ln = urlParams.get('ln') ;
+
 
 (async function(){
 
@@ -24,7 +27,7 @@ const queryString = window.location.search;
 
             }else if(cityName == "Yangon" || cityName == "Naypyidaw"){
             
-                if(item[5]==cityArray[cityName]){
+                if(item[5]==getCityName(cityName,"mm")){
                     tmpList.push(item);
                     tmpList.sort(function(a,b){
                         var tmpDateA = new Date(a[1])
@@ -33,9 +36,7 @@ const queryString = window.location.search;
                     })
                 }
             }else{
-                console.log("city " + item[4])
-                console.log("City Array " + cityArray[cityName] )
-                if(item[4].replace(/ဦ/g,'ဦ')==cityArray[cityName]||item[4] == cityArray[cityName]){
+                if(item[4].replace(/ဦ/g,'ဦ')==getCityName(cityName,"mm")||item[4] == getCityName(cityName,"mm")){
                    
                     tmpList.push(item);
                     tmpList.sort(function(a,b){
@@ -48,12 +49,12 @@ const queryString = window.location.search;
        
         });
        
-        detailVM.martyrList = tmpList;
+        appVM.martyrList = tmpList;
     }).catch(err => {
 
     });
     
-    detailVM.totalDeath = totDeath
+    appVM.totalDeath = totDeath
    
 })();
 
@@ -129,11 +130,137 @@ Vue.component('martyr-list', {
     }
 })
 
-var detailVM = new Vue({
-    el:'#detail',
+var appVM = new Vue({
+    el:'#app',
     data:{
-        cityName:cityNameMm,
+        urlOne:`/`,
+        urlTwo:`/under18/`,
+        urlThree:`/dashboard/`,
+        navOne:mmNavHome,
+        navTwo:mmUnder18,
+        navThree:mmDashboard,
+        navFour:mmLanguage,
+        mm:mmMyanmar,
+        en:mmEnglsih,
+        jp:mmJapanese,
+        brandTitle: mmBrandTitle,
+        mmLanClass : "p-1 rounded",
+        enLanClass : "p-1 rounded",
+
+        bodyTitle:mmBodyTitle,
+        cityName:mmCity,
+        totalDeathLabel : mmTotalDeathLabel,
         totalDeath:totDeath,
         martyrList: martyrList,
+    },
+    methods:{
+        changeLang: function(lang){
+            if(lang == "mm"){
+                this.urlOne = `/?ln=mm`
+                this.urlTwo = `/under18/?ln=mm`
+                this.urlThree = `/dashboard/?ln=mm`
+                this.brandTitle = mmBrandTitle
+                this.navOne = mmNavHome
+                this.navTwo = mmUnder18
+                this.navThree = mmDashboard
+                this.navFour = mmLanguage
+                this.mm = mmMyanmar
+                this.en = mmEnglsih
+                this.jp = mmJapanese
+                this.bodyTitle = mmBodyTitle
+                this.cityName = mmCity
+
+                this.totalDeathLabel = mmTotalDeathLabel
+
+            }
+            if(lang == "en"){
+                this.urlOne = `/?ln=en`
+                this.urlTwo = `/under18/?ln=en`
+                this.urlThree = `/dashboard/?ln=en`
+                this.brandTitle = enBrandTitle
+                this.navOne = enNavHome
+                this.navTwo = enUnder18
+                this.navThree = enDashboard
+                this.navFour = enLanguage
+                this.mm = enMyanmar
+                this.en = enEnglsih
+                this.jp = enJapanese
+                this.bodyTitle = enBodyTitle
+                this.cityName = enCity
+
+                this.totalDeathLabel = enTotalDeathLabel
+
+            }
+            if(lang == "jp"){
+                this.urlOne = `/?ln=jp`
+                this.urlTwo = `/under18/?ln=jp`
+                this.urlThree = `/dashboard/?ln=jp`
+                this.brandTitle = jpBrandTitle
+                this.navOne = jpNavHome
+                this.navTwo = jpUnder18
+                this.navThree = jpDashboard
+                this.navFour = jpLanguage
+                this.mm = jpMyanmar
+                this.en = jpEnglsih
+                this.jp = jpJapanese
+                this.bodyTitle = jpBodyTitle
+                this.cityName = jpCity
+
+                this.totalDeathLabel = jpTotalDeathLabel
+            }
+
+           
+        }
     }
 })
+
+if(ln == "en"){
+    appVM.urlOne = `/?ln=en`
+    appVM.urlTwo = `/under18/?ln=en`
+    appVM.urlThree = `/dashboard/?ln=en`
+    appVM.navOne=enNavHome
+    appVM.navTwo=enUnder18
+    appVM.navThree=enDashboard
+    appVM.navFour=enLanguage
+    appVM.mm=enMyanmar
+    appVM.en=enEnglsih
+    appVM.jp=enJapanese
+    appVM.brandTitle= enBrandTitle
+
+    appVM.bodyTitle=enBodyTitle
+    appVM.cityName = enCity
+    appVM.totalDeathLabel = enTotalDeathLabel
+
+}else if(ln == "jp"){
+    appVM.urlOne = `/?ln=jp`
+    appVM.urlTwo = `/under18/?ln=jp`
+    appVM.urlThree = `/dashboard/?ln=jp`
+    appVM.navOne=jpNavHome
+    appVM.navTwo=jpUnder18
+    appVM.navThree=jpDashboard
+    appVM.navFour=jpLanguage
+    appVM.mm=jpMyanmar
+    appVM.en=jpEnglsih
+    appVM.jp=jpJapanese
+    appVM.brandTitle= jpBrandTitle
+    
+    appVM.bodyTitle=jpBodyTitle
+    appVM.cityName = jpCity
+    appVM.totalDeathLabel = jpTotalDeathLabel
+}else {
+    appVM.urlOne = `/?ln=mm`
+    appVM.urlTwo = `/under18/?ln=mm`
+    appVM.urlThree = `/dashboard/?ln=mm`
+    appVM.navOne=mmNavHome
+    appVM.navTwo=mmUnder18
+    appVM.navThree=mmDashboard
+    appVM.navFour=mmLanguage
+    appVM.mm=mmMyanmar
+    appVM.en=mmEnglsih
+    appVM.jp=mmJapanese
+    appVM.brandTitle= mmBrandTitle
+   
+    appVM.bodyTitle=mmBodyTitle
+    appVM.cityName = mmCity
+    appVM.totalDeathLabel = mmTotalDeathLabel
+}

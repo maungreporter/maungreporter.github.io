@@ -39,6 +39,7 @@
   .line{
       color: var(--my-bg-first);
       line-height: 1.5em;
+      height: 2.5em;
   }
 
   .donato{
@@ -49,17 +50,35 @@
     background: gray;
     padding: 2px 7px;
   }
-  .today-death,.yesterday-death{
+  /* .yesterday-death{
     margin: 0px auto !important;
     width: 50%;
+  } */
+  .number-of-death{
+    width: 50%;
+    margin: 0px auto !important;
   }
-  .today-death strong{
+  .number-of-death .total-death span{
+    font-size: 1.5em;
+  }
+  .number-of-death small {
+    font-size: 0.6em;
+    color: var(--my-bg-first);
+  }
+
+  .city-list .more {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    color: var(--my-bg-first);
+  }
+  /* .today-death strong{
     font-size: 1.5em;
     vertical-align: middle;
-  }
-  .yesterday-death{
-    width: 25%;
-  }
+  } */
+  /* .yesterday-death{
+    width: 40%;
+  } */
   .martyr{
     width: 100%;
     border: 0px 1px 1px 1px solid gray;
@@ -122,12 +141,12 @@ width: 100%;
   #martyr strong{
     color: var(--my-bg-first);
   }
-  #martyr small{
+  /* #martyr small{
     float: right;
     font-size: 0.6em;
     color: var(--my-bg-first);
     
-  }
+  } */
   #martyr small a {
     text-decoration: underline !important;
     font-weight: bold !important;
@@ -209,6 +228,15 @@ width: 100%;
   .nav-item a img{
     width: 40px;
   }
+  .nav-item a strong, .nav-item a svg, .navbar-brand strong{
+    color: lightgrey;
+  }
+  .navbar-nav > li:last-child{
+    display: inline-block;
+    border: 1px solid lightgrey;
+    padding: 0px 5px;
+
+  }
   .navbar {
     position: fixed !important;
     top: 0;
@@ -230,6 +258,27 @@ width: 100%;
   .dropdown-menu li:hover, .lanActive {
     background: lightgray;
   }
+  .navbar-nav .nav-item:last-child a{
+    width: 100px;
+    text-align: center;
+  }
+  .navbar-nav .dropdown-menu {
+    position: absolute !important;
+    width: 135px;
+    left: -22px;
+  }
+  .navbar-nav .dropdown-menu li img{
+    width: 30px;
+    height: 30px;
+  }
+  .city-name{
+    font-size: 1.2em;
+  }
+
+  .detail-info .body-title .line{
+    line-height: unset !important;
+    height: unset !important;
+  }
  
 
   @media only screen and (max-width: 576px) {
@@ -249,6 +298,9 @@ width: 100%;
       height: 70px;
       background: lightgray;
     }
+    .footer small{
+      font-size: 0.8em;
+    }
     .footer .active, .footer .active small {
       color: var(--my-bg-first) !important;
     }
@@ -259,7 +311,7 @@ width: 100%;
       width: 39px;
     }
     .line{
-      font-size: 1.5em;
+      font-size: 1.3em;
     }
     .dashboard .line {
       font-size: 1.3em;
@@ -269,13 +321,24 @@ width: 100%;
       margin-top: 10px;
       float: none !important;
     }
-    .yesterday-death{
-      width: 100%;
+    .number-of-death{
+      width: 100% !important;
     }
+    .navbar-nav .dropdown-menu {
+      width: 151px;
+      left: -38px;
+    }
+    .navbar-nav .dropdown-menu li{
+      font-size: 1em;
+    }
+    
   }
-
   @media only screen and (min-width: 768px) {
     .more{
       font-size: 0.6em !important;
+    }
+
+    .navbar-nav li:last-child{
+      text-align: center !important;
     }
   }

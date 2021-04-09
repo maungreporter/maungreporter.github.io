@@ -1,8 +1,13 @@
 var martyrList ;
 var mmList = [];
+var jpList = []
 var engList = []
 var appLight = "container main-content p-0 mb-5";
 var appDark = "container main-content p-0 dark";
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+var ln = urlParams.get('ln') ;
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -21,12 +26,6 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
 
 
 (async function(){
-    console.log(today)
-
-    // var today = new Date();
-    // var now = today.getHours()
-    // console.log(now)
-    
 
     await fetch('https://sheets.googleapis.com/v4/spreadsheets/1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g/values/Dashboard?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw')
     .then(res=>res.json())
@@ -44,7 +43,6 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
             if(mainIndex == 0){
                 itemLength = item.length
                 lastdate = item[itemLength-3]
-                console.log("last date" + lastdate)
                 mainIndex++
                 return true
 
@@ -54,13 +52,11 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
             }
             else{
                 var index = 0
-                console.log(item[0])
                 item.forEach(e => {
                     
                     
                     if(index > 0 && index < itemLength-3){
                         if(e != ""){
-                            console.log(e)
                             tmpTot += parseInt(e)
                         } 
                     }
@@ -69,7 +65,6 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
 
                 var todayDeathCity = 0;
                 var tmpTodayDeathCity = 0;
-                //console.log("City "+ item[0] + " / " + item.length + " / " + itemLength) 
                 if(item.length == itemLength){
                     if(item[itemLength-3]!=""){
                         todayCount += parseInt(item[itemLength-3])
@@ -80,13 +75,18 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
                     }
                 }
                 
-    
-                tmpList.push({"city":cityArray[item[0]],"cityEng":item[0],"totalDeath":(tmpTot+tmpTodayDeathCity), "todayDeath": todayDeathCity});
+                var mmCity = getCityName(item[0],"mm")
+                var jpCity = getCityName(item[0],"jp")
+                tmpList.push({"city":mmCity,"cityEng":item[0],"totalDeath":(tmpTot+tmpTodayDeathCity), "todayDeath": todayDeathCity});
                 tmpList.sort(function(a,b){
                     return (b.totalDeath) - (a.totalDeath)
                 })
                 engList.push({"city":item[0],"cityEng":item[0],"totalDeath":(tmpTot+tmpTodayDeathCity), "todayDeath": todayDeathCity});
                 engList.sort(function(a,b){
+                    return (b.totalDeath) - (a.totalDeath)
+                })
+                jpList.push({"city":jpCity,"cityEng":item[0],"totalDeath":(tmpTot+tmpTodayDeathCity), "todayDeath": todayDeathCity});
+                jpList.sort(function(a,b){
                     return (b.totalDeath) - (a.totalDeath)
                 })
                 tcount += tmpTot
@@ -98,37 +98,38 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
             return true
             
         });
-       mmList = tmpList;
-        martyrVM.cityList = mmList;
-        martyrVM.vmCount = tcount;
-        martyrVM.vmTodayCount = todayCount
+       mmList = tmpList
+        if(ln == "en"){
+            appVM.cityList = engList
+        }else if(ln == "jp"){
+            appVM.cityList = jpList
+        }else{
+            appVM.cityList = mmList
+        }
+       
+       appVM.vmCount = tcount;
+       appVM.vmTodayCount = todayCount
         if(today==lastdate){
-            martyrVM.vmTodayTotalCount=todayCount
+            appVM.vmTodayTotalCount=todayCount
         }
         if(yesterday==lastdate){
-            martyrVM.vmYesterdayTotalCount=todayCount
+            appVM.vmYesterdayTotalCount=todayCount
         }
         
     }).catch(err => {
 
     });
-    
-    // if(now<6 || now >= 19 ){
-    //     martyrVM.appClass = appDark
-    //     martyrVM.mode = "Night Mode is ON."
-    // }
    
-
 })();
 
 
-var showCity = `<h5 class="card-title mm">{{todo.city}} <small v-if="todo.todayDeath>0" class="text-danger">ယနေ့ - {{todo.todayDeath}} ဦး</small></h5>`
-var showTotDeath = `<h6 class="mm">ကျဆုံးသူ ({{todo.totalDeath}}) ဦး</h6>`
-var showList = `<small class="mm more">အသေးစိတ် အချက်အလက်ကြည့်ရန် နှိပ်ပါ</small>`
+var showCity = `<h5 class="city-name card-title mm">{{todo.city}} <small v-if="todo.todayDeath>0" class="text-danger">ယနေ့ - {{todo.todayDeath}} ဦး</small></h5>`
+var showTotDeath = `<h6 class="mm">{{getCityDeathLabel()}} - {{todo.totalDeath}}</h6>`
+var showList = `<small class="mm more">{{getMoreLabel()}}</small>`
 Vue.component('city-list',{
     props:['todo'],
-    template:`<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xxl-2 mt-2">
-    <a :href="'/detail-info/?city='+todo.cityEng+'&totDeath='+(todo.totalDeath)">
+    template:`<div class="city-list col-12 col-sm-6 col-md-4 col-lg-3 col-xxl-2 mt-2">
+    <a :href="'/detail-info/?city='+todo.cityEng+'&totDeath='+(todo.totalDeath)+'&ln='+getLang()">
     <div :class="getCardClass(todo.totalDeath)"><div class="card-body">
     ${showCity}${showTotDeath}${showList}
     </div></div></a></div>`,
@@ -145,13 +146,43 @@ Vue.component('city-list',{
                 cls = cls + " bg-red"
             }
             return cls
+        },
+        getCityDeathLabel: function(){
+            return appVM.cityDeathLabel
+        },
+        getMoreLabel: function(){
+            return appVM.more
+        },
+        getLang:function(){
+            return appVM.lang
         }
     }
 })
 
-var martyrVM = new Vue({
-    el:'#martyr',
+var appVM = new Vue({
+    el:'#app',
     data:{
+        urlOne:`/`,
+        urlTwo:`/under18/`,
+        urlThree:`/dashboard/`,
+        navOne:mmNavHome,
+        navTwo:mmUnder18,
+        navThree:mmDashboard,
+        navFour:mmLanguage,
+        mm:mmMyanmar,
+        en:mmEnglsih,
+        jp:mmJapanese,
+        brandTitle: mmBrandTitle,
+        mmLanClass : "p-1 rounded",
+        enLanClass : "p-1 rounded",
+
+        bodyTitle:mmBodyTitle,
+        totalDeathLabel:mmTotalDeathLabel,
+        todayDeathLabel:mmTodayDeathLabel,
+        yesterdayDeathLabel:mmYesterdayDeathLabel,
+        dataSource:mmDataSource,
+        cityDeathLabel:mmCityDeathLabel,
+        more:mmMore,
         appClass: appLight,
         martyrList: martyrList,
         cityList:mmList,
@@ -159,24 +190,77 @@ var martyrVM = new Vue({
         vmTodayCount:0,
         vmTodayTotalCount:0,
         vmYesterdayTotalCount:0,
-        mode:""
-    }
-})
+        mode:"",
+        lang:"",
 
-var navVM = new Vue({
-    el:'#nav',
-    data:{
-        mmLanClass : "p-1 rounded",
-        enLanClass : "p-1 rounded"
     },
     methods:{
         changeLang: function(lang){
-            console.log(lang)
-            if(lang == "en"){
-                martyrVM.cityList = engList
-            }
+            this.lang=lang
             if(lang == "mm"){
-                martyrVM.cityList = mmList
+                this.urlOne = `/?ln=mm`
+                this.urlTwo = `/under18/?ln=mm`
+                this.urlThree = `/dashboard/?ln=mm`
+                this.brandTitle = mmBrandTitle
+                this.navOne = mmNavHome
+                this.navTwo = mmUnder18
+                this.navThree = mmDashboard
+                this.navFour = mmLanguage
+                this.mm = mmMyanmar
+                this.en = mmEnglsih
+                this.jp = mmJapanese
+                this.bodyTitle = mmBodyTitle
+                this.totalDeathLabel = mmTotalDeathLabel
+                this.todayDeathLabel = mmTodayDeathLabel
+                this.yesterdayDeathLabel = mmYesterdayDeathLabel
+                this.dataSource = mmDataSource
+                this.cityDeathLabel = mmCityDeathLabel
+                this.more = mmMore
+                this.cityList = mmList
+                
+            }
+            if(lang == "en"){
+                this.urlOne = `/?ln=en`
+                this.urlTwo = `/under18/?ln=en`
+                this.urlThree = `/dashboard/?ln=en`
+                this.brandTitle = enBrandTitle
+                this.navOne = enNavHome
+                this.navTwo = enUnder18
+                this.navThree = enDashboard
+                this.navFour = enLanguage
+                this.mm = enMyanmar
+                this.en = enEnglsih
+                this.jp = enJapanese
+                this.bodyTitle = enBodyTitle
+                this.totalDeathLabel = enTotalDeathLabel
+                this.todayDeathLabel = enTodayDeathLabel
+                this.yesterdayDeathLabel = enYesterdayDeathLabel
+                this.dataSource = enDataSource
+                this.cityDeathLabel = enCityDeathLabel
+                this.more = enMore
+                this.cityList = engList
+               
+            }
+            if(lang == "jp"){
+                this.urlOne = `/?ln=jp`
+                this.urlTwo = `/under18/?ln=jp`
+                this.urlThree = `/dashboard/?ln=jp`
+                this.brandTitle = jpBrandTitle
+                this.navOne = jpNavHome
+                this.navTwo = jpUnder18
+                this.navThree = jpDashboard
+                this.navFour = jpLanguage
+                this.mm = jpMyanmar
+                this.en = jpEnglsih
+                this.jp = jpJapanese
+                this.bodyTitle = jpBodyTitle
+                this.totalDeathLabel = jpTotalDeathLabel
+                this.todayDeathLabel = jpTodayDeathLabel
+                this.yesterdayDeathLabel = jpYesterdayDeathLabel
+                this.dataSource = jpDataSource
+                this.cityDeathLabel = jpCityDeathLabel
+                this.more = jpMore
+                this.cityList = jpList
             }
 
            
@@ -186,3 +270,68 @@ var navVM = new Vue({
 
 
 
+if(ln == "en"){
+    appVM.urlOne = `/?ln=en`
+    appVM.urlTwo = `/under18/?ln=en`
+    appVM.urlThree = `/dashboard/?ln=en`
+    appVM.brandTitle= enBrandTitle
+    appVM.navOne=enNavHome
+    appVM.navTwo=enUnder18
+    appVM.navThree=enDashboard
+    appVM.navFour=enLanguage
+    appVM.mm=enMyanmar
+    appVM.en=enEnglsih
+    appVM.jp=enJapanese
+   
+    appVM.bodyTitle=enBodyTitle
+    appVM.dataSource=enDataSource
+    appVM.totalDeathLabel=enTotalDeathLabel
+    appVM.todayDeathLabel=enTodayDeathLabel
+    appVM.yesterdayDeathLabel=enYesterdayDeathLabel
+    appVM.cityDeathLabel = enCityDeathLabel
+    appVM.more = enMore
+    appVM.lang = "en"
+
+}else if(ln == "jp"){
+    appVM.urlOne = `/?ln=jp`
+    appVM.urlTwo = `/under18/?ln=jp`
+    appVM.urlThree = `/dashboard/?ln=jp`
+    appVM.navOne=jpNavHome
+    appVM.navTwo=jpUnder18
+    appVM.navThree=jpDashboard
+    appVM.navFour=jpLanguage
+    appVM.mm=jpMyanmar
+    appVM.en=jpEnglsih
+    appVM.jp=jpJapanese
+    appVM.brandTitle= jpBrandTitle
+
+    appVM.bodyTitle=jpBodyTitle
+    appVM.dataSource=jpDataSource
+    appVM.totalDeathLabel=jpTotalDeathLabel
+    appVM.todayDeathLabel=jpTodayDeathLabel
+    appVM.yesterdayDeathLabel=jpYesterdayDeathLabel
+    appVM.cityDeathLabel = jpCityDeathLabel
+    appVM.more = jpMore
+    appVM.lang = "jp"
+}else {
+    appVM.urlOne = `/?ln=mm`
+    appVM.urlTwo = `/under18/?ln=mm`
+    appVM.urlThree = `/dashboard/?ln=mm`
+    appVM.navOne=mmNavHome
+    appVM.navTwo=mmUnder18
+    appVM.navThree=mmDashboard
+    appVM.navFour=mmLanguage
+    appVM.mm=mmMyanmar
+    appVM.en=mmEnglsih
+    appVM.jp=mmJapanese
+    appVM.brandTitle= mmBrandTitle
+
+    appVM.bodyTitle=mmBodyTitle
+    appVM.dataSource=mmDataSource
+    appVM.totalDeathLabel=mmTotalDeathLabel
+    appVM.todayDeathLabel=mmTodayDeathLabel
+    appVM.yesterdayDeathLabel=mmYesterdayDeathLabel
+    appVM.cityDeathLabel = mmCityDeathLabel
+    appVM.more = mmMore
+    appVM.lang = "mm"
+}

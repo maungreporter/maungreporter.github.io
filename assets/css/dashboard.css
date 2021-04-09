@@ -1,6 +1,18 @@
+.data-source{
+  font-size: 0.7em;
+}
+.graph-div h2 small {
+  color: var(--my-bg-first);
+  font-size: 0.7em;
+  float: right;
+}
 .graph {
   height: 300px;
   overflow: scroll;
+}
+.graph small{
+  color: var(--my-bg-first);
+  font-size: 0.7em !important;
 }
 .graph div h6{
   font-size: 0.7em;

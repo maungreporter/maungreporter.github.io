@@ -1,4 +1,4 @@
-var cc = martyrVM.underEighteen
+var cc = appVM.underEighteen
 var simplemaps_countrymap_mapdata={
   main_settings: {
     //General settings
@@ -15,7 +15,7 @@ var simplemaps_countrymap_mapdata={
     state_url: "",
     border_size: 1.5,
     all_states_inactive: "no",
-    all_states_zoomable: "yes",
+    all_states_zoomable: "no",
     
 		//Location defaults
 		location_description: "Location description",
@@ -70,65 +70,6 @@ var simplemaps_countrymap_mapdata={
     link_text: "View Website"
   },
   state_specific: {
-    MMR2473: {
-      name: "ကယား",
-      description: "ပြည်နယ်",
-      color: "default",
-      hover_color: "default",
-      url: "default"
-    },
-    MMR3266: {
-      name: "ကရင်",
-      description: "ပြည်နယ်",
-    },
-    MMR3267: {
-      name: "မန္တလေး",
-      description: "တိုင်း",
-    },
-    MMR3268: {
-      name: "ပဲခူး",
-      description: "တိုင်း",
-    },
-    MMR3269: {
-      name: "ရန်ကုန်",
-      description: "တိုင်း",
-    },
-    MMR3270: {
-      name: "မွန်",
-      description: "ပြည်နယ်",
-    },
-    MMR3273: {
-      name: "ရခိုင်",
-      description: "ပြည်နယ်",
-    },
-    MMR3274: {
-      name: "Chin",
-      description: "ပြည်နယ်",
-    },
-    MMR3275: {
-      name: "ဧရာဝတီ",
-      description: "တိုင်း",
-    },
-    MMR3276: {
-      name: "မကွေး",
-      description: "တိုင်း",
-    },
-    MMR3277: {
-      name: "ရှမ်း",
-      description: "ပြည်နယ်",
-    },
-    MMR3279: {
-      name: "တနင်္သာရီ",
-      description: "တိုင်း",
-    },
-    MMR3296: {
-      name: "ကချင်",
-      description: "ပြည်နယ်",
-    },
-    MMR3302: {
-      name: "စကိုင်း",
-      description: "တိုင်း",
-    }
   },
   locations: {
   

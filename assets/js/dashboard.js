@@ -1,4 +1,17 @@
 
+var mmCityData = []
+var enCityData = []
+var jpCityData = []
+
+var mmMapLocaList=[]
+var enMapLocaList=[]
+var jpMapLocaList=[]
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+var ln = urlParams.get('ln') ;
+
+
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -24,7 +37,7 @@ var totalDays = differenceInTime / (1000 * 3600 * 24);
 
 
 (async function(){
-    var mapLocaList=[]
+    
     await fetch('https://sheets.googleapis.com/v4/spreadsheets/1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g/values/Dashboard?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw')
     .then(res=>res.json())
     .then(response =>{
@@ -34,7 +47,7 @@ var totalDays = differenceInTime / (1000 * 3600 * 24);
         var tmpDateList = []
         var tmpCountList = []
         var dateData = []
-        var cityData = []
+        
         var total = 0
         var todayCount = 0
         var lastDate;
@@ -80,16 +93,27 @@ var totalDays = differenceInTime / (1000 * 3600 * 24);
                 if(item[itemLength-3] != "" && todayDD == lastDate){
                     todayDeathCity = parseInt(item[itemLength-3])
                 }
-
-                cityData.push({"city":cityArray[item[0]],"count":tmpCount,"today":todayDeathCity})
-                cityData.sort(function(a,b){
+                
+                mmCityData.push({"city":getCityName(item[0],"mm"),"count":tmpCount,"today":todayDeathCity})
+                mmCityData.sort(function(a,b){
+                    return b.count-a.count
+                })
+                enCityData.push({"city":item[0],"count":tmpCount,"today":todayDeathCity})
+                enCityData.sort(function(a,b){
+                    return b.count-a.count
+                })
+                jpCityData.push({"city":getCityName(item[0],"jp"),"count":tmpCount,"today":todayDeathCity})
+                jpCityData.sort(function(a,b){
                     return b.count-a.count
                 })
                 var tempSize = 20
                 if((tmpCount*0.4)>20){
                     tempSize = tmpCount*0.4
                 }
-                mapLocaList.push({lat:getLat(item[0]),lng:getLng(item[0]),name:cityArray[item[0]],description:`ကျဆုံးသူ(${tmpCount})ဦး`,size:tempSize,url:`/detail-info/?city=${item[0]}&totDeath=${tmpCount}`})
+                mmMapLocaList.push({lat:getLat(item[0]),lng:getLng(item[0]),name:getCityName(item[0],"mm"),description:`ကျဆုံးသူ(${tmpCount})ဦး`,size:tempSize,url:`/detail-info/?city=${item[0]}&totDeath=${tmpCount}`})
+                enMapLocaList.push({lat:getLat(item[0]),lng:getLng(item[0]),name:item[0],description:`Total Deaths - ${tmpCount}`,size:tempSize,url:`/detail-info/?city=${item[0]}&totDeath=${tmpCount}`})
+                jpMapLocaList.push({lat:getLat(item[0]),lng:getLng(item[0]),name:getCityName(item[0],"jp"),description:`死者数 - ${tmpCount}人`,size:tempSize,url:`/detail-info/?city=${item[0]}&totDeath=${tmpCount}`})
+                
             }
             if(item[0] == "Daily Total"){
                 return false
@@ -100,12 +124,12 @@ var totalDays = differenceInTime / (1000 * 3600 * 24);
         for(var i=tmpDateList.length-1; i>=0; i--){
                 dateData.push({"date":modifyDate(tmpDateList[i]),"count":tmpCountList[i]})
         }
-        martyrVM.dateData = dateData
-        martyrVM.cityData = cityData
-        martyrVM.totalCity = cityData.length
-        martyrVM.total = total
+        appVM.dateData = dateData
+        // appVM.cityData = mmCityData
+        appVM.totalCity = mmCityData.length
+        appVM.total = total
         if(todayDD == lastDate){
-            martyrVM.todayCount = todayCount
+            appVM.todayCount = todayCount
         }
         
        
@@ -128,9 +152,38 @@ var totalDays = differenceInTime / (1000 * 3600 * 24);
 
     });
     
-    martyrVM.underEighteen = totalDeath
+    appVM.underEighteen = totalDeath
+    appVM.mapLocalList = mmMapLocaList
 
-simplemaps_countrymap_mapdata.locations=mapLocaList
+    
+    console.log("ln " + ln)
+if(ln == "en"){
+    appVM.urlOne = `/?ln=en`
+    appVM.urlTwo = `/under18/?ln=en`
+    appVM.urlThree = `/dashboard/?ln=en`
+    appVM.cityData = enCityData
+    simplemaps_countrymap_mapdata.locations=enMapLocaList
+    simplemaps_countrymap_mapdata.state_specific=enState
+    
+   
+}else if(ln == "jp"){
+    appVM.urlOne = `/?ln=jp`
+    appVM.urlTwo = `/under18/?ln=jp`
+    appVM.urlThree = `/dashboard/?ln=jp`
+    appVM.cityData = jpCityData
+    simplemaps_countrymap_mapdata.locations=jpMapLocaList
+    simplemaps_countrymap_mapdata.state_specific=jpState
+   
+}else {
+    appVM.urlOne = `/?ln=mm`
+    appVM.urlTwo = `/under18/?ln=mm`
+    appVM.urlThree = `/dashboard/?ln=mm`
+    appVM.cityData = mmCityData
+    simplemaps_countrymap_mapdata.locations=mmMapLocaList
+    simplemaps_countrymap_mapdata.state_specific=mmState
+ 
+}
+
 
  
     /*Copyright 2010-2019 Simplemaps.com
@@ -215,9 +268,34 @@ Vue.component('city-graph',{
 
 
 
-var martyrVM = new Vue({
-    el:'#martyr',
+var appVM = new Vue({
+    el:'#app',
     data:{
+        urlOne:`/`,
+        urlTwo:`/under18/`,
+        urlThree:`/dashboard/`,
+        navOne:'',
+        navTwo:'',
+        navThree:'',
+        navFour:'',
+        mm:'',
+        en:'',
+        jp:'',
+        brandTitle: '',
+        mmLanClass : "p-1 rounded",
+        enLanClass : "p-1 rounded",
+
+        bodyTitle:'',
+        dataSource:'',
+        totalDaysLabel:'',
+        totalDeathLabel:'',
+        under18DeathLabel:'',
+        todayDeathLabel:'',
+        cityGraphLabel:'',
+        totalLabel:'',
+        dailyGraphLabel:'',
+
+        mapLocalList: [],
         dateData: [],
         cityData: [],
         totalCity: 0,
@@ -225,6 +303,25 @@ var martyrVM = new Vue({
         totalDays:totalDays,
         underEighteen: 0,
         todayCount:0
+    },
+    methods:{
+        changeLang: function(lang){
+            if(lang == "mm"){
+                
+                location.assign("/dashboard/?ln=mm")
+                
+            }
+            if(lang == "en"){
+                
+                location.assign("/dashboard/?ln=en")
+            }
+            if(lang == "jp"){
+               
+                location.assign("/dashboard/?ln=jp")
+            }
+
+           
+        }
     }
 })
 
@@ -261,3 +358,70 @@ function getLng(city){
 
 
 
+if(ln == "en"){
+    appVM.urlOne = `/?ln=en`
+    appVM.urlTwo = `/under18/?ln=en`
+    appVM.urlThree = `/dashboard/?ln=en`
+    appVM.navOne=enNavHome
+    appVM.navTwo=enUnder18
+    appVM.navThree=enDashboard
+    appVM.navFour=enLanguage
+    appVM.mm=enMyanmar
+    appVM.en=enEnglsih
+    appVM.jp=enJapanese
+    appVM.brandTitle= enBrandTitle
+
+    appVM.bodyTitle=enBodyTitleSec
+    appVM.dataSource=enDataSource
+    appVM.totalDaysLabel=enTotalDaysLabel
+    appVM.totalDeathLabel=enTotalDeathLabel
+    appVM.under18DeathLabel=enUnder18
+    appVM.todayDeathLabel=enTodayDeathLabel
+    appVM.cityGraphLabel = enCityGraphLabel
+    appVM.totalLabel = enTotal
+    appVM.dailyGraphLabel = enDailyGraphLabel
+}else if(ln == "jp"){
+    appVM.urlOne = `/?ln=jp`
+    appVM.urlTwo = `/under18/?ln=jp`
+    appVM.urlThree = `/dashboard/?ln=jp`
+    appVM.navOne=jpNavHome
+    appVM.navTwo=jpUnder18
+    appVM.navThree=jpDashboard
+    appVM.navFour=jpLanguage
+    appVM.mm=jpMyanmar
+    appVM.en=jpEnglsih
+    appVM.jp=jpJapanese
+    appVM.brandTitle= jpBrandTitle
+
+    appVM.bodyTitle=jpBodyTitleSec
+    appVM.dataSource=jpDataSource
+    appVM.totalDaysLabel=jpTotalDaysLabel
+    appVM.totalDeathLabel=jpTotalDeathLabel
+    appVM.under18DeathLabel=jpUnder18
+    appVM.todayDeathLabel=jpTodayDeathLabel
+    appVM.cityGraphLabel = jpCityGraphLabel
+    appVM.totalLabel = jpTotal
+    appVM.dailyGraphLabel = jpDailyGraphLabel
+}else {
+    appVM.urlOne = `/?ln=mm`
+    appVM.urlTwo = `/under18/?ln=mm`
+    appVM.urlThree = `/dashboard/?ln=mm`
+    appVM.navOne=mmNavHome
+    appVM.navTwo=mmUnder18
+    appVM.navThree=mmDashboard
+    appVM.navFour=mmLanguage
+    appVM.mm=mmMyanmar
+    appVM.en=mmEnglsih
+    appVM.jp=mmJapanese
+    appVM.brandTitle= mmBrandTitle
+
+    appVM.bodyTitle=mmBodyTitleSec
+    appVM.dataSource=mmDataSource
+    appVM.totalDaysLabel=mmTotalDaysLabel
+    appVM.totalDeathLabel=mmTotalDeathLabel
+    appVM.under18DeathLabel=mmUnder18
+    appVM.todayDeathLabel=mmTodayDeathLabel
+    appVM.cityGraphLabel = mmCityGraphLabel
+    appVM.totalLabel = mmTotal
+    appVM.dailyGraphLabel = mmDailyGraphLabel
+}
