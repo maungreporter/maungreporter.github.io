@@ -303,7 +303,7 @@ width: 100%;
       background: lightgray;
     }
     .footer small{
-      font-size: 0.7em;
+      font-size: 0.65em;
     }
     .footer .active, .footer .active small {
       color: var(--my-bg-first) !important;
@@ -333,7 +333,7 @@ width: 100%;
       left: -38px;
     }
     .navbar-nav .dropdown-menu li{
-      font-size: 1em;
+      font-size: 0.8em;
     }
     
   }
