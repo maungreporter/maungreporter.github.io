@@ -342,8 +342,8 @@ width: 100%;
       font-size: 0.6em !important;
     }
 
-    .navbar-nav li:last-child{
+    /* .navbar-nav li:last-child{
       text-align: center !important;
-    }
+    } */
     
   }

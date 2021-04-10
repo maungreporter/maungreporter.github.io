@@ -3,7 +3,7 @@ var enNavHome = "Home"
 var jpNavHome = "ホーム"
 
 var mmTotal = "စုစုပေါင်းမြို့"
-var enTotal = "Total City"
+var enTotal = "Total Ciites"
 var jpTotal = "総都市"
 
 
