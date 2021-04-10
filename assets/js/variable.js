@@ -11,7 +11,7 @@ var mmTotalDaysLabel = "ရက်ပေါင်း"
 var enTotalDaysLabel = "Total Days"
 var jpTotalDaysLabel = "トータルデー"
 
-var mmUnder18 = "၁၈နှစ်အောက် ကျဆုံးသူများ"
+var mmUnder18 = "၁၈နှစ်အောက် ကျဆုံးသူ"
 var mmUnder18Sec = "အသက်(၁၈)နှစ်အောက် ကျဆုံးသူများ"
 var enUnder18 = "Under the Age of 18"
 var jpUnder18 = "18歳以下の死者数"
@@ -60,7 +60,7 @@ var mmYesterdayDeathLabel = "မနေ့က ကျဆုံးသူ"
 var enYesterdayDeathLabel = "Yesterday"
 var jpYesterdayDeathLabel = "昨日の死者数"
 
-var mmTotalDeathLabel = "စုစုပေါင်း ကျဆုံးသူဦးရေ"
+var mmTotalDeathLabel = "စုစုပေါင်း ကျဆုံးသူ"
 var enTotalDeathLabel = "Total Deaths"
 var jpTotalDeathLabel = "合計死者数"
 
