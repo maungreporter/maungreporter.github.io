@@ -89,7 +89,7 @@ Vue.component('martyr-list', {
             return d+" "+divider+" "+m+" "+divider+" "+y
         },
         getKeyByValue: function(object,value){
-            return Object.keys(object).find(key => object[key] === value);
+            return Object.keys(object).find(key => object[key]["mm"] === value);
         },
         getImage: function(division,city,date,name,age){
             var tmpCityName = this.getKeyByValue(cityArray,city)

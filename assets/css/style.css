@@ -282,7 +282,7 @@ width: 100%;
   }
  
 
-  @media only screen and (max-width: 576px) {
+  @media only screen and (max-width: 992px) {
     .navbar-brand strong{
       font-size: 0.8em !important;
     }
