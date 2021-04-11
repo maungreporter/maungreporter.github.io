@@ -1,3 +1,7 @@
+var allSource = "1ABTOB7VkfSrJWoLHT3cRL401ZmpoJbxLgWxDR3YoTQg"
+var mms2021deathtoll = "1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g"
+var awsBaseUrl = `https://martyr.s3.amazonaws.com/`
+
 var mmNavHome = "Home"
 var enNavHome = "Home"
 var jpNavHome = "ホーム"
@@ -440,3 +444,4 @@ var jpState = {
         description: "地方域",
       }
 }
+
