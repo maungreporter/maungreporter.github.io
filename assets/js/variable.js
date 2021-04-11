@@ -1,7 +1,7 @@
 var allSource = "1ABTOB7VkfSrJWoLHT3cRL401ZmpoJbxLgWxDR3YoTQg"
 var mms2021deathtoll = "1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g"
 
-var dataSource = mms2021deathtoll
+var dataSource = allSource
 var awsBaseUrl = `https://martyr.s3.amazonaws.com/`
 
 var mmNavHome = "Home"
@@ -167,7 +167,8 @@ var cityArray = {"Yangon":{"mm":"ရန်ကုန်","jp":"ヤンゴン"},
                 "Mogaung":{"mm":"မိုးကောင်း","jp":"モガウン"},
                 "Ye":{"mm":"ရေး","jp":"イェー"},
                 "Taze":{"mm":"တန့်ဆည်","jp":"タゼ"},
-                "Hpapun":{"mm":"ဖာပွန်","jp":"パープン"}
+                "Hpapun":{"mm":"ဖာပွန်","jp":"パープン"},
+                "Ayadaw":{"mm":"အရာတော်","jp":"アヤドー"}
                 };
 
 
@@ -245,7 +246,8 @@ var latlng = {
                 "Mogaung":{"lat":"25.3044","lng":"96.9370"},
                 "Ye":{"lat":"15.2488","lng":"97.8531"},
                 "Taze":{"lat":"22.9432","lng":"95.3756"},
-                "Hpapun":{"lat":"18.0618","lng":"97.4408"}
+                "Hpapun":{"lat":"18.0618","lng":"97.4408"},
+                "Ayadaw":{"lat":"22.2858","lng":"95.4476"}
             };
             
 

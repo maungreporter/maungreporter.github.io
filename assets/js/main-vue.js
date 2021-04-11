@@ -140,7 +140,7 @@ Vue.component('city-list',{
                 cls = cls + " bg-green"
             } else if(total >= 25 && total < 50){
                 cls = cls + " bg-yellow"
-            } else if(total >= 50 && total < 99) {
+            } else if(total >= 50 && total < 100) {
                 cls = cls + " bg-orange"
             } else {
                 cls = cls + " bg-red"
