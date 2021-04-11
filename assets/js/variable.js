@@ -90,16 +90,13 @@ var mmDailyGraphLabel = "နေ့ရက်အလိုက် ကျဆုံး
 var enDailyGraphLabel = "Daily Deaths"
 var jpDailyGraphLabel = "日別死者数"
 
-var mmDataSource = `<a href="https://docs.google.com/spreadsheets/d/1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g/edit#gid=0" target="_blank">Myanmar Spring 2021 Death Toll Spreadsheets</a>၊ 
-                    <a href="https://aappb.org/wp-content/uploads/2021/04/Fatality-list-for-April-10-2021-Burmese-FinalKSM-Finaly-up.pdf" target="_blank">AAPP</a> 
+var mmDataSource = `<a href="https://docs.google.com/spreadsheets/d/1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g/edit#gid=0" target="_blank">Myanmar Spring 2021 Death Toll Spreadsheets</a>
                     မှ data ကို အခြေခံထားပါသည်`
 var enDataSource = `Data Source : 
                     <a href="https://docs.google.com/spreadsheets/d/1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g/edit#gid=0" target="_blank">Myanmar Spring 2021 Death Toll Spreadsheets</a>
-                    <a href="https://aappb.org/wp-content/uploads/2021/04/Fatality-list-for-April-10-2021-Burmese-FinalKSM-Finaly-up.pdf" target="_blank">AAPP</a> 
                     `
 
 var jpDataSource = `データソース：<a href="https://docs.google.com/spreadsheets/d/1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g/edit#gid=0" target="_blank">Myanmar Spring 2021 Death Toll Spreadsheets</a>
-                    <a href="https://aappb.org/wp-content/uploads/2021/04/Fatality-list-for-April-10-2021-Burmese-FinalKSM-Finaly-up.pdf" target="_blank">AAPP</a> 
                     `
 
 
