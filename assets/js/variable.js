@@ -58,6 +58,10 @@ var mmBodyTitleThird = `နွေဦးတော်လှန်ရေးတ�
 var enBodyTitleThird = `Spring Revolution Martyrs`
 var jpBodyTitleThird = `春の革命で奪われた幼い命`
 
+var mmTodayCityDeathLabel = "mm"
+var enTodayCityDeathLabel = "en"
+var jpTodayCityDeathLabel = "jp"
+
 var mmTodayDeathLabel = "ယနေ့ ကျဆုံးသူ"
 var enTodayDeathLabel = "Today"
 var jpTodayDeathLabel = "本日の死者数"

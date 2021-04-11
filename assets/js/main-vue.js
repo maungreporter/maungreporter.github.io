@@ -39,10 +39,12 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
         var tmpTot = 0
         var itemLength;
         var lastdate;
+        var last2Date;
         result.every(item => {
             if(mainIndex == 0){
                 itemLength = item.length
                 lastdate = item[itemLength-3]
+                last2Date = item[itemLength-4]
                 mainIndex++
                 return true
 
@@ -65,11 +67,14 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
 
                 var todayDeathCity = 0;
                 var tmpTodayDeathCity = 0;
+
+                console.log("Y_E_S " + yesterday)
+                console.log("Last 2 date " + last2Date)
                 if(item.length == itemLength){
                     if(item[itemLength-3]!=""){
                         todayCount += parseInt(item[itemLength-3])
                         tmpTodayDeathCity = parseInt(item[itemLength-3])
-                        if(today == lastdate){
+                        if(today == lastdate || yesterday == last2Date){
                             todayDeathCity = parseInt(item[itemLength-3])
                         }
                     }
@@ -123,7 +128,7 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
 })();
 
 
-var showCity = `<h5 class="city-name card-title mm">{{todo.city}} <small v-if="todo.todayDeath>0" class="text-danger">ယနေ့ - {{todo.todayDeath}} ဦး</small></h5>`
+var showCity = `<h5 class="city-name card-title mm">{{todo.city}} <small v-if="todo.todayDeath>0" v-html="getTodayCityDeathLabel(todo.todayDeath)" class="text-danger"></small></h5>`
 var showTotDeath = `<h6 class="mm">{{getCityDeathLabel()}} - {{todo.totalDeath}}</h6>`
 var showList = `<small class="mm more">{{getMoreLabel()}}</small>`
 Vue.component('city-list',{
@@ -152,6 +157,21 @@ Vue.component('city-list',{
         },
         getMoreLabel: function(){
             return appVM.more
+        },
+        getTodayCityDeathLabel(death){
+            if(appVM.todayCityDeathLabel == "mm"){
+                return `ယနေ (${death}) ဦး`
+            }
+            if(appVM.todayCityDeathLabel == "en"){
+                if(parseInt(death) > 1){
+                    return `Today (${death}) persons`
+                }else{
+                    return `Today (${death}) person`
+                }   
+            }
+            if(appVM.todayCityDeathLabel == "jp"){
+                return `本日 (${death}) 人`
+            }
         },
         getLang:function(){
             return appVM.lang
@@ -182,6 +202,7 @@ var appVM = new Vue({
         yesterdayDeathLabel:mmYesterdayDeathLabel,
         dataSource:mmDataSource,
         cityDeathLabel:mmCityDeathLabel,
+        todayCityDeathLabel: mmTodayCityDeathLabel,
         more:mmMore,
         appClass: appLight,
         martyrList: martyrList,
@@ -215,6 +236,7 @@ var appVM = new Vue({
                 this.yesterdayDeathLabel = mmYesterdayDeathLabel
                 this.dataSource = mmDataSource
                 this.cityDeathLabel = mmCityDeathLabel
+                this.todayCityDeathLabel = mmTodayCityDeathLabel
                 this.more = mmMore
                 this.cityList = mmList
                 
@@ -237,6 +259,7 @@ var appVM = new Vue({
                 this.yesterdayDeathLabel = enYesterdayDeathLabel
                 this.dataSource = enDataSource
                 this.cityDeathLabel = enCityDeathLabel
+                this.todayCityDeathLabel = enTodayCityDeathLabel
                 this.more = enMore
                 this.cityList = engList
                
@@ -257,6 +280,7 @@ var appVM = new Vue({
                 this.totalDeathLabel = jpTotalDeathLabel
                 this.todayDeathLabel = jpTodayDeathLabel
                 this.yesterdayDeathLabel = jpYesterdayDeathLabel
+                this.todayCityDeathLabel = jpTodayCityDeathLabel
                 this.dataSource = jpDataSource
                 this.cityDeathLabel = jpCityDeathLabel
                 this.more = jpMore

@@ -275,6 +275,10 @@ width: 100%;
   .city-name{
     font-size: 1.2em;
   }
+  .city-name small {
+    font-size: 0.6em !important;
+    float: right;
+  }
 
   .detail-info .body-title .line{
     line-height: unset !important;

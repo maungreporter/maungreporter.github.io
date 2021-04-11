@@ -91,7 +91,7 @@ var totalDays = (differenceInTime / (1000 * 3600 * 24) + 1);
                 })
                 total += tmpCount
                 var todayDeathCity = 0
-                if(item[itemLength-3] != "" && todayDD == lastDate){
+                if(item[itemLength-3] != "" && (todayDD == lastDate || yesterday == last2Date)){
                     todayDeathCity = parseInt(item[itemLength-3])
                 }
                 
@@ -168,6 +168,7 @@ if(ln == "en"){
     simplemaps_countrymap_mapdata.locations=enMapLocaList
     simplemaps_countrymap_mapdata.state_specific=enState
     
+    
    
 }else if(ln == "jp"){
     appVM.urlOne = `/?ln=jp`
@@ -228,7 +229,7 @@ Vue.component('date-graph',{
 Vue.component('city-graph',{
     props:['todo'],
     template:`<div class="mb-2">
-                <h6>{{todo.city}}<small v-if="todo.today>0" class="text-danger">ယနေ့ - {{todo.today}} ဦး</small></h6>     
+                <h6>{{todo.city}}<small v-if="todo.today>0" v-html="getTodayCityDeathLabel(todo.today)"　class="text-danger"></small></h6>     
                 <div class="progress" style="height: 5px;">
                     <div class="progress-bar" :style="getWidth(todo.count)"></div>
                 </div>
@@ -252,7 +253,22 @@ Vue.component('city-graph',{
         getClass: function(count){
             var modifyCount = count * 0.4
             return `padding-left:${modifyCount}%;`
-        }
+        },
+        getTodayCityDeathLabel(death){
+            if(appVM.todayCityDeathLabel == "mm"){
+                return `ယနေ (${death}) ဦး`
+            }
+            if(appVM.todayCityDeathLabel == "en"){
+                if(parseInt(death) > 1){
+                    return `Today (${death}) persons`
+                }else{
+                    return `Today (${death}) person`
+                }   
+            }
+            if(appVM.todayCityDeathLabel == "jp"){
+                return `本日 (${death}) 人`
+            }
+        },
     }
 })
 
@@ -284,6 +300,7 @@ var appVM = new Vue({
         cityGraphLabel:'',
         totalLabel:'',
         dailyGraphLabel:'',
+        todayCityDeathLabel: '',
 
         mapLocalList: [],
         dateData: [],
@@ -370,6 +387,7 @@ if(ln == "en"){
     appVM.cityGraphLabel = enCityGraphLabel
     appVM.totalLabel = enTotal
     appVM.dailyGraphLabel = enDailyGraphLabel
+    appVM.todayCityDeathLabel = enTodayCityDeathLabel
 }else if(ln == "jp"){
     appVM.urlOne = `/?ln=jp`
     appVM.urlTwo = `/under18/?ln=jp`
@@ -392,6 +410,7 @@ if(ln == "en"){
     appVM.cityGraphLabel = jpCityGraphLabel
     appVM.totalLabel = jpTotal
     appVM.dailyGraphLabel = jpDailyGraphLabel
+    appVM.todayCityDeathLabel = jpTodayCityDeathLabel
 }else {
     appVM.urlOne = `/?ln=mm`
     appVM.urlTwo = `/under18/?ln=mm`
@@ -414,4 +433,5 @@ if(ln == "en"){
     appVM.cityGraphLabel = mmCityGraphLabel
     appVM.totalLabel = mmTotal
     appVM.dailyGraphLabel = mmDailyGraphLabel
+    appVM.todayCityDeathLabel = mmTodayCityDeathLabel
 }
