@@ -458,3 +458,9 @@ var jpState = {
       }
 }
 
+
+
+
+function gotoTop() {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}

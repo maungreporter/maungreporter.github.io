@@ -54,6 +54,8 @@ var ln = urlParams.get('ln') ;
     });
     
     appVM.totalDeath = totDeath
+
+    window.onscroll = function() {appVM.scrollFunction()};
    
 })();
 
@@ -132,6 +134,7 @@ Vue.component('martyr-list', {
 var appVM = new Vue({
     el:'#app',
     data:{
+        bttCLass:"back-to-top px-lg-5 px-2 d-none",
         urlOne:`/`,
         urlTwo:`/under18/`,
         urlThree:`/dashboard/`,
@@ -153,6 +156,13 @@ var appVM = new Vue({
         martyrList: martyrList,
     },
     methods:{
+        scrollFunction: function(){
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                this.bttCLass="back-to-top px-lg-5 px-2"
+            } else {
+                this.bttCLass="back-to-top px-lg-5 px-2 d-none"
+            }
+        },
         changeLang: function(lang){
             if(lang == "mm"){
                 this.urlOne = `/?ln=mm`

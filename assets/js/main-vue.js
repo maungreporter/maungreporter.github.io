@@ -26,6 +26,8 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
 
 
 (async function(){
+    
+    
 
     await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${dataSource}/values/Dashboard?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
     .then(res=>res.json())
@@ -124,6 +126,9 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
     }).catch(err => {
 
     });
+
+    window.onscroll = function() {appVM.scrollFunction()};
+    
    
 })();
 
@@ -182,6 +187,7 @@ Vue.component('city-list',{
 var appVM = new Vue({
     el:'#app',
     data:{
+        bttCLass:"back-to-top px-lg-5 px-2 d-none",
         urlOne:`/`,
         urlTwo:`/under18/`,
         urlThree:`/dashboard/`,
@@ -216,6 +222,13 @@ var appVM = new Vue({
 
     },
     methods:{
+        scrollFunction: function(){
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                this.bttCLass="back-to-top px-lg-5 px-2"
+            } else {
+                this.bttCLass="back-to-top px-lg-5 px-2 d-none"
+            }
+        },
         changeLang: function(lang){
             this.lang=lang
             if(lang == "mm"){

@@ -189,7 +189,7 @@ if(ln == "en"){
 }
 
 configureCityOnMap()
-
+window.onscroll = function() {appVM.scrollFunction()};
 
 })();
 
@@ -277,6 +277,7 @@ Vue.component('city-graph',{
 var appVM = new Vue({
     el:'#app',
     data:{
+        bttCLass:"back-to-top px-lg-5 px-2 d-none",
         urlOne:`/`,
         urlTwo:`/under18/`,
         urlThree:`/dashboard/`,
@@ -312,6 +313,13 @@ var appVM = new Vue({
         todayCount:0
     },
     methods:{
+        scrollFunction: function(){
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                this.bttCLass="back-to-top px-lg-5 px-2"
+            } else {
+                this.bttCLass="back-to-top px-lg-5 px-2 d-none"
+            }
+        },
         changeLang: function(lang){
             if(lang == "mm"){
                 
