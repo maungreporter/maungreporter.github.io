@@ -55,6 +55,7 @@ var totalDays = (differenceInTime / (1000 * 3600 * 24) + 1);
             if(item[0] == "မြို့အမည်"){
                 itemLength = item.length
                 lastDate = item[itemLength-3]
+                last2Date = item[itemLength-4]
                 console.log("LastDate" + lastDate)
                 console.log("Today " + todayDD)
                 var index = 0
@@ -128,7 +129,9 @@ var totalDays = (differenceInTime / (1000 * 3600 * 24) + 1);
         // appVM.cityData = mmCityData
         appVM.totalCity = mmCityData.length
         appVM.total = total
-        if(todayDD == lastDate){
+        console.log("today" + todayCount)
+        //data source ဘက်က excel မှာ date မှားဖြည့်တတ်လို့ ရှေ့ရက်နဲ့ပါ ပြန်စစ်ထားရ
+        if(todayDD == lastDate || yesterday == last2Date){
             appVM.todayCount = todayCount
         }
         
