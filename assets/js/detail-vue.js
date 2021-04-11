@@ -15,7 +15,7 @@ var ln = urlParams.get('ln') ;
 
 (async function(){
 
-    await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${allSource}/values/[MM]Detail Cases!A2:AB1094?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
+    await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${dataSource}/values/[MM]Detail Cases!A2:AB1094?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
     .then(res=>res.json())
     .then(response =>{
         martyrList = response.values;
