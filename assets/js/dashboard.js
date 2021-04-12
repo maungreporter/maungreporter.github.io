@@ -60,8 +60,6 @@ var totalDays = (differenceInTime / (1000 * 3600 * 24) + 1);
                 itemLength = item.length
                 lastDate = item[itemLength-3]
                 last2Date = item[itemLength-4]
-                console.log("LastDate" + lastDate)
-                console.log("Today " + todayDD)
                 var index = 0
                 item.forEach(e => {
                     if(index > 0 && index <= itemLength - 3){
@@ -127,7 +125,11 @@ var totalDays = (differenceInTime / (1000 * 3600 * 24) + 1);
         });
 
         for(var i=tmpDateList.length-1; i>=0; i--){
-                dateData.push({"date":modifyDate(tmpDateList[i]),"count":tmpCountList[i]})
+                console.log(tmpDateList[i])
+                // if(tmpDateList[i]!=todayDD){
+                    dateData.push({"date":modifyDate(tmpDateList[i]),"count":tmpCountList[i]})
+                // }
+               
         }
         appVM.dateData = dateData
         // appVM.cityData = mmCityData
