@@ -7,6 +7,10 @@ var mmMapLocaList=[]
 var enMapLocaList=[]
 var jpMapLocaList=[]
 
+var under18AgeList = []
+
+var youngest = 0;
+
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 var ln = urlParams.get('ln') ;
@@ -143,11 +147,11 @@ var totalDays = (differenceInTime / (1000 * 3600 * 24) + 1);
     await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${allSource}/values/[MM]Detail Cases!A2:AB1094?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
     .then(res=>res.json())
     .then(response =>{
-        var result = response.values;
-        
+        var result = response.values
         result.forEach(item => {
             if(item[2]!="" && parseInt(item[2]) < 18){
                 totalDeath ++
+                under18AgeList.push(parseInt(item[2]))
             }
         });
        
@@ -157,7 +161,9 @@ var totalDays = (differenceInTime / (1000 * 3600 * 24) + 1);
     
     appVM.underEighteen = totalDeath
     appVM.mapLocalList = mmMapLocaList
-
+    appVM.under18AgeList = under18AgeList
+    youngest = Math.min.apply(Math,under18AgeList)
+    appVM.youngest = youngest
     
     console.log("ln " + ln)
 if(ln == "en"){
@@ -297,7 +303,8 @@ var appVM = new Vue({
         totalDaysLabel:'',
         totalDeathLabel:'',
         under18DeathLabel:'',
-        todayDeathLabel:'',
+        youngestLabel:'',
+        yearOldLabel:'',
         cityGraphLabel:'',
         totalLabel:'',
         dailyGraphLabel:'',
@@ -310,6 +317,8 @@ var appVM = new Vue({
         total:0,
         totalDays:totalDays,
         underEighteen: 0,
+        under18AgeList: under18AgeList,
+        youngest: youngest,
         todayCount:0
     },
     methods:{
@@ -391,7 +400,8 @@ if(ln == "en"){
     appVM.totalDaysLabel=enTotalDaysLabel
     appVM.totalDeathLabel=enTotalDeathLabel
     appVM.under18DeathLabel=enUnder18
-    appVM.todayDeathLabel=enTodayDeathLabel
+    appVM.youngestLabel=enYoungestLabel
+    appVM.yearOldLabel = enYearsOldLabel
     appVM.cityGraphLabel = enCityGraphLabel
     appVM.totalLabel = enTotal
     appVM.dailyGraphLabel = enDailyGraphLabel
@@ -414,7 +424,8 @@ if(ln == "en"){
     appVM.totalDaysLabel=jpTotalDaysLabel
     appVM.totalDeathLabel=jpTotalDeathLabel
     appVM.under18DeathLabel=jpUnder18
-    appVM.todayDeathLabel=jpTodayDeathLabel
+    appVM.youngestLabel=jpYoungestLabel
+    appVM.yearOldLabel = jpYearsOldLabel
     appVM.cityGraphLabel = jpCityGraphLabel
     appVM.totalLabel = jpTotal
     appVM.dailyGraphLabel = jpDailyGraphLabel
@@ -437,7 +448,8 @@ if(ln == "en"){
     appVM.totalDaysLabel=mmTotalDaysLabel
     appVM.totalDeathLabel=mmTotalDeathLabel
     appVM.under18DeathLabel=mmUnder18
-    appVM.todayDeathLabel=mmTodayDeathLabel
+    appVM.youngestLabel=mmYoungestLabel
+    appVM.yearOldLabel = mmYearsOldLabel
     appVM.cityGraphLabel = mmCityGraphLabel
     appVM.totalLabel = mmTotal
     appVM.dailyGraphLabel = mmDailyGraphLabel

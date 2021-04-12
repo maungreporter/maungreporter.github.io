@@ -362,6 +362,9 @@ width: 100%;
       bottom: 75px;
       
     }
+    .year-old span{
+      font-size: 0.6em;
+    }
     
   }
   @media only screen and (min-width: 768px) {

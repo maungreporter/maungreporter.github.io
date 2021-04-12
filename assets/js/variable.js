@@ -62,6 +62,14 @@ var mmTodayCityDeathLabel = "mm"
 var enTodayCityDeathLabel = "en"
 var jpTodayCityDeathLabel = "jp"
 
+var mmYoungestLabel = "အသက်အငယ်ဆုံး"
+var enYoungestLabel = "Youngest Death"
+var jpYoungestLabel = "一番年下"
+
+var mmYearsOldLabel = "နှစ်"
+var enYearsOldLabel = "Years Old"
+var jpYearsOldLabel = "歳"
+
 var mmTodayDeathLabel = "ယနေ့ ကျဆုံးသူ"
 var enTodayDeathLabel = "Today"
 var jpTodayDeathLabel = "本日の死者数"
