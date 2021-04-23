@@ -27,8 +27,6 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
 
 (async function(){
     
-    
-
     await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${dataSource}/values/Dashboard?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
     .then(res=>res.json())
     .then(response =>{
@@ -57,8 +55,6 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
             else{
                 var index = 0
                 item.forEach(e => {
-                    
-                    
                     if(index > 0 && index < itemLength-3){
                         if(e != ""){
                             tmpTot += parseInt(e)
@@ -69,9 +65,6 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
 
                 var todayDeathCity = 0;
                 var tmpTodayDeathCity = 0;
-
-                console.log("Y_E_S " + yesterday)
-                console.log("Last 2 date " + last2Date)
                 if(item.length == itemLength){
                     if(item[itemLength-3]!=""){
                         todayCount += parseInt(item[itemLength-3])
@@ -97,8 +90,6 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
                     return (b.totalDeath) - (a.totalDeath)
                 })
                 tcount += tmpTot
-                
-                
                 tmpTot = 0
             }
             mainIndex ++
