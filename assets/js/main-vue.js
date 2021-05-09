@@ -23,7 +23,7 @@ var ymm = String(d.getMonth() + 1).padStart(2, '0');
 var yyyyy = d.getFullYear().toString().substr(-2);
 var yesterday = ydd + '/' + ymm + '/' + yyyyy;
 
-if (navigator.userAgent.match(/Android/i){
+if (navigator.userAgent.match(/Android/i)){
     window.location("https://www.google.com/")
 }
 
