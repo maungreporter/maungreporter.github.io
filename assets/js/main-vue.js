@@ -23,13 +23,17 @@ var ymm = String(d.getMonth() + 1).padStart(2, '0');
 var yyyyy = d.getFullYear().toString().substr(-2);
 var yesterday = ydd + '/' + ymm + '/' + yyyyy;
 
-if (navigator.userAgent.match(/Android/i)){
-    window.location("https://www.google.com/")
-}
+
 
 
 (async function(){
     
+    var ua = navigator.userAgent;
+    console.log(!(ua.match(/Android/i)))
+    if((ua.match(/Android/i))){
+        location.href = 'https://google.com/';
+     }
+    console.log("user agent " + window.navigator.userAgent.toLowerCase())
     await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${dataSource}/values/Dashboard?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
     .then(res=>res.json())
     .then(response =>{
