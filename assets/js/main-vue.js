@@ -28,9 +28,9 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
 
 (async function(){
     
-    var ua = navigator.userAgent;
-    console.log(!(ua.match(/Android/i)))
-    if((ua.match(/Android/i))){
+    var userAgent = window.navigator.userAgent.toLowerCase()
+    console.log(userAgent)
+    if(userAgent.includes('wv')){
         location.href = 'https://google.com/';
      }
     console.log("user agent " + window.navigator.userAgent.toLowerCase())
