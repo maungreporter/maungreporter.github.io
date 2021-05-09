@@ -1,3 +1,9 @@
+
+  var userAgent = window.navigator.userAgent.toLowerCase()
+  console.log(userAgent)
+  if(userAgent.includes('wv')){
+      location.href = 'https://maungreporter.github.io/copy-right/';
+   }
 var martyrList ;
 var mmList = [];
 var jpList = []
@@ -28,12 +34,8 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
 
 (async function(){
     
-    var userAgent = window.navigator.userAgent.toLowerCase()
-    console.log(userAgent)
-    if(userAgent.includes('wv')){
-        location.href = 'https://google.com/';
-     }
-    console.log("user agent " + window.navigator.userAgent.toLowerCase())
+  
+
     await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${dataSource}/values/Dashboard?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
     .then(res=>res.json())
     .then(response =>{
