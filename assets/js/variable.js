@@ -1,8 +1,8 @@
-var userAgent = window.navigator.userAgent.toLowerCase()
-console.log(userAgent)
-if(userAgent.includes('wv')){
-    location.href = 'https://maungreporter.github.io/copy-right/';
- }
+// var userAgent = window.navigator.userAgent.toLowerCase()
+// console.log(userAgent)
+// if(userAgent.includes('wv')){
+//     location.href = 'https://maungreporter.github.io/copy-right/';
+//  }
 
 var allSource = "1ABTOB7VkfSrJWoLHT3cRL401ZmpoJbxLgWxDR3YoTQg"
 var mms2021deathtoll = "1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g"
