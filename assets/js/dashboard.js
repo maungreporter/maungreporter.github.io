@@ -56,10 +56,6 @@ var totalDays = (differenceInTime / (1000 * 3600 * 24) + 1);
         var todayCount = 0
         var lastDate;
         result.every(item => {
-            if(item[2]!="" && parseInt(item[2]) < 18){
-                totalDeath ++
-                under18AgeList.push(parseInt(item[2]))
-            }
             if(item[0] == "မြို့အမည်"){
                 itemLength = item.length
                 lastDate = item[itemLength-3]
