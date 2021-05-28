@@ -56,6 +56,10 @@ var totalDays = (differenceInTime / (1000 * 3600 * 24) + 1);
         var todayCount = 0
         var lastDate;
         result.every(item => {
+            if(item[2]!="" && parseInt(item[2]) < 18){
+                totalDeath ++
+                under18AgeList.push(parseInt(item[2]))
+            }
             if(item[0] == "မြို့အမည်"){
                 itemLength = item.length
                 lastDate = item[itemLength-3]
@@ -146,7 +150,7 @@ var totalDays = (differenceInTime / (1000 * 3600 * 24) + 1);
 
     });
     var totalDeath = 0
-    await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${allSource}/values/[MM]Detail Cases!A2:AB1094?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
+    await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${dataSource}/values/[MM]Detail Cases!A2:AB1094?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
     .then(res=>res.json())
     .then(response =>{
         var result = response.values
