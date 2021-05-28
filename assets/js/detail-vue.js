@@ -1,6 +1,6 @@
 var cityArraycityName;
 var totDeath;
-var martyrList;
+var martyrList1;
 var dateList;
 
 const queryString = window.location.search;
@@ -18,9 +18,11 @@ var ln = urlParams.get('ln') ;
     await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${dataSource}/values/[MM]Detail Cases!A2:AB1094?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
     .then(res=>res.json())
     .then(response =>{
-        martyrList = response.values;
+        martyrList1 = response.values;
         var tmpList = []
-        martyrList.forEach(item => {
+        martyrList1.forEach(item => {
+            
+               
            
             if(cityName == "Bago" && item[0]=="ကိုမျိုးမင်းထွန်း"){
 
@@ -35,19 +37,27 @@ var ln = urlParams.get('ln') ;
                     })
                 }
             }else{
-                if(item[4].replace(/ဦ/g,'ဦ')==getCityName(cityName,"mm")||item[4] == getCityName(cityName,"mm")){
-                   
+                // console.log(item[4])
+                // if(item[4] == "ချောင်းဦး"){
+                //     console.log("Cityyyyy " + item[4])
+                // }
+                // if(item[4].replace(/ဦ/g,'ဦ') == getCityName(cityName,"mm") || item[4] == getCityName(cityName,"mm")){
+                    if(item[4] == getCityName(cityName,"mm")){
+                    
                     tmpList.push(item);
+                    
                     tmpList.sort(function(a,b){
+                        
                         var tmpDateA = new Date(a[1])
                         var tmpDateB = new Date(b[1])
                         return parseInt(tmpDateB.getTime())-parseInt(tmpDateA.getTime())
                     })
                 }
             }
+            
        
         });
-       
+        
         appVM.martyrList = tmpList;
     }).catch(err => {
 
@@ -153,7 +163,7 @@ var appVM = new Vue({
         cityName:mmCity,
         totalDeathLabel : mmTotalDeathLabel,
         totalDeath:totDeath,
-        martyrList: martyrList,
+        martyrList:[],
     },
     methods:{
         scrollFunction: function(){
