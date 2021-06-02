@@ -289,7 +289,7 @@ width: 100%;
   text-align: center;
   width: 100%;
   position: fixed;
-  bottom: 0;
+  bottom: 65px;
   margin: 0px auto;
   opacity: 0.5;
 }
@@ -302,7 +302,12 @@ width: 100%;
 .back-to-top span svg {
   cursor: pointer;
 }
-
+.mailto{
+  width: unset;
+}
+.mailto a{
+  font-size: 1.5em;
+}
 .year-old span{
   font-size: 0.6em;
 }
