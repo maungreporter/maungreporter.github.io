@@ -53,7 +53,7 @@ var enBrandTitle = "Spring Revolution"
 var jpBrandTitle = "春の革命"
 
 var mmBodyTitle = `နွေဦးတော်လှန်ရေးတွင် <br class="d-md-none"> ကျဆုံးသွားသော သူရဲကောင်း အာဇာနည်များ`
-var enBodyTitle = `Spring Revolution Martyrs`
+var enBodyTitle = `Spring Revolution Heroes`
 var jpBodyTitle = `春の革命で命を落とした英雄たち`
 
 var mmBodyTitleSec = `နွေဦးတော်လှန်ရေးတွင် <br class="d-md-none"> ကျဆုံးသူအရေအတွက်`
@@ -61,8 +61,8 @@ var enBodyTitleSec = `Spring Revolution Death Toll`
 var jpBodyTitleSec = `春の革命死者数`
 
 var mmBodyTitleThird = `နွေဦးတော်လှန်ရေးတွင် <br class="d-md-none"> ကြွေလွင့်သွားသော ကလေးငယ်များ`
-var enBodyTitleThird = `Spring Revolution Martyrs`
-var jpBodyTitleThird = `春の革命で奪われた幼い命`
+var enBodyTitleThird = `Children Death Toll in Spring Revolution`
+var jpBodyTitleThird = `春の革命における子供の死亡者数`
 
 var mmTodayCityDeathLabel = "mm"
 var enTodayCityDeathLabel = "en"
