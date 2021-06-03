@@ -52,7 +52,7 @@ var mmBrandTitle="နွေဦးတော်လှန်ရေး"
 var enBrandTitle = "Spring Revolution"
 var jpBrandTitle = "春の革命"
 
-var mmBodyTitle = `နွေဦးတော်လှန်ရေးတွင် <br class="d-md-none"> ကျဆုံးသွားသော သူရဲကောင်း အာဇာနည်များ`
+var mmBodyTitle = `နွေဦးတော်လှန်ရေးတွင် <br class="d-md-none"> ကျဆုံးသွားသော သူရဲကောင်းများ`
 var enBodyTitle = `Spring Revolution Heroes`
 var jpBodyTitle = `春の革命で命を落とした英雄たち`
 
