@@ -210,7 +210,7 @@ var appVM = new Vue({
         yesterdayDeathLabel:mmYesterdayDeathLabel,
         dataSource:mmDataSource,
         cityDeathLabel:mmCityDeathLabel,
-        todayCityDeathLabel: mmTodayCityDeathLabel,
+        todayCityDeathLabel: enTodayCityDeathLabel,
         more:mmMore,
         appClass: appLight,
         martyrList: martyrList,

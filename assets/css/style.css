@@ -293,12 +293,20 @@ width: 100%;
   margin: 0px auto;
   opacity: 0.5;
 }
-.back-to-top span{
+.back-to-top  span{
   display: inline-block;
   width: 100%;
-  text-align: right;
+  
   color: var(--my-bg-first-gd);
 }
+.back-to-top > span{
+  text-align: right;
+}
+.back-to-top a:last-child img {
+  width: 28px;
+  height: 28px;
+}
+
 .back-to-top span svg {
   cursor: pointer;
 }
