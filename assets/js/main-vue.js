@@ -106,14 +106,14 @@ var yesterday = ydd + '/' + ymm + '/' + yyyyy;
             
         });
        mmList = tmpList
-        if(ln == "mm"){
+        if(ln == "en"){
+            appVM.cityList = engList
             
-            appVM.cityList = mmList
 
         }else if(ln == "jp"){
             appVM.cityList = jpList
         }else{
-            appVM.cityList = engList
+            appVM.cityList = mmList
         }
        
        appVM.vmCount = tcount;
@@ -210,7 +210,7 @@ var appVM = new Vue({
         yesterdayDeathLabel:mmYesterdayDeathLabel,
         dataSource:mmDataSource,
         cityDeathLabel:mmCityDeathLabel,
-        todayCityDeathLabel: enTodayCityDeathLabel,
+        todayCityDeathLabel: mmTodayCityDeathLabel,
         more:mmMore,
         appClass: appLight,
         martyrList: martyrList,
@@ -309,28 +309,30 @@ var appVM = new Vue({
 
 
 
-if(ln == "mm"){
+if(ln == "en"){
 
-    appVM.urlOne = `/?ln=mm`
-    appVM.urlTwo = `/under18/?ln=mm`
-    appVM.urlThree = `/dashboard/?ln=mm`
-    appVM.navOne=mmNavHome
-    appVM.navTwo=mmUnder18
-    appVM.navThree=mmDashboard
-    appVM.navFour=mmLanguage
-    appVM.mm=mmMyanmar
-    appVM.en=mmEnglsih
-    appVM.jp=mmJapanese
-    appVM.brandTitle= mmBrandTitle
+    appVM.urlOne = `/?ln=en`
+    appVM.urlTwo = `/under18/?ln=en`
+    appVM.urlThree = `/dashboard/?ln=en`
+    appVM.brandTitle= enBrandTitle
+    appVM.navOne=enNavHome
+    appVM.navTwo=enUnder18
+    appVM.navThree=enDashboard
+    appVM.navFour=enLanguage
+    appVM.mm=enMyanmar
+    appVM.en=enEnglsih
+    appVM.jp=enJapanese
+   
+    appVM.bodyTitle=enBodyTitle
+    appVM.dataSource=enDataSource
+    appVM.totalDeathLabel=enTotalDeathLabel
+    appVM.todayDeathLabel=enTodayDeathLabel
+    appVM.yesterdayDeathLabel=enYesterdayDeathLabel
+    appVM.cityDeathLabel = enCityDeathLabel
+    appVM.more = enMore
+    appVM.lang = "en"
 
-    appVM.bodyTitle=mmBodyTitle
-    appVM.dataSource=mmDataSource
-    appVM.totalDeathLabel=mmTotalDeathLabel
-    appVM.todayDeathLabel=mmTodayDeathLabel
-    appVM.yesterdayDeathLabel=mmYesterdayDeathLabel
-    appVM.cityDeathLabel = mmCityDeathLabel
-    appVM.more = mmMore
-    appVM.lang = "mm"
+    
     
 
 }else if(ln == "jp"){
@@ -355,25 +357,25 @@ if(ln == "mm"){
     appVM.more = jpMore
     appVM.lang = "jp"
 }else {
+    appVM.urlOne = `/?ln=mm`
+    appVM.urlTwo = `/under18/?ln=mm`
+    appVM.urlThree = `/dashboard/?ln=mm`
+    appVM.navOne=mmNavHome
+    appVM.navTwo=mmUnder18
+    appVM.navThree=mmDashboard
+    appVM.navFour=mmLanguage
+    appVM.mm=mmMyanmar
+    appVM.en=mmEnglsih
+    appVM.jp=mmJapanese
+    appVM.brandTitle= mmBrandTitle
+
+    appVM.bodyTitle=mmBodyTitle
+    appVM.dataSource=mmDataSource
+    appVM.totalDeathLabel=mmTotalDeathLabel
+    appVM.todayDeathLabel=mmTodayDeathLabel
+    appVM.yesterdayDeathLabel=mmYesterdayDeathLabel
+    appVM.cityDeathLabel = mmCityDeathLabel
+    appVM.more = mmMore
+    appVM.lang = "mm"
     
-    appVM.urlOne = `/?ln=en`
-    appVM.urlTwo = `/under18/?ln=en`
-    appVM.urlThree = `/dashboard/?ln=en`
-    appVM.brandTitle= enBrandTitle
-    appVM.navOne=enNavHome
-    appVM.navTwo=enUnder18
-    appVM.navThree=enDashboard
-    appVM.navFour=enLanguage
-    appVM.mm=enMyanmar
-    appVM.en=enEnglsih
-    appVM.jp=enJapanese
-   
-    appVM.bodyTitle=enBodyTitle
-    appVM.dataSource=enDataSource
-    appVM.totalDeathLabel=enTotalDeathLabel
-    appVM.todayDeathLabel=enTodayDeathLabel
-    appVM.yesterdayDeathLabel=enYesterdayDeathLabel
-    appVM.cityDeathLabel = enCityDeathLabel
-    appVM.more = enMore
-    appVM.lang = "en"
 }
