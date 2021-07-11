@@ -13,3 +13,17 @@
   flex: 0 0 200px;
 }
 
+.fixed-bar{
+  position: fixed;
+  z-index: 123;
+  width: 85% !important;
+  top: 86px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background: white;
+  
+}
+.apo-div{
+  height: 100px;
+}
+
