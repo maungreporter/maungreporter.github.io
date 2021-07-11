@@ -10,6 +10,33 @@ var mms2021deathtoll = "1PYlfnHxUJFc_GYtFCpcvAIb3QbxYtBGQq9Ra2eltT3g"
 var dataSource = mms2021deathtoll
 var awsBaseUrl = `https://martyr.s3.amazonaws.com/`
 
+var oxygenRefillDataSource = "1vD_VJfxSy6PhCVespA-migA_dK5TCDN0S1ZGb_ZAWWU"
+
+var division = [
+    {name: "ရန်ကုန်တိုင်း", key : "ygn", lat: "", lng : ""},
+    {name: "မန္တလေးတိုင်း", key : "mdy", lat: "", lng : ""},
+    {name: "စစ်ကိုင်းတိုင်း", key : "sg", lat: "", lng : ""},
+    {name: "မကွေးတိုင်း", key : "mg", lat: "", lng : ""},
+    {name: "ပဲခူးတိုင်း", key : "pg", lat: "", lng : ""},
+    {name: "ဧရာဝတီတိုင်း", key : "awd", lat: "", lng : ""},
+    {name: "တနင်္သာရီတိုင်း", key : "tnty", lat: "", lng : ""},
+  ]
+
+var state = [
+  {name: "ကချင်ပြည်နယ်", key : "kachin", lat: "", lng : ""},
+  {name: "ကယားပြည်နယ်", key : "kayah", lat: "", lng : ""},
+  {name: "ကရင်ပြည်နယ်", key : "kayin", lat: "", lng : ""},
+  {name: "ချင်းပြည်နယ်", key : "chin", lat: "", lng : ""},
+  {name: "မွန်ပြည်နယ်", key : "mon", lat: "", lng : ""},
+  {name: "ရခိုင်ပြည်နယ်", key : "rakhine", lat: "", lng : ""},
+  {name: "ရှမ်းပြည်နယ်", key : "shan", lat: "", lng : ""}
+]
+var type = [
+  {name : "ပရဟိတ အဖွဲ့များ",key : "charity"},
+  {name : "အောက်စီဂျင် အရောင်းဆိုင်များ", key : "sell"},
+  {name : "အောက်စီဂျင်ပြန်ဖြည့်လို့ရမည့်ဆိုင်များ", key : "refill"}
+]
+
 var mmNavHome = "Home"
 var enNavHome = "Home"
 var jpNavHome = "ホーム"

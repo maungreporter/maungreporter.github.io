@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/img/icon.png" type="image/gif" sizes="16x16">
+    <title>Let's Fight Covid-19 Together</title>
+    <meta name="keywords" itemprop="keywords" content="Go Away Corona, Covid-19, Covid, Covid Myanmar, Corona Virus, Corona Virus Myanmar, ">
+    <meta name="description" itemprop="description" content="Go Away Corona">
+    <link rel="stylesheet" href="/assets/css/style.css?2021071105">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+    
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KWR7EJNGGC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KWR7EJNGGC');
+</script>
+</head>
+<body>
+    <div id="app" class="pb-5 pb-lg-0" v-cloak>
+
+    
+
+        <!-- HEADER NAV START  -->
+        <nav class="navbar navbar-expand-sm navbar-dark d-md-block p-0">
+            <div id="nav" class="container-fluid">
+                <!-- Logo  -->
+                <a href="/oxygen/" class="navbar-brand">
+                    <img src="/assets/img/icon.png"  alt="" style="height: 75px;">
+                    <strong class="mm">Maung Reporter</strong>
+                    
+                </a>
+                <!-- NAV  -->
+                <ul class="navbar-nav d-sm-flex">
+                    <!-- HOME  -->
+                    <!-- <li class="nav-item d-none d-lg-inline-block">
+                        <a href="#" class="nav-link active">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+                                <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+                            </svg>
+                            <strong class="d-none d-md-inline-block">ပရဟိတအဖွဲများ</strong>
+                        </a>
+                    </li> -->
+                    <!-- Oxygen -->
+                    <li class="nav-item d-none d-lg-inline-block">
+                        <a href="/oxygen/" class="nav-link active">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                                <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                            </svg>
+                            <strong class="d-none d-md-inline-block">အောက်စီဂျင်အိုး ရရှိနိုင်မည့်နေရာများ</strong>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    <li style="border:unset;"></li>
+                    
+                    
+                </ul>
+                
+                
+            </div>
+        </nav>
+        
+        <!-- HEADER NAV END  -->
+        <div style="height: 85px;">
+
+        </div>
+        <div class="container px-lg-5 py-3 h-100">
+            <h3 class="text-center">အောက်စီဂျင်အိုး ရရှိနိုင်မည့်နေရာများ</h3>
+            <div class="mt-5 row mx-0 division">
+                <h5 class="text-center">တိုင်းဒေသကြီး</h5>
+                <div class="city-list col-6 col-md-3 mt-2" v-for = "division in division_list">
+                    <a :href="'shop/?place=' + division.name">
+                        <div class="card alert-primary">
+                            <div class="card-body row">
+                                <h6 class="card-title">{{division.name}}</h6>
+                                <!-- <small class="text-secondary d-block col-8">အရောင်း</small> -->
+                                <small class="text-secondary d-block" v-if="oxy_sell_shop[division.key] > 0">({{oxy_sell_shop[division.key]}}) နေရာ</small>
+                                <small class="text-secondary d-block" v-if="oxy_sell_shop[division.key] == 0">Data မရရှိသေးပါ</small>
+                                <!-- <small class="text-secondary d-block col-8">Refill </small>
+                                <small class="text-secondary d-block col-4">({{oxy_refill_shop[division.key]}}) ဆိုင်</small> -->
+                                <small class="text-danger d-block text-right mt-3 detail" v-if="oxy_sell_shop[division.key] > 0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-index" viewBox="0 0 16 16">
+                                        <path d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 1 0 1 0V6.435a4.9 4.9 0 0 1 .106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 0 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.035a.5.5 0 0 1-.416-.223l-1.433-2.15a1.5 1.5 0 0 1-.243-.666l-.345-3.105a.5.5 0 0 1 .399-.546L5 8.11V9a.5.5 0 0 0 1 0V1.75A.75.75 0 0 1 6.75 1zM8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v5.34l-1.2.24a1.5 1.5 0 0 0-1.196 1.636l.345 3.106a2.5 2.5 0 0 0 .405 1.11l1.433 2.15A1.5 1.5 0 0 0 6.035 16h6.385a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5.114 5.114 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.632 2.632 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046l-.048.002zm2.094 2.025z"/>
+                                      </svg>
+                                </small>
+                                <small class="text-danger d-block text-right mt-3 detail" v-if="oxy_sell_shop[division.key] == 0">-</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-5 row mx-0 state">
+                <h5 class="text-center">ပြည်နယ်</h5>
+                <div class="city-list col-6 col-md-3 mt-2" v-for = "division in state_list">
+                    <a :href="'shop/?place=' + division.name">
+                        <div class="card alert-success">
+                            <div class="card-body row">
+                                <h6 class="card-title">{{division.name}}</h6>
+                                <small class="text-secondary d-block" v-if="oxy_sell_shop[division.key] > 0">({{oxy_sell_shop[division.key]}}) နေရာ</small>
+                                <small class="text-secondary d-block" v-if="oxy_sell_shop[division.key] == 0">Data မရရှိသေးပါ</small>
+                                <!-- <small class="text-secondary d-block col-4">({{oxy_sell_shop[division.key]}}) ဆိုင်</small> -->
+                                <!-- <small class="text-secondary d-block col-8">Refill </small>
+                                <small class="text-secondary d-block col-4">({{oxy_refill_shop[division.key]}}) ဆိုင်</small> -->
+                                <small class="text-danger d-block text-right mt-3 detail" v-if="oxy_sell_shop[division.key] > 0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-index" viewBox="0 0 16 16">
+                                        <path d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 1 0 1 0V6.435a4.9 4.9 0 0 1 .106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 0 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.035a.5.5 0 0 1-.416-.223l-1.433-2.15a1.5 1.5 0 0 1-.243-.666l-.345-3.105a.5.5 0 0 1 .399-.546L5 8.11V9a.5.5 0 0 0 1 0V1.75A.75.75 0 0 1 6.75 1zM8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v5.34l-1.2.24a1.5 1.5 0 0 0-1.196 1.636l.345 3.106a2.5 2.5 0 0 0 .405 1.11l1.433 2.15A1.5 1.5 0 0 0 6.035 16h6.385a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5.114 5.114 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.632 2.632 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046l-.048.002zm2.094 2.025z"/>
+                                      </svg>
+                                </small>
+                                <small class="text-danger d-block text-right mt-3 detail" v-if="oxy_sell_shop[division.key] == 0">-</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+
+            
+        </div>
+
+        
+        
+        <!-- <div class="d-none d-lg-block text-center py-3 bg-light">
+            <a href="mailto: maungrepoter@gmail.com" class="text-decoration-none text-muted">
+                <small class="text-muted">Developed By 🧑🏻‍💻 Maung Reporter</small> 
+            </a> 
+         </div> -->
+         
+         
+        <!-- FOOTER NAV  START -->
+        <div class="footer d-lg-none border-top row m-0 pt-2 pb-0">
+            <!-- HOME -->
+            <div class="col-3 text-center">
+                <a href="#" class="text-decoration-none active">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                        <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                    </svg><br>
+                    <small class=""></small>
+                </a>
+            </div>
+            <!-- ၁၈နှစ်အောက် ကျဆုံးသူများ -->
+            <div class="col-6 p-0 text-center">
+                    <a href="#" class="text-decoration-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                        </svg>
+                        <br>
+                        <small class=" text-dark"></small>
+                    </a>
+            </div>
+            <!--Dashboard -->
+            <div class="col-3 text-center">
+                    <a href="urlThree" class="text-decoration-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-clipboard-data" viewBox="0 0 16 16">
+                            <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"/>
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg>
+                        <br>
+                        <small class=" text-dark"></small>
+                    </a>
+            </div>
+        </div>
+        <!-- FOOTER NAV END -->
+    </div>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    
+    <script src="/assets/js/variable.js?2021070501"></script>
+    <script src="/assets/js/covid19/goawaycorona.js?2021071107"></script>
+    
+</body>
+</html>
