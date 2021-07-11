@@ -26,6 +26,9 @@
 .apo-div{
   height: 100px;
 }
+.banner img{
+  width: 100px;
+}
 
 @media only screen and (max-width: 576px) {
   .fixed-bar{
