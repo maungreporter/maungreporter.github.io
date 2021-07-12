@@ -6,9 +6,15 @@ var appVM = new Vue({
         type_list : type,
         oxy_sell_shop : {ygn:0,mdy:0,sg:0,mg:0,pg:0,awd:0,tnty:0,kachin:0,kayah:0,kayin:0,chin:0,mon:0,rakhine:0,shan:0},
         // oxy_refill_shop : {ygn:0,mdy:0,sg:0,mg:0,pg:0,awd:0,tnty:0,kachin:0,kayah:0,kayin:0,chin:0,mon:0,rakhine:0,shan:0},
+        todayOxygen : ""
     },
     methods : {
         getRefillData: function(){
+            var today = new Date()
+            var currentMonth = today.toLocaleString('default', { month: 'long' }).toLowerCase()
+            var currentDate = today.getDate()
+            this.todayOxygen = "oxygen"+currentDate+currentMonth
+            console.log(this.todayOxygen)
             fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/sell?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
             .then(res=>res.json())
             .then(shop =>{
