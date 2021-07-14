@@ -29,6 +29,32 @@
 .banner img{
   width: 100px;
 }
+.page-title .fb-page{
+  color : #3ca5df;
+}
+.title .right-arrow{
+  flex: 0 0 50px;
+}
+.v-align{
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+}
+.qands .que{
+  flex: 0 0 50px;
+}
+.answer{
+  width: 45px;
+}
+.nav-bc{
+  background: none;
+}
+.nav-bc .breadcrumb{
+  background: none;
+}
+.question{
+  line-height: 2em;
+}
 
 @media only screen and (max-width: 576px) {
   .fixed-bar{
@@ -36,3 +62,8 @@
   }
 }
 
+@media only screen and (max-width: 992px) {
+  .footer {
+    height: 90px !important;
+  }
+}

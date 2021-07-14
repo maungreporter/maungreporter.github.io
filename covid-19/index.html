@@ -32,10 +32,9 @@
         <nav class="navbar navbar-expand-sm navbar-dark d-md-block p-0">
             <div id="nav" class="container-fluid">
                 <!-- Logo  -->
-                <a href="/oxygen/" class="navbar-brand">
+                <a href="/covid-19/" class="navbar-brand">
                     <img src="/assets/img/icon.png"  alt="" style="height: 75px;">
-                    <strong class="mm">အောက်စီဂျင်အိုး ရရှိနိုင်မည့်နေရာများ</strong>
-                    
+                    <strong class="mm">Covid-19 အမေး / အဖြေ</strong>
                     
                 </a>
                 <!-- NAV  -->
@@ -67,6 +66,9 @@
                             <strong class="d-none d-md-inline-block">အောက်စီဂျင်အိုး ရရှိနိုင်မည့်နေရာများ</strong>
                         </a>
                     </li>
+                    
+                    
+                    
                     <li style="border:unset;"></li>
                     
                     
@@ -77,47 +79,57 @@
         </nav>
         
         <!-- HEADER NAV END  -->
-        <div class="container mb-5 pt-5 px-lg-5 h-100">
-            
-            
-            <div class="pt-5 row mx-0 division ">
-                <div class="container fixed-bar pt-3">
-                    <h5 class="text-center mb-3">{{division}}</h5>
-                    <div class="input-group mb-3">
-                        <input type="text" v-model = "search_data" class="form-control" placeholder="">
-                        <button class="btn btn-secondary" v-on:click = "search()">ရှာမည်</button>
-                    </div>
-                </div>
-                
-                <div class="apo-div">
+        <div style="height: 85px;">
 
+        </div>
+        <div class="container px-lg-5 py-3 h-100">
+           
+            <div class="row mx-0 page-title">
+                <div class="banner text-center mb-3">
+                    <img src="/assets/img/covid19-nc.png" alt="">
                 </div>
-                <div>
-                    <small class="d-block text-right text-secondary mb-3">စုစုပေါင်း ({{total_shop}}) နေရာ</small>
-                    <div class="card mb-3" v-for="place in oxy_shop">
-                        <div class="card-body">
-                            <h6 class="card-title text-danger">{{place.name}}</h6>
-                            <small class="text-dark d-block mb-1">{{place.address}}</small>
-                            <div class="">
-                                <a :href="tel ? 'tel:+95'+tel : '#'" class="pr-2" v-for = "tel in place.phone">
-                                    <small class="text-primary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
-                                        <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"/>
-                                        <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                                      </svg>{{tel}}</small>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <h5 class="text-center"><strong class="fb-page">ကိုဗစ်-၁၉ ဗဟုသုတစင်တာ၊ MOH, NUG of Myanmar </strong> Facebook Page မှာ ဖော်ပြထားသော Covid-19 နဲ့ ပတ်သက်တဲ့ အမေး/အဖြေများ</h5>
+                
             </div>
             
-            
         </div>
+        <div class="container mb-5 p-3">
+            <div v-for="title  in title_list" class="title">
+                    <a :href="'questions/?category='+title.key" class="card mb-2 alert-success">
+                        <div class="card-body row">
+                            <h6 class="col">{{title.value}}</h6>
+                            <span class="col right-arrow">
+                                <img class="" src="/assets/img/right.svg" alt="">
+                            </span>
+                        </div>
+                    </a>
+                 </div>
+            </div>
+        </div>
+
+        <!-- <div class="container p-3">
+            <div v-for="(item,index)  in qands_list" class="qands">
+                <div :data-target="'#item'+index" data-toggle="collapse"  class="cp question">
+                    <div class="card mb-2 alert-success">
+                        <div class="card-body row">
+                            <h6 class="col que"><strong class="text-danger">မေး</strong></h6>
+                            <h6 class="col">{{item.que}}</h6>
+                        </div>
+                    </div>
+                    
+                 </div>
+                 <div class="collapse" :id="'item'+index">
+                     <div class="card card-body mb-3">
+                         <pre>{{item.ans}}</pre>
+                     </div>
+                 </div>
+            </div>
+            
+        </div> -->
 
         
         
-        <!-- <div class="d-none d-lg-block text-center py-3 bg-light" v-cloak>
+        <!-- <div class="d-none d-lg-block text-center py-3 bg-light">
             <a href="mailto: maungrepoter@gmail.com" class="text-decoration-none text-muted">
                 <small class="text-muted">Developed By 🧑🏻‍💻 Maung Reporter</small> 
             </a> 
@@ -138,14 +150,14 @@
             </div>
             <!-- ၁၈နှစ်အောက် ကျဆုံးသူများ -->
             <div class="col-4 p-0 text-center">
-                <a href="/oxygen/" class="text-decoration-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
-                    <br>
-                    <small class=" text-dark">အောက်စီဂျင်အိုး ရရှိနိုင်မည့်နေရာများ</small>
-                </a>
-        </div>
+                    <a href="/oxygen/" class="text-decoration-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                        </svg>
+                        <br>
+                        <small class=" text-dark">အောက်စီဂျင်အိုး ရရှိနိုင်မည့်နေရာများ</small>
+                    </a>
+            </div>
             <!--Dashboard -->
             <div class="col-4 text-center">
                     
@@ -158,7 +170,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     
     <script src="/assets/js/variable.js?2021071301"></script>
-    <script src="/assets/js/covid19/place.js?2021071301"></script>
+    <script src="/assets/js/covid19/category.js?2021071301"></script>
     
 </body>
 </html>

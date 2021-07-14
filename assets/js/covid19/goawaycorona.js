@@ -10,11 +10,11 @@ var appVM = new Vue({
     },
     methods : {
         getRefillData: function(){
+            
             var today = new Date()
             var currentMonth = today.toLocaleString('default', { month: 'long' }).toLowerCase()
             var currentDate = today.getDate()
             this.todayOxygen = "oxygen"+currentDate+currentMonth
-            console.log(this.todayOxygen)
             fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/sell?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
             .then(res=>res.json())
             .then(shop =>{
@@ -22,9 +22,11 @@ var appVM = new Vue({
             })
             
            
-        }
+        },
+        
     },
     async created (){
         await Promise.all([this.getRefillData()])
     }
 })
+
