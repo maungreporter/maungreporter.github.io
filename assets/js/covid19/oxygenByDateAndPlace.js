@@ -34,10 +34,10 @@ var appVM = new Vue({
             .then(response =>{
                 var result = response.values;
                 this.oxy_shop = result.map(e => {
-                    e[6] = e[6] ?? ""
+                    e[7] = e[7] ?? ""
                     var tmpPhone = ""
-                    if(e.phone){
-                        tmpPhone = e.phone.split(",")
+                    if(e[7]){
+                        tmpPhone = e[7].split(",")
                     }
                     return {date: e[0], type : e[1], key:e[2] ,division : e[3], city : e[4], name : e[5], address : e[6], phone : tmpPhone,remark : e[8]}
                 }).filter(e=>(e.division==this.division && e.date == this.date))
