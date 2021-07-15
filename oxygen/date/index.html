@@ -36,6 +36,7 @@
                     <img src="/assets/img/icon.png"  alt="" style="height: 75px;">
                     <strong class="mm">အောက်စီဂျင်အိုး ရရှိနိုင်မည့်နေရာများ</strong>
                     
+                    
                 </a>
                 <!-- NAV  -->
                 <ul class="navbar-nav d-sm-flex">
@@ -66,10 +67,6 @@
                             <strong class="d-none d-md-inline-block">အောက်စီဂျင်အိုး ရရှိနိုင်မည့်နေရာများ</strong>
                         </a>
                     </li>
-                    
-                    
-                    
-                    
                     <li style="border:unset;"></li>
                     
                     
@@ -83,73 +80,45 @@
         <div style="height: 85px;">
 
         </div>
-        
-        <div class="container mb-5 px-lg-5 py-3 h-100">
-           
-            <div class="row mx-0 division">
-                <div class="banner text-center">
-                    <img src="/assets/img/o2logo.png" alt="" class="banner mb-2">
-                    <a :href="'/oxygen/date/?date='+this.todayDate" class=" text-center mb-3 d-block alert alert-danger" target="iframe_a">
-                        ယနေ့ <strong class="text-danger">({{this.todayDate}})</strong><br>အောက်စီဂျင် ရနိုင်မည့်နေရများ
-                    </a>
-                    <a :href="'/oxygen/date/?date='+this.tomorrowDate" class="banner text-center mb-3 d-block alert alert-info" target="iframe_a">
-                        မနက်ဖြန် <strong class="text-danger">({{this.tomorrowDate}})</strong><br>အောက်စီဂျင် ရနိုင်မည့်နေရများ
-                    </a>
-                </div>
-                
-                <h5 class="text-center">တိုင်းဒေသကြီး</h5>
-                <div class="city-list col-6 col-md-3 mt-2" v-for = "division in division_list">
-                    <a :href="'shop/?place=' + division.name">
+        <div class="container mb-5 py-3 px-lg-5 h-100">
+            
+            <h6 class="text-center text-danger">{{date}}</h6>
+            <h6 class="text-center">အောက်စီဂျင်အိုး ရရှိနိုင်မည့်နေရာများ</h6>
+            <h5 class="text-center text-danger mt-5" v-if="remark!=''">
+                ည ၇ နာရီနောက်ပိုင်းလောက်မှ Data ရရှိပါမည်
+            </h5>
+            <div class="p-3 row mx-0 division ">
+                <div class="city-list col-12 col-md-3 mt-2" v-for = "division in division_list">
+                    <a :href="'place/?place=' + division.value +'&date='+date" >
                         <div class="card alert-primary">
                             <div class="card-body row">
-                                <h6 class="card-title">{{division.name}}</h6>
-                                <!-- <small class="text-secondary d-block col-8">အရောင်း</small> -->
-                                <small class="text-secondary d-block" v-if="oxy_sell_shop[division.key] > 0">({{oxy_sell_shop[division.key]}}) နေရာ</small>
-                                <small class="text-secondary d-block" v-if="oxy_sell_shop[division.key] == 0">Data မရရှိသေးပါ</small>
-                                <!-- <small class="text-secondary d-block col-8">Refill </small>
-                                <small class="text-secondary d-block col-4">({{oxy_refill_shop[division.key]}}) ဆိုင်</small> -->
-                                <small class="text-danger d-block text-right mt-3 detail" v-if="oxy_sell_shop[division.key] > 0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-index" viewBox="0 0 16 16">
-                                        <path d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 1 0 1 0V6.435a4.9 4.9 0 0 1 .106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 0 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.035a.5.5 0 0 1-.416-.223l-1.433-2.15a1.5 1.5 0 0 1-.243-.666l-.345-3.105a.5.5 0 0 1 .399-.546L5 8.11V9a.5.5 0 0 0 1 0V1.75A.75.75 0 0 1 6.75 1zM8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v5.34l-1.2.24a1.5 1.5 0 0 0-1.196 1.636l.345 3.106a2.5 2.5 0 0 0 .405 1.11l1.433 2.15A1.5 1.5 0 0 0 6.035 16h6.385a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5.114 5.114 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.632 2.632 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046l-.048.002zm2.094 2.025z"/>
-                                      </svg>
-                                </small>
-                                <small class="text-danger d-block text-right mt-3 detail" v-if="oxy_sell_shop[division.key] == 0">-</small>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="mt-5 row mx-0 state">
-                <h5 class="text-center">ပြည်နယ်</h5>
-                <div class="city-list col-6 col-md-3 mt-2" v-for = "division in state_list">
-                    <a :href="'shop/?place=' + division.name">
-                        <div class="card alert-success">
-                            <div class="card-body row">
-                                <h6 class="card-title">{{division.name}}</h6>
-                                <small class="text-secondary d-block" v-if="oxy_sell_shop[division.key] > 0">({{oxy_sell_shop[division.key]}}) နေရာ</small>
-                                <small class="text-secondary d-block" v-if="oxy_sell_shop[division.key] == 0">Data မရရှိသေးပါ</small>
-                                <!-- <small class="text-secondary d-block col-4">({{oxy_sell_shop[division.key]}}) ဆိုင်</small> -->
-                                <!-- <small class="text-secondary d-block col-8">Refill </small>
-                                <small class="text-secondary d-block col-4">({{oxy_refill_shop[division.key]}}) ဆိုင်</small> -->
-                                <small class="text-danger d-block text-right mt-3 detail" v-if="oxy_sell_shop[division.key] > 0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-index" viewBox="0 0 16 16">
-                                        <path d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 1 0 1 0V6.435a4.9 4.9 0 0 1 .106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 0 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.035a.5.5 0 0 1-.416-.223l-1.433-2.15a1.5 1.5 0 0 1-.243-.666l-.345-3.105a.5.5 0 0 1 .399-.546L5 8.11V9a.5.5 0 0 0 1 0V1.75A.75.75 0 0 1 6.75 1zM8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v5.34l-1.2.24a1.5 1.5 0 0 0-1.196 1.636l.345 3.106a2.5 2.5 0 0 0 .405 1.11l1.433 2.15A1.5 1.5 0 0 0 6.035 16h6.385a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5.114 5.114 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.632 2.632 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046l-.048.002zm2.094 2.025z"/>
-                                      </svg>
-                                </small>
-                                <small class="text-danger d-block text-right mt-3 detail" v-if="oxy_sell_shop[division.key] == 0">-</small>
+                                <div class="col">
+                                    <h6 class="card-title">{{division.value}}</h6>
+                                    <!-- <small class="text-secondary d-block col-8">အရောင်း</small> -->
+                                    <small class="text-secondary d-block" v-if="oxy_sell_shop[division.key] > 0">({{oxy_sell_shop[division.key]}}) နေရာ</small>
+                                    <small class="text-secondary d-block" v-if="oxy_sell_shop[division.key] == 0">Data မရရှိသေးပါ</small>
+                                </div>
+                                <div class="col que">
+                                    <small class="text-danger d-block text-right mt-3 detail" v-if="oxy_sell_shop[division.key] > 0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-index" viewBox="0 0 16 16">
+                                            <path d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 1 0 1 0V6.435a4.9 4.9 0 0 1 .106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 0 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.035a.5.5 0 0 1-.416-.223l-1.433-2.15a1.5 1.5 0 0 1-.243-.666l-.345-3.105a.5.5 0 0 1 .399-.546L5 8.11V9a.5.5 0 0 0 1 0V1.75A.75.75 0 0 1 6.75 1zM8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v5.34l-1.2.24a1.5 1.5 0 0 0-1.196 1.636l.345 3.106a2.5 2.5 0 0 0 .405 1.11l1.433 2.15A1.5 1.5 0 0 0 6.035 16h6.385a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5.114 5.114 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.632 2.632 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046l-.048.002zm2.094 2.025z"/>
+                                          </svg>
+                                    </small>
+                                </div>
+                                
+                                
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
             
-
             
         </div>
 
         
         
-        <!-- <div class="d-none d-lg-block text-center py-3 bg-light">
+        <!-- <div class="d-none d-lg-block text-center py-3 bg-light" v-cloak>
             <a href="mailto: maungrepoter@gmail.com" class="text-decoration-none text-muted">
                 <small class="text-muted">Developed By 🧑🏻‍💻 Maung Reporter</small> 
             </a> 
@@ -170,14 +139,14 @@
             </div>
             <!-- ၁၈နှစ်အောက် ကျဆုံးသူများ -->
             <div class="col-4 p-0 text-center">
-                    <a href="/oxygen/" class="text-decoration-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                        </svg>
-                        <br>
-                        <small class=" text-dark">အောက်စီဂျင်အိုး ရရှိနိုင်မည့်နေရာများ</small>
-                    </a>
-            </div>
+                <a href="/oxygen/" class="text-decoration-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                    <br>
+                    <small class=" text-dark">အောက်စီဂျင်အိုး ရရှိနိုင်မည့်နေရာများ</small>
+                </a>
+        </div>
             <!--Dashboard -->
             <div class="col-4 text-center">
                     
@@ -190,7 +159,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     
     <script src="/assets/js/variable.js?2021071510"></script>
-    <script src="/assets/js/covid19/goawaycorona.js?2021071510"></script>
+    <script src="/assets/js/covid19/oxygenByDate.js?2021071510"></script>
     
 </body>
 </html>
