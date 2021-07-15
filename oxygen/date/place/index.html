@@ -95,8 +95,15 @@
             <h5 class="text-center">{{division}}</h5>
             <h6 class="text-center">အောက်စီဂျင် ရရှိနိုင်မည့်နေရာများ</h6>
             <small class="d-block text-center text-secondary mb-3">စုစုပေါင်း ({{total_shop}}) နေရာ</small>
+            <div class="container pt-3">
+                <div class="input-group mb-3">
+                    <input type="text" v-model = "search_data" class="form-control" placeholder="">
+                    <button class="btn btn-secondary" v-on:click = "search()">ရှာမည်</button>
+                </div>
+            </div>
             <div class="card mb-3" v-for="place in oxy_shop">
                 <div class="card-body">
+                    <h6 class="">{{place.city}}</h6>
                     <h6 class="card-title text-success">{{place.name}}</h6>
                     <small class="text-dark d-block mb-1">{{place.address}}</small>
                     <div class="border-bottom pb-2 mb-2">
@@ -156,7 +163,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     
     <script src="/assets/js/variable.js?2021071510"></script>
-    <script src="/assets/js/covid19/oxygenByDateAndPlace.js?2021071510"></script>
+    <script src="/assets/js/covid19/oxygenByDateAndPlace.js?2021071511"></script>
     
 </body>
 </html>

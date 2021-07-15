@@ -42,8 +42,8 @@ var appVM = new Vue({
             })
         },
         search : async function(){
-            
-            await this.getO2Shop("sell")
+            console.log(this.search_data)
+            await this.getO2Shop("oxygenByDate")
             if(this.search_data){
 
                 this.search_data = this.search_data.replaceAll(" ","")
@@ -51,7 +51,7 @@ var appVM = new Vue({
                     
                     Object.keys(e).map(k=> {
                         var tmp = false
-                        if(k!="phone" && e[k]!=undefined){
+                        if(k!="phone" && k!="date" && e[k]!=undefined){
                             tmp = e[k].toLowerCase().includes(this.search_data) || e[k].toUpperCase().includes(this.search_data) || e[k].includes(this.search_data)
                         }
                         return tmp
