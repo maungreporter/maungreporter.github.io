@@ -35,7 +35,11 @@ var appVM = new Vue({
                 var result = response.values;
                 this.oxy_shop = result.map(e => {
                     e[6] = e[6] ?? ""
-                    return {date: e[0], type : e[1], key:e[2] ,division : e[3], city : e[4], name : e[5], address : e[6], phone : e[7].split(","),remark : e[8]}
+                    var tmpPhone = ""
+                    if(e.phone){
+                        tmpPhone = e.phone.split(",")
+                    }
+                    return {date: e[0], type : e[1], key:e[2] ,division : e[3], city : e[4], name : e[5], address : e[6], phone : tmpPhone,remark : e[8]}
                 }).filter(e=>(e.division==this.division && e.date == this.date))
                 this.oxy_shop = this.oxy_shop.sort((a,b) => b.city - a.city)
                 this.total_shop = this.oxy_shop.length
