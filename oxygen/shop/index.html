@@ -103,7 +103,7 @@
                     <div class="card mb-3" v-for="place in oxy_shop">
                         <div class="card-body">
                             <h6 class="card-title text-danger">{{place.name}}</h6>
-                            <small class="text-dark d-block mb-1">{{place.address}}</small>
+                            <small class="text-dark d-block mb-1"><img src="/assets/img/location.svg" class="mr-2" alt="">{{place.address}}</small>
                             <div class="">
                                 <a :href="tel ? 'tel:+95'+tel : '#'" class="pr-2" v-for = "tel in place.phone">
                                     <small class="text-primary">
