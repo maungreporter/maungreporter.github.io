@@ -1,7 +1,9 @@
 .shop {
   cursor: pointer;
 }
-
+.footer .footer-icon{
+  width: 28px;
+}
 .search{
   width: fit-content !important;
   margin : 0px;
@@ -27,7 +29,7 @@
   height: 100px;
 }
 .banner img{
-  width: 100px;
+  width: 100px !important;
 }
 .page-title .fb-page{
   color : #3ca5df;
