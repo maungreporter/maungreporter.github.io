@@ -86,7 +86,7 @@ var appVM = new Vue({
         const urlParams = new URLSearchParams(queryString);
         var date = urlParams.get('date')
         console.log(date)
-        if(null){
+        if(date==null){
             date = "2021/09/04"
         }
         
