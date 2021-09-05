@@ -88,7 +88,7 @@
             </div>
             <div class="prizes row px-3 mx-0">
                 
-                <div class="col-6 col-lg-4 mb-3" v-if="win_list.length>0" v-for="p in win_list">
+                <div class="col-6 col-lg-4 mb-3 p-1" v-if="win_list.length>0" v-for="p in win_list">
                     <small class="text-secondary">{{p.ticket_no}}</small>
                     <img :src="'/assets/img/raffel/'+p.no+'.jpeg'" alt="" class="p-2 p-lg-3 mb-2 w-100 shadow">
                     {{p.prize_name}}
