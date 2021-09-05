@@ -38,9 +38,9 @@ var appVM = new Vue({
            
         },
         check: function(){
+            this.result = ""
+            this.error = ""
             if(this.your_ticket_no){
-                this.result = ""
-                this.error = ""
                 fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/raffel?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
                 .then(res=>res.json())
                 .then(data =>{
