@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/img/icon.png" type="image/gif" sizes="16x16">
+    <title>Raffle Ticket Lucky Draw</title>
+    <meta name="keywords" itemprop="keywords" content="Raffle Ticket Lucky Draw">
+    <meta name="description" itemprop="description" content="Raffle Ticket Lucky Draw">
+    <link rel="stylesheet" href="/assets/css/style.css?2021060401">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+    <script src='https://unpkg.com/tesseract.js@v2.0.2/dist/tesseract.min.js'></script>
+    <script data-ad-client="ca-pub-8539338613053017" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KWR7EJNGGC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KWR7EJNGGC');
+</script>
+</head>
+<body>
+
+    <div id="app">
+
+    
+        <!-- HEADER NAV START  -->
+        <nav class="navbar navbar-expand-sm navbar-dark d-md-block p-0">
+            <div id="nav" class="container-fluid">
+                <!-- Logo  -->
+                <a href="" class="navbar-brand">
+                    <img src="/assets/img/raffel/logo.jpeg"  alt="" style="height: 50px;">
+                    <strong class="mm">Raffle Ticket Lucky Draw</strong>
+                   
+                    
+                </a>
+                <!-- NAV  -->
+                <ul class="navbar-nav d-sm-flex">
+                    
+                </ul>
+            </div>
+        </nav>
+        <!-- HEADER NAV START  -->
+
+        <div id="" class="container main-content p-0 pb-5 pb-sm-0 mb-5">
+            <div class="text-center">
+                <img src="/assets/img/raffel/logo.jpeg" alt="" style="height: 200px;">
+                <h5>Raffle Prize Winners</h5>
+            </div>
+            
+            <div class="input-form px-3 mb-3">
+                <div class="mb-3">
+                    <small class="text-danger" v-if="error == '1'">* ပေါက်မဲ နံပါတ်ရိုက်ထည့်ခြင်း (သို့) ပေါက်မဲလက်မှတ်ထည့်ပြီးမှ check ကို နှိပ်ပါ</small>
+                    <div v-if="error == '2'">
+                        <small class="text-danger d-block" >* File Name နှင့် Ticket No တူနေသော Ticket ဖြစ်ရပါမည်။ </small>
+                        <img src="/assets/img/sample.png" alt="" style="width: 200px;">
+                    </div>
+                </div>
+                
+                <label class="mb-2">ပေါက်မဲနံပါတ်ရိုက်ထည့်ပြီး တိုက်ရန်</label>
+                <div class="input-group mb-3">
+                    <input type="text" id="ticketNo" class="form-control" v-model="your_ticket_no">
+                </div>
+                <label class="mb-2">Raffle Ticketအားလုံး တစ်ခါတည်း တိုက်ရန်</label>
+                <input id="imageFile" type="file" class="imageFile form-control mb-3" v-on:change="imageChange" ref="file" accept="image/*" multiple /> 
+                <div class="mb-3">
+                    <small class="text-danger text-center d-block" v-if="ticket_list.length>0">စုစုပေါင်း ({{total_ticket}}) စောင်ပါ။ ပေါက်မဲတိုက်ရန် Check ကို နှိပ်ပါ</small>
+                    <small class="text-secondary" v-for="(tic,index) in ticket_list">({{index +1 }}) {{tic}} / </small>
+                </div>
+                
+                <button class="btn alert-primary w-100" v-on:click = "check">Check</button>
+            </div>
+
+            <div class="result text-center px-3">
+                <div v-if="win_prize_list.length>0" >
+                    <h3 class="text-success">Congratulations! </h3> 
+                    <strong class="d-block mb-3">ဆု ({{win_prize_list.length}}) ဆုပေါက်ပါတယ်</strong>
+                    <div v-for="w in win_prize_list">
+                        
+                        <strong class="text-secondary">  {{w.prize}} </strong>
+                        <br>
+                        <img :src="'/assets/img/raffel/'+w.prize_img+'.jpeg'" alt="" style="width: 50%;" class="mt-3">
+                    </div>
+                    
+                </div>
+                <strong v-if="result=='0'"> မပေါက်ပါဘူး ခမျာ။ ယုံကြည်ရာ ခြေတစ်လှမ်းမှာ ပါဝင်ပေးတဲ့ အတွက် ကျေးဇူးတင်ပါတယ် ခမျာ။</strong>
+            </div>
+
+            <hr>
+            
+            <div class="px-3 text-center">
+                <h4>Prizes</h4>
+                <small class="text-secondary">Source : <a href="https://ofp.crphmyanmar.org/?fbclid=IwAR0zKHV57DuPhKk-WGPMDrZ9nMocU-2I8Q4vmjIU41MbUKRVp1NEfckdYu0" class="text-danger">CRPH-OFP Fundraiser Network</a></small>
+                <ul class="nav nav-tabs mb-3">
+                    <li class="nav-item">
+                        <a href="#" :class="getClass('2021/09/04')" v-on:click="getPrize('2021/09/04')">Sep 4</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" :class="getClass('2021/09/05')" v-on:click="getPrize('2021/09/05')">Sep 5</a>
+                    </li>
+
+                    </ul>
+                
+            </div>
+            <div class="prizes row px-3 mx-0">
+                
+                <div class="col-6 col-lg-4 mb-3 p-1" v-if="win_list.length>0" v-for="p in win_list">
+                    <small class="text-secondary">{{p.ticket_no}}</small>
+                    <img :src="'/assets/img/raffel/'+p.no+'.jpeg'" alt="" class="p-2 p-lg-3 mb-2 w-100 shadow">
+                    {{p.prize_name}}
+                </div>
+                <div class="" v-if="win_list.length==0" >
+                    မြန်မာစံတော်ချိန် ည (၇) နာရီ မှ စတင်ပြီး CRPH-OFP မှ ပြုလုပ်မဲ့ Lucky Draw ပွဲမှ ပေါက်မဲများကို ကြေငြာပြီးနောက်မှာ ဖော်ပြပေးပါမယ် ခမျာ..
+                </div>
+
+            </div>
+        </div>
+
+        
+
+        <!-- <input type="button" value="Resize Image" 
+        v-on:click="checkMulti()"/>  -->
+        <!-- <input id="imageFile" name="imageFile" type="file" class="imageFile" accept="image/*" multiple/> 
+        <input type="button" value="Resize Image" 
+        onclick="resizeImage()"/> 
+        <br/>
+        <img src="" id="preview">
+        <img src="" id="output" class="mb-5"> -->
+    </div>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- <script src='https://unpkg.com/tesseract.js@v2.0.0-alpha.13/dist/tesseract.min.js'></script> -->
+    <script src="/assets/js/variable.js?2021070501"></script>
+    <script src="/assets/js/raffel_ticket.js?2021090705"></script>
+    
+</body>
+</html>
