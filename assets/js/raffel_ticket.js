@@ -115,7 +115,6 @@ var appVM = new Vue({
             for(let i=0;i<ticketFiles.length;i++){
                 var ticket_no = ticketFiles[i].name.split(".")[0].split('-').slice(1).join('-')
                 console.log(ticket_no)
-                alert(ticket_no)
 
                 tmpList[i]=ticket_no
                 
