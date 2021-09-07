@@ -54,7 +54,11 @@
             
             <div class="input-form px-3 mb-3">
                 <div class="mb-3">
-                    <small v-if="error!=''" class="text-danger">* {{error}}</small>
+                    <small class="text-danger" v-if="error == '1'">* ပေါက်မဲ နံပါတ်ရိုက်ထည့်ခြင်း (သို့) ပေါက်မဲလက်မှတ်ထည့်ပြီးမှ check ကို နှိပ်ပါ</small>
+                    <div v-if="error == '2'">
+                        <small class="text-danger d-block" >* File Name နှင့် Ticket No တူနေသော Ticket ဖြစ်ရပါမည်။ </small>
+                        <img src="/assets/img/sample.png" alt="" style="width: 200px;">
+                    </div>
                 </div>
                 
                 <label class="mb-2">ပေါက်မဲနံပါတ်ရိုက်ထည့်ပြီး တိုက်ရန်</label>
@@ -133,7 +137,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <!-- <script src='https://unpkg.com/tesseract.js@v2.0.0-alpha.13/dist/tesseract.min.js'></script> -->
     <script src="/assets/js/variable.js?2021070501"></script>
-    <script src="/assets/js/raffel_ticket.js?2021090523"></script>
+    <script src="/assets/js/raffel_ticket.js?2021090705"></script>
     
 </body>
 </html>
