@@ -45,7 +45,7 @@ var appVM = new Vue({
         },
         check: function(){
             console.log("Check")
-            if(!this.error){
+            
                 this.result = ""
                 this.error = ""
                 if(this.your_ticket_no){
@@ -86,8 +86,7 @@ var appVM = new Vue({
                 }else{
                     this.error = "1"
                 }
-                
-            }
+          
             
         },
         getPrizeByDate: function(date){            
