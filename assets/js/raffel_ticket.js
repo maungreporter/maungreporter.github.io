@@ -214,20 +214,25 @@ var appVM = new Vue({
     }
 })
 
-async function getTicketNo (canvas){
-  Tesseract.recognize(canvas,'eng',
-    { logger: m => console.log(m) })
-    .then(({ data: { text } }) => {
-        console.log(text);
-        if(text.split("-").length==4){
-            tmpList.push(text.trim());
-            appVM.total_ticket = appVM.total_ticket + 1
-        }else{
-            appVM.error="2"
-            appVM.missing_ticket = appVM.missing_ticket + 1
-        }
+async function getTicketNo (canvas){ Tesseract.recognize(canvas,'eng',
+{ logger: m => console.log(m) })
+.then(({ data: { text } }) => {
+    console.log(text);
+    if(text.split("-").length==4){
+        var tmpText = text.split(" ")
+        console.log(tmpText)
+        tmpText.map(tt =>{
+            if(tt.split("-").length == 4){
+                tmpList.push(tt.trim());
+            }
+        })
+        appVM.total_ticket = appVM.total_ticket + 1
+    }else{
+        appVM.error="2"
+        appVM.missing_ticket = appVM.missing_ticket + 1
+    }
 
-    })
+})
     
 
 }
