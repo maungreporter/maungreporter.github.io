@@ -1,5 +1,6 @@
 var tmpList = [];
 var sheet = "raffel-staging"
+var total = 0
 var appVM = new Vue({
     el:'#app',
     data: {
@@ -109,6 +110,8 @@ var appVM = new Vue({
             }
         },
         imageChange: async function(event){
+            // total = 0
+            this.total_ticket = 0
             tmpList = []
             this.ticket_list = []
 
@@ -133,13 +136,13 @@ var appVM = new Vue({
             }
             this.ticket_list = tmpList
             
-            this.total_ticket = ticketFiles.length
+            
             
             
         },
         createCanvas : async function(file){
             var reader = new FileReader();
-            reader.onload = function(e) {
+             reader.onload = async function(e) {
                 var img = document.createElement("img");
                 img.src = e.target.result;
                 // Create your canvas
@@ -179,6 +182,8 @@ var appVM = new Vue({
                  getTicketNo(canvas)
             };
             reader.readAsDataURL(file);
+
+
         },
        
        
@@ -209,7 +214,11 @@ async function getTicketNo (canvas){
     { logger: m => console.log(m) })
     .then(({ data: { text } }) => {
         console.log(text);
-        tmpList.push(text.trim());
+        if(text.split("-").length==4){
+            tmpList.push(text.trim());
+            appVM.total_ticket = appVM.total_ticket + 1
+        }
+
     })
     
 
