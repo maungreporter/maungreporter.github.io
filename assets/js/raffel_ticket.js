@@ -1,3 +1,6 @@
+var tmpList = [];
+var sheet = "raffel"
+var total = 0
 var appVM = new Vue({
     el:'#app',
     data: {
@@ -15,7 +18,8 @@ var appVM = new Vue({
        file:[],
        win_prize_list:[
            
-       ]
+       ],
+       missing_ticket : 0
     },
     methods : {
         getPrize: async function(date){
@@ -23,7 +27,7 @@ var appVM = new Vue({
             this.error = ""
             this.your_ticket_no = ""
             this.selected_date = date
-            fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/raffel?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
+            fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/${sheet}?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
             .then(res=>res.json())
             .then(data =>{
                 var tmpList = []
@@ -44,10 +48,12 @@ var appVM = new Vue({
            
         },
         check: function(){
+            console.log("Check")
             this.result = ""
             this.error = ""
             if(this.your_ticket_no){
-                fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/raffel?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
+                this.ticket_list = []
+                fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/${sheet}?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
                 .then(res=>res.json())
                 .then(data =>{
                     var tmp=[]
@@ -64,7 +70,7 @@ var appVM = new Vue({
                
             }else if(this.ticket_list.length>0){
                 console.log(this.ticket_list)
-                fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/raffel?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
+                fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/${sheet}?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
                 .then(res=>res.json())
                 .then(data =>{
                     var tmp=[]
@@ -82,12 +88,12 @@ var appVM = new Vue({
                     })
                 })
             }else{
-                this.error = "ပေါက်မဲ နံပါတ်ရိုက်ထည့်ခြင်း (သို့) ပေါက်မဲလက်မှတ်ထည့်ပြီးမှ check ကို နှိပ်ပါ"
+                this.error = "1"
             }
             
         },
         getPrizeByDate: function(date){            
-            fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/raffel?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
+            fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/${sheet}?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
             .then(res=>res.json())
             .then(data =>{
                 var tmpList = []
@@ -99,29 +105,95 @@ var appVM = new Vue({
                 this.win_list = tmpList
             })
         },
-        getClass:function(date){
+        getClass : function(date){
             if(date == this.selected_date){
                 return "nav-link active"
             }else{
                 return "nav-link"
             }
         },
-        imageChange: function(){
+        imageChange: async function(event){
+            // total = 0
+            this.error = 0
+            this.total_ticket = 0
+            this.missing_ticket = 0
+            tmpList = []
+            this.ticket_list = []
+
             this.your_ticket_no = ""
             this.win_prize_list = []
-            var ticketFiles = this.$refs.file.files
-            var tmpList = []
-            this.total_ticket = ticketFiles.length
-            for(let i=0;i<ticketFiles.length;i++){
-                var ticket_no = ticketFiles[i].name.split(".")[0].split('-').slice(1).join('-')
-                console.log(ticket_no)
+            
+            var ticketFiles = event.target.files;
+            
+            for(index in ticketFiles){
+                if(index < ticketFiles){
+                    // console.log(ticketFiles[index].name)
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById("preview").src = e.target.result;
+                    };
+                    reader.readAsDataURL(ticketFiles[index]);
 
-                tmpList[i]=ticket_no
-                
+                    await this.createCanvas(ticketFiles[index])
+                }
+
+                    
             }
             this.ticket_list = tmpList
             
-        }
+            
+            
+            
+        },
+        createCanvas : async function(file){
+            var reader = new FileReader();
+             reader.onload = async function(e) {
+                var img = document.createElement("img");
+                img.src = e.target.result;
+                // Create your canvas
+                var canvas = document.createElement("canvas");
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0);
+        
+                var MAX_WIDTH = 500;
+                var MAX_HEIGHT = 500;
+                var width = img.width;
+                var height = img.height;
+        
+                // Add the resizing logic
+                if (width > height) {
+                  if (width > MAX_WIDTH) {
+                    height *= MAX_WIDTH / width;
+                    width = MAX_WIDTH;
+                  }
+                } else {
+                  if (height > MAX_HEIGHT) {
+                    width *= MAX_HEIGHT / height;
+                    height = MAX_HEIGHT;
+                  }
+                }
+        
+                //Specify the resizing result
+                canvas.width = width-120;
+                canvas.height = (height/2)-30;
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 250, 190,img.width,img.height,0,0, img.width, img.height);
+        
+                dataurl = canvas.toDataURL(file.type);
+                document.getElementById("preview").src = dataurl;
+                // var blob = this.getBlobByDataUrl(dataurl)
+        
+                console.log(dataurl)
+                 getTicketNo(canvas)
+            };
+            reader.readAsDataURL(file);
+
+
+        },
+       
+       
+
+        
         
         
     },
@@ -142,4 +214,20 @@ var appVM = new Vue({
     }
 })
 
+async function getTicketNo (canvas){
+  Tesseract.recognize(canvas,'eng',
+    { logger: m => console.log(m) })
+    .then(({ data: { text } }) => {
+        console.log(text);
+        if(text.split("-").length==4){
+            tmpList.push(text.trim());
+            appVM.total_ticket = appVM.total_ticket + 1
+        }else{
+            appVM.error="2"
+            appVM.missing_ticket = appVM.missing_ticket + 1
+        }
 
+    })
+    
+
+}
