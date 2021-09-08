@@ -18,7 +18,8 @@ var appVM = new Vue({
        file:[],
        win_prize_list:[
            
-       ]
+       ],
+       missing_ticket : 0
     },
     methods : {
         getPrize: async function(date){
@@ -47,6 +48,7 @@ var appVM = new Vue({
            
         },
         check: function(){
+            console.log("Check")
             this.result = ""
             this.error = ""
             if(this.your_ticket_no){
@@ -85,7 +87,7 @@ var appVM = new Vue({
                     })
                 })
             }else{
-                this.error = "ပေါက်မဲ နံပါတ်ရိုက်ထည့်ခြင်း (သို့) ပေါက်မဲလက်မှတ်ထည့်ပြီးမှ check ကို နှိပ်ပါ"
+                this.error = "1"
             }
             
         },
@@ -111,7 +113,9 @@ var appVM = new Vue({
         },
         imageChange: async function(event){
             // total = 0
+            this.error = 0
             this.total_ticket = 0
+            this.missing_ticket = 0
             tmpList = []
             this.ticket_list = []
 
@@ -217,6 +221,9 @@ async function getTicketNo (canvas){
         if(text.split("-").length==4){
             tmpList.push(text.trim());
             appVM.total_ticket = appVM.total_ticket + 1
+        }else{
+            appVM.error="2"
+            appVM.missing_ticket = appVM.missing_ticket + 1
         }
 
     })

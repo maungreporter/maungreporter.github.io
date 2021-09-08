@@ -47,33 +47,40 @@
         <!-- HEADER NAV START  -->
 
         <div id="" class="container main-content p-0 pb-5 pb-sm-0 mb-5">
-            <div class="text-center">
+            <div class="text-center px-3">
                 <img src="/assets/img/raffel/logo.jpeg" alt="" style="height: 200px;">
                 <h5>Raffle Prize Winners</h5>
+                <small class="text-danger d-md-none" style="font-size: 0.75em;">Ticketအများကြီး တစ်ခါတည်း တိုက်ချင်လျှင် PCကို အသုံးပြုပါ</small>
             </div>
             
             <div class="input-form px-3 mb-3">
-                <div class="mb-3">
-                    <small class="text-danger" v-if="error == '1'">* ပေါက်မဲ နံပါတ်ရိုက်ထည့်ခြင်း (သို့) ပေါက်မဲလက်မှတ်ထည့်ပြီးမှ check ကို နှိပ်ပါ</small>
+                <div class="mb-2">
+                    <small class="text-danger d-md-none" v-if="error == '1'">* ပေါက်မဲ နံပါတ်ရိုက်ထည့်ပြီးမှ check ကို နှိပ်ပါ</small>
+                    <small class="text-danger d-none d-md-block" v-if="error == '1'">* ပေါက်မဲ နံပါတ်ရိုက်ထည့်ခြင်း (သို့) ပေါက်မဲလက်မှတ်ထည့်ပြီးမှ check ကို နှိပ်ပါ</small>
                     <div v-if="error == '2'">
-                        <small class="text-danger d-block" >* File Name နှင့် Ticket No တူနေသော Ticket ဖြစ်ရပါမည်။ </small>
+                        <small class="text-danger d-block" >* Ticket ({{missing_ticket}}) စောင် လွဲနေပါတယ် </small>
                         <!-- <img src="/assets/img/sample.png" alt="" style="width: 200px;"> -->
                     </div>
+                    
                 </div>
                 
                 <label class="mb-2">ပေါက်မဲနံပါတ်ရိုက်ထည့်ပြီး တိုက်ရန်</label>
                 <div class="input-group mb-3">
                     <input type="text" id="ticketNo" class="form-control" v-model="your_ticket_no">
                 </div>
-                <label class="mb-2">Raffle Ticketအားလုံး တစ်ခါတည်း တိုက်ရန်</label>
-                <input id="imageFile" type="file" class="imageFile form-control mb-3" v-on:change="imageChange" ref="file" accept="image/*" multiple /> 
-                <div class="mb-3">
-                    <small class="text-danger text-center d-block" v-if="ticket_list.length>0">စုစုပေါင်း ({{total_ticket}}) စောင်ပါ။ ပေါက်မဲတိုက်ရန် Check ကို နှိပ်ပါ</small>
-                    <small class="text-secondary" v-for="(tic,index) in ticket_list">({{index +1 }}) {{tic}} / </small>
+                
+                <div class="d-none d-md-block">
+                    <label class="mb-2">Raffle Ticketအားလုံး တစ်ခါတည်း တိုက်ရန်</label>
+                    <input id="imageFile" type="file" class="imageFile form-control mb-3" v-on:change="imageChange" ref="file" accept="image/*" multiple /> 
+                    <div class="mb-3">
+                        <small class="text-danger text-center d-block" v-if="ticket_list.length>0">စုစုပေါင်း ({{total_ticket}}) စောင်ပါ။ ပေါက်မဲတိုက်ရန် Check ကို နှိပ်ပါ</small>
+                        <small class="text-secondary" v-for="(tic,index) in ticket_list">({{index +1 }}) {{tic}} / </small>
+                    </div>
+                    <div class="d-none">
+                        <img src="" id="preview" >
+                    </div>
                 </div>
-                <div class="d-none">
-                    <img src="" id="preview" >
-                </div>
+                
                 
                 <!-- <img src="" id="output" class="mb-5"> -->
                 <button class="btn alert-primary w-100" v-on:click = "check">Check</button>
@@ -142,7 +149,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="/assets/js/tesseract.min.js"></script>
     <script src="/assets/js/variable.js?2021070501"></script>
-    <script src="/assets/js/raffel_ticket_staging.js?2021090726"></script>
+    <script src="/assets/js/raffel_ticket_staging.js?202109072"></script>
     
 </body>
 </html>
