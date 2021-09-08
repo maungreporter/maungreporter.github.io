@@ -1,3 +1,5 @@
+var tmpList = [];
+var sheet = "raffel-staging"
 var appVM = new Vue({
     el:'#app',
     data: {
@@ -23,7 +25,7 @@ var appVM = new Vue({
             this.error = ""
             this.your_ticket_no = ""
             this.selected_date = date
-            fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/raffel?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
+            fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/${sheet}?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
             .then(res=>res.json())
             .then(data =>{
                 var tmpList = []
@@ -44,53 +46,50 @@ var appVM = new Vue({
            
         },
         check: function(){
-            console.log("Check")
-            
-                this.result = ""
-                this.error = ""
-                if(this.your_ticket_no){
-                    fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/raffel?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
-                    .then(res=>res.json())
-                    .then(data =>{
-                        var tmp=[]
-                        data.values.map(e=>{
-                            if(e[1] == this.your_ticket_no){
-                                console.log("Winn")
-                                tmp.push({result:'1',prize:e[2],prize_img:e[0]})
-                                this.result = '1'
-                            }
-                            this.win_prize_list = tmp
-                            if(!this.result) this.result = "0"
-                        })
+            this.result = ""
+            this.error = ""
+            if(this.your_ticket_no){
+                fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/${sheet}?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
+                .then(res=>res.json())
+                .then(data =>{
+                    var tmp=[]
+                    data.values.map(e=>{
+                        if(e[1] == this.your_ticket_no){
+                            console.log("Winn")
+                            tmp.push({result:'1',prize:e[2],prize_img:e[0]})
+                            this.result = '1'
+                        }
+                        this.win_prize_list = tmp
+                        if(!this.result) this.result = "0"
                     })
-                   
-                }else if(this.ticket_list.length>0){
-                    console.log(this.ticket_list)
-                    fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/raffel?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
-                    .then(res=>res.json())
-                    .then(data =>{
-                        var tmp=[]
-                        data.values.map(e=>{
-                            if(this.ticket_list.includes(e[1])){
-                                console.log("Winn")
-                                // this.result = '1'
-                                // this.prize = `${e[2]} `
-                                // this.prize_img = e[0]
-                                tmp.push({result:'1',prize:e[2],prize_img:e[0]})
-                                this.result = '1'
-                            }
-                            this.win_prize_list = tmp
-                            if(!this.result) this.result = "0"
-                        })
+                })
+               
+            }else if(this.ticket_list.length>0){
+                console.log(this.ticket_list)
+                fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/${sheet}?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
+                .then(res=>res.json())
+                .then(data =>{
+                    var tmp=[]
+                    data.values.map(e=>{
+                        if(this.ticket_list.includes(e[1])){
+                            console.log("Winn")
+                            // this.result = '1'
+                            // this.prize = `${e[2]} `
+                            // this.prize_img = e[0]
+                            tmp.push({result:'1',prize:e[2],prize_img:e[0]})
+                            this.result = '1'
+                        }
+                        this.win_prize_list = tmp
+                        if(!this.result) this.result = "0"
                     })
-                }else{
-                    this.error = "1"
-                }
-          
+                })
+            }else{
+                this.error = "ပေါက်မဲ နံပါတ်ရိုက်ထည့်ခြင်း (သို့) ပေါက်မဲလက်မှတ်ထည့်ပြီးမှ check ကို နှိပ်ပါ"
+            }
             
         },
         getPrizeByDate: function(date){            
-            fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/raffel?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
+            fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/${sheet}?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
             .then(res=>res.json())
             .then(data =>{
                 var tmpList = []
@@ -102,38 +101,102 @@ var appVM = new Vue({
                 this.win_list = tmpList
             })
         },
-        getClass:function(date){
+        getClass : function(date){
             if(date == this.selected_date){
                 return "nav-link active"
             }else{
                 return "nav-link"
             }
         },
-        imageChange: function(){
-            this.error = ""
+        imageChange: async function(event){
+            tmpList = []
+            this.ticket_list = []
+            // this.your_ticket_no = ""
+            // this.win_prize_list = []
+            // var ticketFiles = this.$refs.file.files
+            // var tmpList = []
+            // this.total_ticket = ticketFiles.length
+            // for(let i=0;i<ticketFiles.length;i++){
+            //     var ticket_no = ticketFiles[i].name.split(".")[0].split('-').slice(1).join('-')
+            //     console.log(ticket_no)
+
+            //     tmpList[i]=ticket_no
+                
+            // }
+            // this.ticket_list = tmpList
+
             this.your_ticket_no = ""
             this.win_prize_list = []
-            var ticketFiles = this.$refs.file.files
-            var tmpList = []
-            this.total_ticket = ticketFiles.length
-            for(let i=0;i<ticketFiles.length;i++){
-                var ticket_no = ticketFiles[i].name.split(".")[0].split('-').slice(1).join('-')
-                console.log(ticket_no)
-                if(!this.checkTicket(ticket_no)){
-                    this.error = "2"
-                    this.ticket_list = []
-                    break
+            
+            var ticketFiles = event.target.files;
+            
+            for(index in ticketFiles){
+                if(index < ticketFiles){
+                    // console.log(ticketFiles[index].name)
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById("preview").src = e.target.result;
+                    };
+                    reader.readAsDataURL(ticketFiles[index]);
+
+                    await this.createCanvas(ticketFiles[index])
                 }
 
-                tmpList[i]=ticket_no
-                
+                    
             }
             this.ticket_list = tmpList
             
+            this.total_ticket = ticketFiles.length
+            
+            
         },
-        checkTicket: function(no){
-            return (no.split('-').length!=4) ? 0 : 1;
-        }
+        createCanvas : async function(file){
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var img = document.createElement("img");
+                img.src = e.target.result;
+                // Create your canvas
+                var canvas = document.createElement("canvas");
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0);
+        
+                var MAX_WIDTH = 500;
+                var MAX_HEIGHT = 500;
+                var width = img.width;
+                var height = img.height;
+        
+                // Add the resizing logic
+                if (width > height) {
+                  if (width > MAX_WIDTH) {
+                    height *= MAX_WIDTH / width;
+                    width = MAX_WIDTH;
+                  }
+                } else {
+                  if (height > MAX_HEIGHT) {
+                    width *= MAX_HEIGHT / height;
+                    height = MAX_HEIGHT;
+                  }
+                }
+        
+                //Specify the resizing result
+                canvas.width = width-120;
+                canvas.height = (height/2)-30;
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 250, 190,img.width,img.height,0,0, img.width, img.height);
+        
+                dataurl = canvas.toDataURL(file.type);
+                document.getElementById("preview").src = dataurl;
+                // var blob = this.getBlobByDataUrl(dataurl)
+        
+                console.log(dataurl)
+                getTicketNo(canvas)
+            };
+            reader.readAsDataURL(file);
+        },
+       
+       
+
+        
         
         
     },
@@ -154,4 +217,32 @@ var appVM = new Vue({
     }
 })
 
+async function getTicketNo (canvas){
+    // var byteString = atob(dataURI.split(',')[1]);
 
+    // var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // var ab = new ArrayBuffer(byteString.length);
+    // var ia = new Uint8Array(ab);
+    // for (var i = 0; i < byteString.length; i++) {
+    //     ia[i] = byteString.charCodeAt(i);
+    // }
+
+    // var blob = new Blob([ab], {type: mimeString});
+
+    
+  
+    
+
+  Tesseract.recognize(canvas,'eng',
+    { logger: m => console.log(m) })
+    .then(({ data: { text } }) => {
+        console.log(text);
+        tmpList.push(text.trim());
+        
+        // appVM.your_ticket_no += appVM.your_ticket_no ? "," : ''
+        // appVM.your_ticket_no = text
+    })
+    
+
+}
