@@ -111,19 +111,6 @@ var appVM = new Vue({
         imageChange: async function(event){
             tmpList = []
             this.ticket_list = []
-            // this.your_ticket_no = ""
-            // this.win_prize_list = []
-            // var ticketFiles = this.$refs.file.files
-            // var tmpList = []
-            // this.total_ticket = ticketFiles.length
-            // for(let i=0;i<ticketFiles.length;i++){
-            //     var ticket_no = ticketFiles[i].name.split(".")[0].split('-').slice(1).join('-')
-            //     console.log(ticket_no)
-
-            //     tmpList[i]=ticket_no
-                
-            // }
-            // this.ticket_list = tmpList
 
             this.your_ticket_no = ""
             this.win_prize_list = []
@@ -189,7 +176,7 @@ var appVM = new Vue({
                 // var blob = this.getBlobByDataUrl(dataurl)
         
                 console.log(dataurl)
-                getTicketNo(canvas)
+                 getTicketNo(canvas)
             };
             reader.readAsDataURL(file);
         },
@@ -218,30 +205,11 @@ var appVM = new Vue({
 })
 
 async function getTicketNo (canvas){
-    // var byteString = atob(dataURI.split(',')[1]);
-
-    // var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-
-    // var ab = new ArrayBuffer(byteString.length);
-    // var ia = new Uint8Array(ab);
-    // for (var i = 0; i < byteString.length; i++) {
-    //     ia[i] = byteString.charCodeAt(i);
-    // }
-
-    // var blob = new Blob([ab], {type: mimeString});
-
-    
-  
-    
-
   Tesseract.recognize(canvas,'eng',
     { logger: m => console.log(m) })
     .then(({ data: { text } }) => {
         console.log(text);
         tmpList.push(text.trim());
-        
-        // appVM.your_ticket_no += appVM.your_ticket_no ? "," : ''
-        // appVM.your_ticket_no = text
     })
     
 
