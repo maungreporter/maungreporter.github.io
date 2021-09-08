@@ -52,6 +52,7 @@ var appVM = new Vue({
             this.result = ""
             this.error = ""
             if(this.your_ticket_no){
+                this.ticket_list = []
                 fetch(`https://sheets.googleapis.com/v4/spreadsheets/${oxygenRefillDataSource}/values/${sheet}?key=AIzaSyBuoa3iAy6JtfpBUpcqL4k1gsrMT631TPw`)
                 .then(res=>res.json())
                 .then(data =>{
